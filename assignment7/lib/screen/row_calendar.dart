@@ -35,6 +35,7 @@ class _RowCalendarState extends State<RowCalendar> {
             todayFormat.format(today).toUpperCase(),
             style: const TextStyle(
               color: MyColors.lightGrey,
+              fontWeight: FontWeight.w500,
             ),
           ),
           SingleChildScrollView(
@@ -46,6 +47,7 @@ class _RowCalendarState extends State<RowCalendar> {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 40,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 const Text(

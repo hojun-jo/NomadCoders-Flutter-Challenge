@@ -29,7 +29,6 @@ class TaskItem extends StatelessWidget {
       child: Row(
         children: [
           Column(
-            // mainAxisSize: MainAxisSize.min,
             children: [
               _timeToText(startTime),
               const Text(
@@ -52,6 +51,7 @@ class TaskItem extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 60,
+                      fontWeight: FontWeight.w500,
                       height: 1,
                     ),
                     overflow: TextOverflow.ellipsis,
@@ -78,6 +78,7 @@ class TaskItem extends StatelessWidget {
           style: const TextStyle(
             color: Colors.black,
             fontSize: 24,
+            fontWeight: FontWeight.w600,
           ),
         ),
         Text(
@@ -85,6 +86,7 @@ class TaskItem extends StatelessWidget {
           style: const TextStyle(
             color: Colors.black,
             fontSize: 14,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -104,6 +106,7 @@ class TaskItem extends StatelessWidget {
               participant[i],
               style: const TextStyle(
                 color: MyColors.blackOpacity,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
@@ -112,6 +115,7 @@ class TaskItem extends StatelessWidget {
             "+$invisibleCount",
             style: const TextStyle(
               color: MyColors.blackOpacity,
+              fontWeight: FontWeight.w500,
             ),
           ),
       ],
