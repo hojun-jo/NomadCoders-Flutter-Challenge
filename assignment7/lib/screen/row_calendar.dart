@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:nomadcoders_flutter_challenge/model/my_colors.dart';
 
 class RowCalendar extends StatefulWidget {
   const RowCalendar({super.key});
@@ -33,7 +34,7 @@ class _RowCalendarState extends State<RowCalendar> {
           Text(
             todayFormat.format(today).toUpperCase(),
             style: const TextStyle(
-              color: Color(0xffDFDFDF),
+              color: MyColors.lightGrey,
             ),
           ),
           SingleChildScrollView(
@@ -61,7 +62,7 @@ class _RowCalendarState extends State<RowCalendar> {
                     child: Text(
                       "$element",
                       style: const TextStyle(
-                        color: Color(0xff8E8E8E),
+                        color: MyColors.darkGrey,
                         fontSize: 40,
                       ),
                     ),

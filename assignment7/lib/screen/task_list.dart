@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomadcoders_flutter_challenge/model/my_colors.dart';
 import 'package:nomadcoders_flutter_challenge/screen/task_item.dart';
 
 class TaskList extends StatelessWidget {
@@ -14,7 +15,7 @@ class TaskList extends StatelessWidget {
             endTime: DateTime(2024, 10, 1, 12, 20),
             title: "Design Meeting",
             participant: const ["Alex", "Helena", "Nana"],
-            color: Colors.yellow,
+            color: MyColors.yellow,
           ),
           TaskItem(
             startTime: DateTime(2024, 10, 1, 12, 35),
@@ -29,21 +30,21 @@ class TaskList extends StatelessWidget {
               "Nana",
               "Mark"
             ],
-            color: Colors.purple.shade200,
+            color: MyColors.purple,
           ),
           TaskItem(
             startTime: DateTime(2024, 10, 1, 15, 00),
             endTime: DateTime(2024, 10, 1, 16, 30),
             title: "Weekly Planning",
             participant: const ["Den", "Nana", "Mark"],
-            color: Colors.green,
+            color: MyColors.green,
           ),
           TaskItem(
             startTime: DateTime(2024, 10, 1, 11, 30),
             endTime: DateTime(2024, 10, 1, 12, 20),
             title: "Design Meeting",
             participant: const ["Alex", "Helena", "Nana"],
-            color: Colors.yellow,
+            color: MyColors.yellow,
           ),
         ],
       ),

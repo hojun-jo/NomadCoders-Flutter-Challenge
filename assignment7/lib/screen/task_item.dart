@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nomadcoders_flutter_challenge/model/my_colors.dart';
 
 class TaskItem extends StatelessWidget {
   final DateTime startTime;
@@ -102,7 +103,7 @@ class TaskItem extends StatelessWidget {
             child: Text(
               participant[i],
               style: const TextStyle(
-                color: Colors.black38,
+                color: MyColors.blackOpacity,
               ),
             ),
           ),
@@ -110,7 +111,7 @@ class TaskItem extends StatelessWidget {
           Text(
             "+$invisibleCount",
             style: const TextStyle(
-              color: Colors.black38,
+              color: MyColors.blackOpacity,
             ),
           ),
       ],
