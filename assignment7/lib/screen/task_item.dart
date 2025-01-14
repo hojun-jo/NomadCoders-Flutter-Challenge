@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nomadcoders_flutter_challenge/model/my_colors.dart';
 
 class TaskItem extends StatelessWidget {
@@ -71,10 +72,13 @@ class TaskItem extends StatelessWidget {
   }
 
   Column _timeToText(DateTime datetime) {
+    final hour = DateFormat("HH").format(datetime);
+    final minute = DateFormat("mm").format(datetime);
+
     return Column(
       children: [
         Text(
-          "${datetime.hour}",
+          hour,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 24,
@@ -82,7 +86,7 @@ class TaskItem extends StatelessWidget {
           ),
         ),
         Text(
-          "${datetime.minute}",
+          minute,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 14,
@@ -103,9 +107,11 @@ class TaskItem extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 30),
             child: Text(
-              participant[i],
-              style: const TextStyle(
-                color: MyColors.blackOpacity,
+              participant[i].toUpperCase(),
+              style: TextStyle(
+                color: participant[i] == "Me"
+                    ? Colors.black
+                    : MyColors.blackOpacity,
                 fontWeight: FontWeight.w500,
               ),
             ),
