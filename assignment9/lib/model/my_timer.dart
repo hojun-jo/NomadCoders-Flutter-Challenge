@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -59,7 +58,6 @@ class MyTimer with ChangeNotifier {
         _raiseRound();
         isRest = true;
         _remainSeconds = five;
-        // totalSeconds = five;
       }
     } else {
       if (isRunning) {
@@ -85,7 +83,7 @@ class MyTimer with ChangeNotifier {
   }
 
   void _raiseRound() {
-    if (currentRound < maxRound) {
+    if (currentRound < maxRound - 1) {
       currentRound++;
     } else {
       currentRound = 0;
