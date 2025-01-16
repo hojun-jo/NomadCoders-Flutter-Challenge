@@ -35,6 +35,7 @@ class TimerView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
             TimerButton(
               isRunning: timer.isRunning,
               onTap: () {
@@ -43,14 +44,16 @@ class TimerView extends StatelessWidget {
                     : timer.onStartPressed();
               },
             ),
-            IconButton(
-              onPressed: () {
-                timer.onResetPressed();
-              },
-              icon: const Icon(
-                Icons.restore,
-                size: 40,
-                color: MyApp.mainWhite,
+            Expanded(
+              child: IconButton(
+                onPressed: () {
+                  timer.onResetPressed();
+                },
+                icon: const Icon(
+                  Icons.restore,
+                  size: 40,
+                  color: MyApp.mainWhite,
+                ),
               ),
             ),
           ],
