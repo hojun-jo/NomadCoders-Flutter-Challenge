@@ -1,4 +1,4 @@
-import 'package:assignment9/main.dart';
+import 'package:assignment9/model/my_color.dart';
 import 'package:flutter/material.dart';
 
 class CounterView extends StatelessWidget {
@@ -20,7 +20,7 @@ class CounterView extends StatelessWidget {
         Text(
           "$current/$max",
           style: TextStyle(
-            color: MyApp.secondRed,
+            color: MyColor.pinkRed,
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
@@ -28,7 +28,7 @@ class CounterView extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-            color: MyApp.mainWhite,
+            color: MyColor.mainWhite,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

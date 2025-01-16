@@ -1,4 +1,4 @@
-import 'package:assignment9/main.dart';
+import 'package:assignment9/model/my_color.dart';
 import 'package:flutter/material.dart';
 
 class TimerCard extends StatelessWidget {
@@ -40,13 +40,13 @@ class TimerCard extends StatelessWidget {
           height: 180,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: MyApp.mainWhite,
+            color: MyColor.mainWhite,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Text(
             title,
             style: TextStyle(
-              color: MyApp.mainRed,
+              color: MyColor.mainRed,
               fontSize: 88,
               fontWeight: FontWeight.bold,
             ),

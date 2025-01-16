@@ -1,4 +1,4 @@
-import 'package:assignment9/main.dart';
+import 'package:assignment9/model/my_color.dart';
 import 'package:assignment9/screen/timer/interval_select_view.dart';
 import 'package:assignment9/screen/timer/widget/counter_view.dart';
 import 'package:assignment9/screen/timer/widget/timer_button.dart';
@@ -21,10 +21,10 @@ class TimerView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TimerCard(timer.minutesFormat()),
-            Text(
+            const Text(
               ":",
               style: TextStyle(
-                color: MyApp.secondRed,
+                color: MyColor.pinkRed,
                 fontSize: 80,
               ),
             ),
@@ -52,7 +52,7 @@ class TimerView extends StatelessWidget {
                 icon: const Icon(
                   Icons.restore,
                   size: 40,
-                  color: MyApp.mainWhite,
+                  color: MyColor.mainWhite,
                 ),
               ),
             ),

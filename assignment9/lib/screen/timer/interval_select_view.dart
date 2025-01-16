@@ -1,4 +1,4 @@
-import 'package:assignment9/main.dart';
+import 'package:assignment9/model/my_color.dart';
 import 'package:assignment9/model/my_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,35 +21,35 @@ class _IntervalSelectViewState extends State<IntervalSelectView> {
         children: [
           _IntervalCard(
             interval: 15,
-            selectedInterval: timer.totalSeconds,
+            selectedInterval: timer.pomodoroSeconds,
             onTap: () {
               timer.setPomodoros(MyTimer.fifteen);
             },
           ),
           _IntervalCard(
             interval: 20,
-            selectedInterval: timer.totalSeconds,
+            selectedInterval: timer.pomodoroSeconds,
             onTap: () {
               timer.setPomodoros(MyTimer.twenty);
             },
           ),
           _IntervalCard(
             interval: 25,
-            selectedInterval: timer.totalSeconds,
+            selectedInterval: timer.pomodoroSeconds,
             onTap: () {
               timer.setPomodoros(MyTimer.twentyFive);
             },
           ),
           _IntervalCard(
             interval: 30,
-            selectedInterval: timer.totalSeconds,
+            selectedInterval: timer.pomodoroSeconds,
             onTap: () {
               timer.setPomodoros(MyTimer.thirty);
             },
           ),
           _IntervalCard(
             interval: 35,
-            selectedInterval: timer.totalSeconds,
+            selectedInterval: timer.pomodoroSeconds,
             onTap: () {
               timer.setPomodoros(MyTimer.thirtyFive);
             },
@@ -80,10 +80,10 @@ class _IntervalCard extends StatelessWidget {
       onTap: _onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: _isSelected() ? MyApp.mainWhite : MyApp.mainRed,
+          color: _isSelected() ? MyColor.mainWhite : MyColor.mainRed,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: _isSelected() ? MyApp.mainWhite : MyApp.secondRed,
+            color: _isSelected() ? MyColor.mainWhite : MyColor.pinkRed,
             width: 4,
           ),
         ),
@@ -95,7 +95,7 @@ class _IntervalCard extends StatelessWidget {
         child: Text(
           "$_interval",
           style: TextStyle(
-            color: _isSelected() ? MyApp.mainRed : MyApp.secondRed,
+            color: _isSelected() ? MyColor.mainRed : MyColor.pinkRed,
             fontSize: 28,
             fontWeight: FontWeight.bold,
           ),

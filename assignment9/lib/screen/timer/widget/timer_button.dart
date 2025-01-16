@@ -1,4 +1,4 @@
-import 'package:assignment9/main.dart';
+import 'package:assignment9/model/my_color.dart';
 import 'package:flutter/material.dart';
 
 class TimerButton extends StatelessWidget {
@@ -19,12 +19,12 @@ class TimerButton extends StatelessWidget {
         width: 100,
         height: 100,
         decoration: BoxDecoration(
-          color: Colors.red.shade700,
+          color: const Color(0xffBF392B),
           borderRadius: BorderRadius.circular(50),
         ),
         child: Icon(
           isRunning ? Icons.pause : Icons.play_arrow,
-          color: MyApp.mainWhite,
+          color: MyColor.mainWhite,
           size: 70,
         ),
       ),

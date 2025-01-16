@@ -1,3 +1,4 @@
+import 'package:assignment9/model/my_color.dart';
 import 'package:assignment9/screen/timer/timer_view.dart';
 import 'package:assignment9/model/my_timer.dart';
 import 'package:flutter/material.dart';
@@ -16,19 +17,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static final Color mainRed = Colors.red.shade400;
-  static final Color secondRed = Colors.red.shade200;
-  static const Color mainWhite = Colors.white;
-
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Demo',
       home: Scaffold(
-        backgroundColor: mainRed,
-        body: const SafeArea(
+        backgroundColor: MyColor.mainRed,
+        body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,7 +34,7 @@ class MyApp extends StatelessWidget {
                 child: Text(
                   "POMOTIMER",
                   style: TextStyle(
-                    color: mainWhite,
+                    color: MyColor.mainWhite,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),

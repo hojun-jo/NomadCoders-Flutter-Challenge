@@ -11,8 +11,8 @@ class MyTimer with ChangeNotifier {
   static const thirty = 30 * 60;
   static const thirtyFive = 35 * 60;
 
-  int totalSeconds = twentyFive;
-  int _currentSeconds = twentyFive;
+  int pomodoroSeconds = twentyFive;
+  int _remainSeconds = twentyFive;
   int maxRound;
   int currentRound = 0;
   int maxGoal;
@@ -30,7 +30,7 @@ class MyTimer with ChangeNotifier {
 
   void onStartPressed() {
     timer = Timer.periodic(
-      const Duration(seconds: 1),
+      const Duration(milliseconds: 10),
       onTick,
     );
     isRunning = true;
@@ -46,41 +46,41 @@ class MyTimer with ChangeNotifier {
   void onResetPressed() {
     timer.cancel();
     isRunning = false;
-    _currentSeconds = totalSeconds;
+    _remainSeconds = pomodoroSeconds;
     notifyListeners();
   }
 
   void onTick(Timer timer) {
-    if (_currentSeconds == 0) {
+    if (_remainSeconds == 0) {
       if (isRest) {
         isRest = false;
-        _currentSeconds = totalSeconds;
+        _remainSeconds = pomodoroSeconds;
       } else {
         _raiseRound();
         isRest = true;
-        _currentSeconds = five;
-        totalSeconds = five;
+        _remainSeconds = five;
+        // totalSeconds = five;
       }
     } else {
       if (isRunning) {
-        _currentSeconds--;
+        _remainSeconds--;
       }
     }
     notifyListeners();
   }
 
   String minutesFormat() {
-    return formatter.format(_currentSeconds ~/ 60);
+    return formatter.format(_remainSeconds ~/ 60);
   }
 
   String secondsFormat() {
-    return formatter.format(_currentSeconds % 60);
+    return formatter.format(_remainSeconds % 60);
   }
 
   void setPomodoros(int seconds) {
     onResetPressed();
-    _currentSeconds = seconds;
-    totalSeconds = seconds;
+    _remainSeconds = seconds;
+    pomodoroSeconds = seconds;
     notifyListeners();
   }
 
