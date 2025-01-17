@@ -13,6 +13,7 @@ class IntervalSelectView extends StatefulWidget {
 class _IntervalSelectViewState extends State<IntervalSelectView> {
   @override
   Widget build(BuildContext context) {
+    final intervals = [15, 20, 25, 30, 35];
     final timer = Provider.of<MyTimer>(context);
 
     return ShaderMask(
@@ -28,10 +29,11 @@ class _IntervalSelectViewState extends State<IntervalSelectView> {
       },
       blendMode: BlendMode.dstIn,
       child: SingleChildScrollView(
+        // TODO: - 선택한 인터벌카드가 가운데로 올 수 있도록
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            for (int i = 15; i <= 35; i += 5)
+            for (int i in intervals)
               IntervalCard(
                 interval: i,
                 selectedInterval: timer.pomodoroSeconds,

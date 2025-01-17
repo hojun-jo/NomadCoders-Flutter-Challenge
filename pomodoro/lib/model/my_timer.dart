@@ -19,7 +19,7 @@ class MyTimer with ChangeNotifier {
     required this.maxRound,
     required this.maxGoal,
   });
-
+// TODO: - 개발 후 seconds로 수정
   void onStartPressed() {
     timer = Timer.periodic(
       const Duration(milliseconds: 10),
