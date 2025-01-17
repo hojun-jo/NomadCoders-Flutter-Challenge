@@ -15,46 +15,58 @@ class _IntervalSelectViewState extends State<IntervalSelectView> {
   Widget build(BuildContext context) {
     final timer = Provider.of<MyTimer>(context);
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          _IntervalCard(
-            interval: 15,
-            selectedInterval: timer.pomodoroSeconds,
-            onTap: () {
-              timer.setPomodoros(MyTimer.fifteen);
-            },
-          ),
-          _IntervalCard(
-            interval: 20,
-            selectedInterval: timer.pomodoroSeconds,
-            onTap: () {
-              timer.setPomodoros(MyTimer.twenty);
-            },
-          ),
-          _IntervalCard(
-            interval: 25,
-            selectedInterval: timer.pomodoroSeconds,
-            onTap: () {
-              timer.setPomodoros(MyTimer.twentyFive);
-            },
-          ),
-          _IntervalCard(
-            interval: 30,
-            selectedInterval: timer.pomodoroSeconds,
-            onTap: () {
-              timer.setPomodoros(MyTimer.thirty);
-            },
-          ),
-          _IntervalCard(
-            interval: 35,
-            selectedInterval: timer.pomodoroSeconds,
-            onTap: () {
-              timer.setPomodoros(MyTimer.thirtyFive);
-            },
-          ),
-        ],
+    return ShaderMask(
+      shaderCallback: (Rect bounds) {
+        return const LinearGradient(
+          colors: [
+            Colors.transparent,
+            Colors.black,
+            Colors.transparent,
+          ],
+        ).createShader(bounds);
+      },
+      blendMode: BlendMode.dstIn,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            _IntervalCard(
+              interval: 15,
+              selectedInterval: timer.pomodoroSeconds,
+              onTap: () {
+                timer.setPomodoros(MyTimer.fifteen);
+              },
+            ),
+            _IntervalCard(
+              interval: 20,
+              selectedInterval: timer.pomodoroSeconds,
+              onTap: () {
+                timer.setPomodoros(MyTimer.twenty);
+              },
+            ),
+            _IntervalCard(
+              interval: 25,
+              selectedInterval: timer.pomodoroSeconds,
+              onTap: () {
+                timer.setPomodoros(MyTimer.twentyFive);
+              },
+            ),
+            _IntervalCard(
+              interval: 30,
+              selectedInterval: timer.pomodoroSeconds,
+              onTap: () {
+                timer.setPomodoros(MyTimer.thirty);
+              },
+            ),
+            _IntervalCard(
+              interval: 35,
+              selectedInterval: timer.pomodoroSeconds,
+              onTap: () {
+                timer.setPomodoros(MyTimer.thirtyFive);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

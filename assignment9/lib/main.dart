@@ -40,7 +40,12 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(child: TimerView()),
+              SizedBox(
+                height: 60,
+              ),
+              Expanded(
+                child: TimerView(),
+              ),
             ],
           ),
         ),
