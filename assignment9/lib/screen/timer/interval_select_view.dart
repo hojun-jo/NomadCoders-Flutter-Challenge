@@ -21,6 +21,7 @@ class _IntervalSelectViewState extends State<IntervalSelectView> {
           colors: [
             Colors.transparent,
             Colors.black,
+            Colors.black,
             Colors.transparent,
           ],
         ).createShader(bounds);
@@ -30,41 +31,14 @@ class _IntervalSelectViewState extends State<IntervalSelectView> {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            _IntervalCard(
-              interval: 15,
-              selectedInterval: timer.pomodoroSeconds,
-              onTap: () {
-                timer.setPomodoros(MyTimer.fifteen);
-              },
-            ),
-            _IntervalCard(
-              interval: 20,
-              selectedInterval: timer.pomodoroSeconds,
-              onTap: () {
-                timer.setPomodoros(MyTimer.twenty);
-              },
-            ),
-            _IntervalCard(
-              interval: 25,
-              selectedInterval: timer.pomodoroSeconds,
-              onTap: () {
-                timer.setPomodoros(MyTimer.twentyFive);
-              },
-            ),
-            _IntervalCard(
-              interval: 30,
-              selectedInterval: timer.pomodoroSeconds,
-              onTap: () {
-                timer.setPomodoros(MyTimer.thirty);
-              },
-            ),
-            _IntervalCard(
-              interval: 35,
-              selectedInterval: timer.pomodoroSeconds,
-              onTap: () {
-                timer.setPomodoros(MyTimer.thirtyFive);
-              },
-            ),
+            for (int i = 15; i <= 35; i += 5)
+              _IntervalCard(
+                interval: i,
+                selectedInterval: timer.pomodoroSeconds,
+                onTap: () {
+                  timer.setPomodoros(i);
+                },
+              ),
           ],
         ),
       ),

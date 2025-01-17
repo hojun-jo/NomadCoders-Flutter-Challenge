@@ -3,15 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class MyTimer with ChangeNotifier {
-  static const five = 5 * 60;
-  static const fifteen = 15 * 60;
-  static const twenty = 20 * 60;
-  static const twentyFive = 25 * 60;
-  static const thirty = 30 * 60;
-  static const thirtyFive = 35 * 60;
-
-  int pomodoroSeconds = twentyFive;
-  int _remainSeconds = twentyFive;
+  int pomodoroSeconds = 25 * 60;
+  int _remainSeconds = 25 * 60;
   int maxRound;
   int currentRound = 0;
   int maxGoal;
@@ -57,7 +50,7 @@ class MyTimer with ChangeNotifier {
       } else {
         _raiseRound();
         isRest = true;
-        _remainSeconds = five;
+        _remainSeconds = 5 * 60;
       }
     } else {
       if (isRunning) {
@@ -75,10 +68,10 @@ class MyTimer with ChangeNotifier {
     return formatter.format(_remainSeconds % 60);
   }
 
-  void setPomodoros(int seconds) {
+  void setPomodoros(int minutes) {
     onResetPressed();
-    _remainSeconds = seconds;
-    pomodoroSeconds = seconds;
+    _remainSeconds = minutes * 60;
+    pomodoroSeconds = minutes * 60;
     notifyListeners();
   }
 
