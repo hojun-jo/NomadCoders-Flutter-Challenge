@@ -1,8 +1,7 @@
 import 'package:assignment10/screens/detail/widgets/buy_ticket_button.dart';
-import 'package:assignment10/screens/detail/widgets/runtime_genres_text.dart';
+import 'package:assignment10/screens/detail/widgets/movie_information_column.dart';
 import 'package:assignment10/services/api_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class DetailScreen extends StatelessWidget {
   final int id;
@@ -57,38 +56,14 @@ class DetailScreen extends StatelessWidget {
                         ),
                         Flexible(
                           flex: 2,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _Title(
-                                title: snapshot.data!.$1.title,
-                                size: 34,
-                              ),
-                              const SizedBox(height: 4),
-                              RatingStars(
-                                value: snapshot.data!.$1.voteAverage / 2,
-                                valueLabelVisibility: false,
-                                starSpacing: 8,
-                              ),
-                              const SizedBox(height: 24),
-                              RuntimeGenresText(
-                                runtime:
-                                    _formatRuntime(snapshot.data!.$1.runtime),
-                                genres: snapshot.data!.$2.reduce(
-                                    (value, element) => "$value, $element"),
-                                isAdult: snapshot.data!.$1.isAdult,
-                              ),
-                              const SizedBox(height: 40),
-                              const _Title(
-                                title: "Storyline",
-                                size: 30,
-                              ),
-                              const SizedBox(height: 12),
-                              _Title(
-                                title: snapshot.data!.$1.overview,
-                                size: 16,
-                              ),
-                            ],
+                          child: MovieInformationColumn(
+                            movieTitle: snapshot.data!.$1.title,
+                            rating: snapshot.data!.$1.voteAverage / 2,
+                            runtime: _formatRuntime(snapshot.data!.$1.runtime),
+                            genres: snapshot.data!.$2
+                                .reduce((value, element) => "$value, $element"),
+                            isAdult: snapshot.data!.$1.isAdult,
+                            overview: snapshot.data!.$1.overview,
                           ),
                         ),
                         const BuyTicketButton()
@@ -109,28 +84,5 @@ class DetailScreen extends StatelessWidget {
 
   String _formatRuntime(int runtime) {
     return "${runtime ~/ 60}h ${runtime % 60}min";
-  }
-}
-
-class _Title extends StatelessWidget {
-  const _Title({
-    super.key,
-    required this.title,
-    required this.size,
-  });
-
-  final String title;
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: size,
-        fontWeight: FontWeight.bold,
-      ),
-    );
   }
 }
