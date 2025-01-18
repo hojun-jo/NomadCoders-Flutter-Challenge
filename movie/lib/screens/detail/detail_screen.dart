@@ -1,4 +1,5 @@
 import 'package:assignment10/screens/detail/widgets/buy_ticket_button.dart';
+import 'package:assignment10/screens/detail/widgets/runtime_genres_text.dart';
 import 'package:assignment10/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
@@ -12,7 +13,7 @@ class DetailScreen extends StatelessWidget {
     super.key,
     required this.id,
   });
-
+// TODO - rating star 직접 구현 -> ShaderMask면 될듯?
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -32,6 +33,7 @@ class DetailScreen extends StatelessWidget {
                 color: Colors.black45,
               ),
               Scaffold(
+                // TODO - 위젯 분리
                 appBar: AppBar(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.transparent,
@@ -59,7 +61,10 @@ class DetailScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              _title(snapshot.data!.$1.title, 34),
+                              _Title(
+                                title: snapshot.data!.$1.title,
+                                size: 34,
+                              ),
                               const SizedBox(height: 4),
                               RatingStars(
                                 value: snapshot.data!.$1.voteAverage / 2,
@@ -67,11 +72,23 @@ class DetailScreen extends StatelessWidget {
                                 starSpacing: 8,
                               ),
                               const SizedBox(height: 24),
-                              _runtimeGenres(snapshot),
+                              RuntimeGenresText(
+                                runtime:
+                                    _formatRuntime(snapshot.data!.$1.runtime),
+                                genres: snapshot.data!.$2.reduce(
+                                    (value, element) => "$value, $element"),
+                                isAdult: snapshot.data!.$1.isAdult,
+                              ),
                               const SizedBox(height: 40),
-                              _title("Storyline", 30),
+                              const _Title(
+                                title: "Storyline",
+                                size: 30,
+                              ),
                               const SizedBox(height: 12),
-                              _title(snapshot.data!.$1.overview, 16),
+                              _Title(
+                                title: snapshot.data!.$1.overview,
+                                size: 16,
+                              ),
                             ],
                           ),
                         ),
@@ -91,26 +108,23 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  RichText _runtimeGenres(AsyncSnapshot<MovieDetails> snapshot) {
-    return RichText(
-      text: TextSpan(
-        style: const TextStyle(
-          color: Colors.white,
-        ),
-        children: [
-          TextSpan(text: _formatRuntime(snapshot.data!.$1.runtime)),
-          const TextSpan(text: " ⎮ "),
-          TextSpan(
-            text: snapshot.data!.$2
-                .reduce((value, element) => "$value, $element"),
-          ),
-          if (snapshot.data!.$1.isAdult) const TextSpan(text: "🔞"),
-        ],
-      ),
-    );
+  String _formatRuntime(int runtime) {
+    return "${runtime ~/ 60}h ${runtime % 60}min";
   }
+}
 
-  Text _title(String title, double size) {
+class _Title extends StatelessWidget {
+  const _Title({
+    super.key,
+    required this.title,
+    required this.size,
+  });
+
+  final String title;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
     return Text(
       title,
       style: TextStyle(
@@ -119,9 +133,5 @@ class DetailScreen extends StatelessWidget {
         fontWeight: FontWeight.bold,
       ),
     );
-  }
-
-  String _formatRuntime(int runtime) {
-    return "${runtime ~/ 60}h ${runtime % 60}min";
   }
 }

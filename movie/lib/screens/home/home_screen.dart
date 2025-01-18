@@ -43,6 +43,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+// TODO - 위젯 분리, 네이밍
   SizedBox makeMovieList(
       {required Future<List<MovieSummery>> list, required bool isLarge}) {
     return SizedBox(

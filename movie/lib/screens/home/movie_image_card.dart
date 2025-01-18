@@ -13,7 +13,7 @@ class MovieImageCard extends StatelessWidget {
     required this.width,
     required this.height,
   });
-
+// TODO - 화면 전환 HERO
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
