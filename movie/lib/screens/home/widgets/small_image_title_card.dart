@@ -1,5 +1,5 @@
 import 'package:assignment10/models/movie_summery.dart';
-import 'package:assignment10/screens/home/movie_image_card.dart';
+import 'package:assignment10/screens/home/widgets/large_image_card.dart';
 import 'package:flutter/material.dart';
 
 class SmallImageTitleCard extends StatelessWidget {
@@ -17,7 +17,7 @@ class SmallImageTitleCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MovieImageCard(
+          LargeImageCard(
             movie: movie,
             width: 150,
             height: 150,

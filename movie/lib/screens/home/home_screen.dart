@@ -1,6 +1,6 @@
 import 'package:assignment10/models/movie_summery.dart';
-import 'package:assignment10/screens/home/movie_image_card.dart';
-import 'package:assignment10/screens/home/small_image_title_card.dart';
+import 'package:assignment10/screens/home/widgets/large_image_card.dart';
+import 'package:assignment10/screens/home/widgets/small_image_title_card.dart';
 import 'package:assignment10/services/api_service.dart';
 import 'package:flutter/material.dart';
 
@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         final movie = snapshot.data![index];
         if (isLarge) {
-          return MovieImageCard(
+          return LargeImageCard(
             movie: movie,
             width: 300,
             height: 200,

@@ -2,12 +2,12 @@ import 'package:assignment10/models/movie_summery.dart';
 import 'package:assignment10/screens/detail/detail_screen.dart';
 import 'package:flutter/material.dart';
 
-class MovieImageCard extends StatelessWidget {
+class LargeImageCard extends StatelessWidget {
   final MovieSummery movie;
   final double width;
   final double height;
 
-  const MovieImageCard({
+  const LargeImageCard({
     super.key,
     required this.movie,
     required this.width,
