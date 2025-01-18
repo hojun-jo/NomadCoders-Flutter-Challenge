@@ -33,7 +33,6 @@ class DetailScreen extends StatelessWidget {
                 color: Colors.black45,
               ),
               Scaffold(
-                // TODO - 위젯 분리
                 appBar: AppBar(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.transparent,
