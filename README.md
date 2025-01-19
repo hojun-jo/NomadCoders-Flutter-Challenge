@@ -16,4 +16,4 @@
 ### Flutter로 웹툰 앱 만들기
 | [Scheduler](./scheduler/) | [Pomodoro](./pomodoro/) | [Movie](./movie/) |
 | :---: | :---: | :---: |
-| <img src="https://i.imgur.com/x9ktmIm.mp4" width="200" /> | <img src="https://i.imgur.com/AKij7JG.mp4" width="200" /> | <img src="https://i.imgur.com/hOx6wjT.mp4" width="200" /> |
+| <img src="./gifs/flutter study day9.gif" width="200" /> | <img src="./gifs/flutter study day11.gif" width="200" /> | <img src="./gifs/flutter study day12.gif" width="200" /> |
