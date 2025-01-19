@@ -1,6 +1,5 @@
 import 'package:assignment10/models/movie_summery.dart';
-import 'package:assignment10/screens/home/widgets/large_image_card.dart';
-import 'package:assignment10/screens/home/widgets/small_image_title_card.dart';
+import 'package:assignment10/screens/home/widgets/movie_list.dart';
 import 'package:assignment10/services/api_service.dart';
 import 'package:flutter/material.dart';
 
@@ -23,63 +22,14 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const _Title("Popular Movies"),
-            makeMovieList(
-              list: popularList,
-              isLarge: true,
-            ),
+            MovieList(list: popularList, isLarge: true),
             const _Title("Now in Cinemas"),
-            makeMovieList(
-              list: nowPlaying,
-              isLarge: false,
-            ),
+            MovieList(list: nowPlaying, isLarge: false),
             const _Title("Coming soon"),
-            makeMovieList(
-              list: comingSoon,
-              isLarge: false,
-            ),
+            MovieList(list: comingSoon, isLarge: false),
           ],
         ),
       ),
-    );
-  }
-
-// TODO - 위젯 분리, 네이밍
-  SizedBox makeMovieList(
-      {required Future<List<MovieSummery>> list, required bool isLarge}) {
-    return SizedBox(
-      height: isLarge ? 200 : 230,
-      child: FutureBuilder(
-        future: list,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return makeList(snapshot, isLarge: isLarge);
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget makeList(AsyncSnapshot<List<MovieSummery>> snapshot,
-      {required bool isLarge}) {
-    return ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: snapshot.data!.length,
-      itemBuilder: (context, index) {
-        final movie = snapshot.data![index];
-        if (isLarge) {
-          return LargeImageCard(
-            movie: movie,
-            width: 300,
-            height: 200,
-          );
-        } else {
-          return SmallImageTitleCard(movie: movie);
-        }
-      },
-      separatorBuilder: (context, index) => const SizedBox(width: 30),
     );
   }
 }
