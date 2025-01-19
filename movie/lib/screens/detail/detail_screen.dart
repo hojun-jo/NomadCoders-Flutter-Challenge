@@ -12,7 +12,7 @@ class DetailScreen extends StatelessWidget {
     super.key,
     required this.id,
   });
-// TODO - rating star 직접 구현 -> ShaderMask면 될듯?
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

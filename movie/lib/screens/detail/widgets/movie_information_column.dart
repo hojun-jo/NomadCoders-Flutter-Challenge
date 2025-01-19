@@ -1,3 +1,4 @@
+import 'package:assignment10/screens/detail/widgets/rating_stars.dart';
 import 'package:assignment10/screens/detail/widgets/runtime_genres_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
@@ -34,6 +35,9 @@ class MovieInformationColumn extends StatelessWidget {
           value: rating,
           valueLabelVisibility: false,
           starSpacing: 8,
+        ),
+        RatingStar(
+          rating: rating,
         ),
         const SizedBox(height: 24),
         RuntimeGenresText(
