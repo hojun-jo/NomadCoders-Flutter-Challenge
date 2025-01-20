@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/screens/onboarding/onboarding_screen.dart';
+import 'package:twitter/constants/icons.dart';
+import 'package:twitter/screens/onboarding/initial_screen.dart';
 
 void main() {
   runApp(const TwitterChallenge());
@@ -11,12 +12,16 @@ class TwitterChallenge extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Twitter Challenge',
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: twitterIcon,
+        ),
         backgroundColor: Colors.white,
-        body: SafeArea(
-          child: OnboardingScreen(),
+        body: const SafeArea(
+          child: InitialScreen(),
         ),
       ),
     );

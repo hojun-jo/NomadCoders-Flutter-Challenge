@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twitter/constants/textstyle.dart';
 import 'package:twitter/models/oauth.dart';
+import 'package:twitter/screens/onboarding/create_account_screen.dart';
+import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/or_divider.dart';
 import 'package:twitter/screens/onboarding/widgets/sign_up_button.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
@@ -14,18 +15,7 @@ class InitialScreen extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const FaIcon(
-          FontAwesomeIcons.twitter,
-          size: 40,
-          color: Colors.blue,
-        ),
-        const Text(
-          "See what's happening\nin the world right now.",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
+        const BoldTitle(text: "See what's happening\nin the world right now."),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
@@ -40,7 +30,13 @@ class InitialScreen extends StatelessWidget {
               ),
               const OrDivider(),
               SignUpButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CreateAccountScreen(),
+                    ),
+                  );
+                },
               ),
               Row(
                 children: [
