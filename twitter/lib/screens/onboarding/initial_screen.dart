@@ -15,6 +15,7 @@ class InitialScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Expanded(
             child: Center(
@@ -40,55 +41,23 @@ class InitialScreen extends StatelessWidget {
               );
             },
           ),
-          Row(
+          Wrap(
             children: [
               const PolicyText(
-                text: "By signing up, you agree to our ",
-                size: 16,
-              ),
-              TextLink(
-                text: "Terms",
-                size: 16,
-                onTap: () {},
-              ),
-              const PolicyText(
-                text: ",",
-                size: 16,
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              TextLink(
-                text: "Privacy Policy",
-                size: 16,
-                onTap: () {},
-              ),
-              const PolicyText(
-                text: ", and ",
-                size: 16,
-              ),
-              TextLink(
-                text: "Cookie use",
-                size: 16,
-                onTap: () {},
-              ),
-              const PolicyText(
-                text: ".",
-                size: 16,
-              ),
+                  text: "By signing up, you agree to our ", size: 16),
+              TextLink(text: "Terms", size: 16, onTap: () {}),
+              const PolicyText(text: ", ", size: 16),
+              TextLink(text: "Privacy Policy", size: 16, onTap: () {}),
+              const PolicyText(text: ", and ", size: 16),
+              TextLink(text: "Cookie use", size: 16, onTap: () {}),
+              const PolicyText(text: ".", size: 16),
             ],
           ),
           const SizedBox(height: 40),
-          Row(
+          Wrap(
             children: [
-              const PolicyText(
-                text: "Have you already account? ",
-              ),
-              TextLink(
-                text: "Log in",
-                onTap: () {},
-              ),
+              const PolicyText(text: "Have you already account? "),
+              TextLink(text: "Log in", onTap: () {}),
             ],
           ),
         ],
