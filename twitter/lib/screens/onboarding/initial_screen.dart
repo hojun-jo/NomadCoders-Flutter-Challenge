@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/constants/textstyle.dart';
 import 'package:twitter/models/oauth.dart';
 import 'package:twitter/screens/onboarding/create_account_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
