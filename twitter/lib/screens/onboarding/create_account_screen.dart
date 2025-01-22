@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
+import 'package:twitter/screens/onboarding/widgets/bottom_round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/sign_up_form_field.dart';
+import 'package:twitter/screens/onboarding/widgets/text_link.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
 class CreateAccountScreen extends StatefulWidget {
@@ -18,6 +20,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
   final Map<String, String> _formData = {};
   bool _isComplete = false;
+  bool _isPoped = false;
 
   @override
   void initState() {
@@ -69,6 +72,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         },
                       ),
                       SignUpFormField(
+                        // TODO - email validate
                         hintText: "Phone number or email address",
                         labelText: "Email",
                         isDate: false,
@@ -102,40 +106,89 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   ),
               ],
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  if (_isComplete) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const CustomizeExperienceScreen(),
-                      ),
-                    );
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _isComplete ? Colors.black : Colors.grey,
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                  ),
-                  child: Text(
-                    "Next",
-                    style: TextStyle(
-                      color: _isComplete ? Colors.white : Colors.grey.shade400,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            if (!_isPoped) _nextButton(context),
+            if (_isPoped) _policySignUpButton(),
           ],
         ),
       ),
+    );
+  }
+
+  Align _nextButton(BuildContext context) {
+    return Align(
+      // TODO - 데이트피커 위로 올려야 함
+      alignment: Alignment.centerRight,
+      child: GestureDetector(
+        onTap: () async {
+          if (_isComplete) {
+            FocusManager.instance.primaryFocus?.unfocus();
+            final result = await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const CustomizeExperienceScreen(),
+              ),
+            );
+            if (result == true) {
+              _isPoped = true;
+              setState(() {});
+            }
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          decoration: BoxDecoration(
+            color: _isComplete ? Colors.black : Colors.grey,
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
+          ),
+          child: Text(
+            "Next",
+            style: TextStyle(
+              color: _isComplete ? Colors.white : Colors.grey.shade400,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Column _policySignUpButton() {
+    return Column(
+      children: [
+        Wrap(
+          // TODO - 가로로 붙게 정렬 못 하나?
+          children: [
+            const PolicyText(text: "By signing up, you agree to the "),
+            TextLink(text: "Terms of Service", onTap: () {}),
+            const PolicyText(text: " and "),
+            TextLink(text: "Privacy Policy", onTap: () {}),
+            const PolicyText(text: ", including "),
+            TextLink(text: "Cookie Use", onTap: () {}),
+            const PolicyText(text: ". "),
+            const PolicyText(
+                text:
+                    " Twitter may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. "),
+            TextLink(text: "Learn more", onTap: () {}),
+            const PolicyText(text: ". "),
+            const PolicyText(
+                text:
+                    "Other will be able to find you by email or phone number, when provided, unless you choose otherwise "),
+            TextLink(text: "here", onTap: () {}),
+            const PolicyText(text: "."),
+          ],
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        BottomRoundButton(
+          text: "Sign up",
+          backgroundColor: Colors.blue,
+          isEnabled: true,
+          onTap: () {},
+        ),
+      ],
     );
   }
 }

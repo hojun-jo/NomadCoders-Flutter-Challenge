@@ -6,8 +6,16 @@ import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
-class CustomizeExperienceScreen extends StatelessWidget {
+class CustomizeExperienceScreen extends StatefulWidget {
   const CustomizeExperienceScreen({super.key});
+
+  @override
+  State<CustomizeExperienceScreen> createState() =>
+      _CustomizeExperienceScreenState();
+}
+
+class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
+  bool _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +54,13 @@ class CustomizeExperienceScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      CupertinoSwitch(value: false, onChanged: (value) {}),
+                      CupertinoSwitch(
+                        value: _isChecked,
+                        onChanged: (value) {
+                          _isChecked = value;
+                          setState(() {});
+                        },
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -70,9 +84,14 @@ class CustomizeExperienceScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const BottomRoundButton(
+            BottomRoundButton(
+              // TODO - 이전 화면에서 키보드가 올라간 상태로 넘어올 때 렌더플렉스 오버플로우 에러인듯
               text: "Next",
               backgroundColor: Colors.black,
+              isEnabled: _isChecked,
+              onTap: () {
+                Navigator.pop(context, true);
+              },
             ),
           ],
         ),
