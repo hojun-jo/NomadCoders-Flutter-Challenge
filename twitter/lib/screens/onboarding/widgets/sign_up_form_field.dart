@@ -7,6 +7,7 @@ class SignUpFormField extends StatefulWidget {
   final String labelText;
   final bool isDate;
   final TextEditingController? controller;
+  final void Function(String?) onSaved;
 
   const SignUpFormField({
     super.key,
@@ -14,6 +15,7 @@ class SignUpFormField extends StatefulWidget {
     required this.labelText,
     required this.isDate,
     this.controller,
+    required this.onSaved,
   });
 
   @override
@@ -77,6 +79,7 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
             );
           }
         },
+        onSaved: widget.onSaved,
       ),
     );
   }

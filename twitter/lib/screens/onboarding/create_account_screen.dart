@@ -14,13 +14,16 @@ class CreateAccountScreen extends StatefulWidget {
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
+
+  final Map<String, String> _formData = {};
+  bool _isComplete = false;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
-      if (_controller.text.isNotEmpty) {
+    _dateController.addListener(() {
+      if (_dateController.text.isNotEmpty) {
         setState(() {});
       }
     });
@@ -28,7 +31,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    _dateController.dispose();
     super.dispose();
   }
 
@@ -46,28 +49,50 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 const BoldTitle(text: "Create your account"),
                 Form(
                   key: _formKey,
+                  onChanged: () {
+                    _formKey.currentState?.save();
+                    if (_formData.length == 3) {
+                      _isComplete = true;
+                      setState(() {});
+                    }
+                  },
                   child: Column(
                     children: [
-                      const SignUpFormField(
+                      SignUpFormField(
                         hintText: "Name",
                         labelText: "Name",
                         isDate: false,
+                        onSaved: (value) {
+                          if (value != null && value.isNotEmpty) {
+                            _formData["name"] = value;
+                          }
+                        },
                       ),
-                      const SignUpFormField(
+                      SignUpFormField(
                         hintText: "Phone number or email address",
                         labelText: "Email",
                         isDate: false,
+                        onSaved: (value) {
+                          if (value != null && value.isNotEmpty) {
+                            _formData["email"] = value;
+                          }
+                        },
                       ),
                       SignUpFormField(
                         hintText: "Date of birth",
                         labelText: "Date of birth",
                         isDate: true,
-                        controller: _controller,
+                        controller: _dateController,
+                        onSaved: (value) {
+                          if (value != null && value.isNotEmpty) {
+                            _formData["date"] = value;
+                          }
+                        },
                       ),
                     ],
                   ),
                 ),
-                if (_controller.text.isNotEmpty)
+                if (_dateController.text.isNotEmpty)
                   const Padding(
                     padding: EdgeInsets.only(top: 8),
                     child: PolicyText(
@@ -81,25 +106,27 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               alignment: Alignment.centerRight,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const CustomizeExperienceScreen(),
-                    ),
-                  );
+                  if (_isComplete) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const CustomizeExperienceScreen(),
+                      ),
+                    );
+                  }
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 10,
                   ),
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                  decoration: BoxDecoration(
+                    color: _isComplete ? Colors.black : Colors.grey,
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
                   ),
                   child: Text(
                     "Next",
                     style: TextStyle(
-                      color: Colors.grey.shade400,
+                      color: _isComplete ? Colors.white : Colors.grey.shade400,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
