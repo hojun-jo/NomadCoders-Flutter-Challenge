@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/constants/icons.dart';
+import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/sign_up_form_field.dart';
+import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -15,41 +16,50 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: twitterIcon,
-      ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const BoldTitle(text: "Create your account"),
-                  Form(
-                    key: _formKey,
-                    child: const Column(
-                      children: [
-                        SignUpFormField(
-                          hintText: "Name",
-                        ),
-                        SignUpFormField(
-                          hintText: "Phone number or email address",
-                        ),
-                        SignUpFormField(
-                          hintText: "Date of birth",
-                        ),
-                      ],
-                    ),
+    return TwitterScaffold(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const BoldTitle(text: "Create your account"),
+                Form(
+                  key: _formKey,
+                  child: const Column(
+                    children: [
+                      SignUpFormField(
+                        hintText: "Name",
+                        labelText: "Name",
+                        isDate: false,
+                      ),
+                      SignUpFormField(
+                        hintText: "Phone number or email address",
+                        labelText: "Email",
+                        isDate: false,
+                      ),
+                      SignUpFormField(
+                        hintText: "Date of birth",
+                        labelText: "Date of birth",
+                        isDate: true,
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              Align(
-                alignment: Alignment.centerRight,
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CustomizeExperienceScreen(),
+                    ),
+                  );
+                },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -68,8 +78,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

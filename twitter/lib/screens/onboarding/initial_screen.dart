@@ -12,88 +12,88 @@ class InitialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const BoldTitle(text: "See what's happening\nin the world right now."),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      child: Column(
+        children: [
+          const Expanded(
+            child: Center(
+              child: BoldTitle(
+                  text: "See what's happening in the world right now."),
+            ),
+          ),
+          SignUpButton(
+            oauth: OAuth.google,
+            onTap: () {},
+          ),
+          SignUpButton(
+            oauth: OAuth.apple,
+            onTap: () {},
+          ),
+          const OrDivider(),
+          SignUpButton(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const CreateAccountScreen(),
+                ),
+              );
+            },
+          ),
+          Row(
             children: [
-              SignUpButton(
-                oauth: OAuth.google,
+              Text(
+                "By signing up, you agree to our ",
+                style: policyBig,
+              ),
+              TextLink(
+                text: "Terms",
+                size: 16,
                 onTap: () {},
               ),
-              SignUpButton(
-                oauth: OAuth.apple,
-                onTap: () {},
-              ),
-              const OrDivider(),
-              SignUpButton(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const CreateAccountScreen(),
-                    ),
-                  );
-                },
-              ),
-              Row(
-                children: [
-                  Text(
-                    "By signing up, you agree to our ",
-                    style: policyBig,
-                  ),
-                  TextLink(
-                    text: "Terms",
-                    size: 16,
-                    onTap: () {},
-                  ),
-                  Text(
-                    ",",
-                    style: policyBig,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  TextLink(
-                    text: "Privacy Policy",
-                    size: 16,
-                    onTap: () {},
-                  ),
-                  Text(
-                    ", and ",
-                    style: policyBig,
-                  ),
-                  TextLink(
-                    text: "Cookie use",
-                    size: 16,
-                    onTap: () {},
-                  ),
-                  Text(
-                    ".",
-                    style: policyBig,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-              Row(
-                children: [
-                  Text(
-                    "Have you already account? ",
-                    style: policySmall,
-                  ),
-                  TextLink(
-                    text: "Log in",
-                    onTap: () {},
-                  ),
-                ],
+              Text(
+                ",",
+                style: policyBig,
               ),
             ],
           ),
-        ),
-      ],
+          Row(
+            children: [
+              TextLink(
+                text: "Privacy Policy",
+                size: 16,
+                onTap: () {},
+              ),
+              Text(
+                ", and ",
+                style: policyBig,
+              ),
+              TextLink(
+                text: "Cookie use",
+                size: 16,
+                onTap: () {},
+              ),
+              Text(
+                ".",
+                style: policyBig,
+              ),
+            ],
+          ),
+          const SizedBox(height: 40),
+          Row(
+            children: [
+              Text(
+                "Have you already account? ",
+                style: policySmall,
+              ),
+              TextLink(
+                text: "Log in",
+                onTap: () {},
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
