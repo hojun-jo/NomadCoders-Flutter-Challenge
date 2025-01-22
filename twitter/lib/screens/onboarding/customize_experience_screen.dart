@@ -39,9 +39,12 @@ class CustomizeExperienceScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                CupertinoSwitch(value: false, onChanged: (value) {})
+                CupertinoSwitch(value: false, onChanged: (value) {}),
               ],
             ),
+            const Row(
+              children: [],
+            )
           ],
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:twitter/models/oauth.dart';
 import 'package:twitter/screens/onboarding/create_account_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/or_divider.dart';
+import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/sign_up_button.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
 
@@ -42,18 +43,18 @@ class InitialScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              Text(
-                "By signing up, you agree to our ",
-                style: policyBig,
+              const PolicyText(
+                text: "By signing up, you agree to our ",
+                size: 16,
               ),
               TextLink(
                 text: "Terms",
                 size: 16,
                 onTap: () {},
               ),
-              Text(
-                ",",
-                style: policyBig,
+              const PolicyText(
+                text: ",",
+                size: 16,
               ),
             ],
           ),
@@ -64,27 +65,26 @@ class InitialScreen extends StatelessWidget {
                 size: 16,
                 onTap: () {},
               ),
-              Text(
-                ", and ",
-                style: policyBig,
+              const PolicyText(
+                text: ", and ",
+                size: 16,
               ),
               TextLink(
                 text: "Cookie use",
                 size: 16,
                 onTap: () {},
               ),
-              Text(
-                ".",
-                style: policyBig,
+              const PolicyText(
+                text: ".",
+                size: 16,
               ),
             ],
           ),
           const SizedBox(height: 40),
           Row(
             children: [
-              Text(
-                "Have you already account? ",
-                style: policySmall,
+              const PolicyText(
+                text: "Have you already account? ",
               ),
               TextLink(
                 text: "Log in",
