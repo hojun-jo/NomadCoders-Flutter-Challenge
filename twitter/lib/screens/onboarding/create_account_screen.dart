@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
+import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/sign_up_form_field.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
@@ -13,6 +14,23 @@ class CreateAccountScreen extends StatefulWidget {
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      if (_controller.text.isNotEmpty) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +46,14 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 const BoldTitle(text: "Create your account"),
                 Form(
                   key: _formKey,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      SignUpFormField(
+                      const SignUpFormField(
                         hintText: "Name",
                         labelText: "Name",
                         isDate: false,
                       ),
-                      SignUpFormField(
+                      const SignUpFormField(
                         hintText: "Phone number or email address",
                         labelText: "Email",
                         isDate: false,
@@ -44,10 +62,19 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         hintText: "Date of birth",
                         labelText: "Date of birth",
                         isDate: true,
+                        controller: _controller,
                       ),
                     ],
                   ),
                 ),
+                if (_controller.text.isNotEmpty)
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8),
+                    child: PolicyText(
+                        text:
+                            "This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.",
+                        size: 15),
+                  ),
               ],
             ),
             Align(
