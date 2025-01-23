@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class BottomRoundButton extends StatelessWidget {
+class RoundButton extends StatelessWidget {
   final String text;
   final Color backgroundColor;
   final bool isEnabled;
   final VoidCallback onTap;
 
-  const BottomRoundButton({
+  const RoundButton({
     super.key,
     required this.text,
     required this.backgroundColor,

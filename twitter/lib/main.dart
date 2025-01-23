@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/screens/onboarding/confirmation_code_screen.dart';
 import 'package:twitter/screens/onboarding/initial_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
@@ -14,9 +15,7 @@ class TwitterChallenge extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Twitter Challenge',
-      home: TwitterScaffold(
-        child: InitialScreen(),
-      ),
+      home: ConfirmationCodeScreen(),
     );
   }
 }

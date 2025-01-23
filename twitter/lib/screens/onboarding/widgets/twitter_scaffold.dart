@@ -14,6 +14,7 @@ class TwitterScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        //TODO - leading 3종류
         backgroundColor: Colors.white,
         title: twitterIcon,
       ),

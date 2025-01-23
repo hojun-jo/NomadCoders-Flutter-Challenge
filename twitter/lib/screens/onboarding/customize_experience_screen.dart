@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
-import 'package:twitter/screens/onboarding/widgets/bottom_round_button.dart';
+import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
@@ -84,7 +84,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                 ],
               ),
             ),
-            BottomRoundButton(
+            RoundButton(
               // TODO - 이전 화면에서 키보드가 올라간 상태로 넘어올 때 렌더플렉스 오버플로우 에러인듯
               text: "Next",
               backgroundColor: Colors.black,

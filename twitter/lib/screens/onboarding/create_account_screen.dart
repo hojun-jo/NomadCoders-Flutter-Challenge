@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
-import 'package:twitter/screens/onboarding/widgets/bottom_round_button.dart';
+import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/sign_up_form_field.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
@@ -182,7 +182,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
         const SizedBox(
           height: 15,
         ),
-        BottomRoundButton(
+        RoundButton(
           text: "Sign up",
           backgroundColor: Colors.blue,
           isEnabled: true,
