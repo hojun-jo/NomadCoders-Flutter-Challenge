@@ -186,7 +186,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           text: "Sign up",
           backgroundColor: Colors.blue,
           isEnabled: true,
-          onTap: () {},
+          onTap: () {}, // TODO - ConfirmationCodeScreen 이동
         ),
       ],
     );

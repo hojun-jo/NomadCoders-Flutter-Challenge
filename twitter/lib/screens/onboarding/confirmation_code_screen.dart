@@ -24,26 +24,31 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SingleChildScrollView(
+            SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BoldTitle(text: "We sent you a code"),
-                  SizedBox(
+                  const BoldTitle(text: "We sent you a code"),
+                  const SizedBox(
                     height: 20,
                   ),
-                  PolicyText(
+                  const PolicyText(
                     text: "Enter it below to verify",
                     size: 16,
                   ),
-                  PolicyText(
+                  const PolicyText(
                     text: "jhon.mobbin@gmail.com.",
                     size: 16,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  ValidationCodeForm(),
+                  const ValidationCodeForm(),
+                  if (_isComplete)
+                    const Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    )
                 ],
               ),
             ),
@@ -60,7 +65,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                 ),
                 RoundButton(
                   text: "Next",
-                  backgroundColor: _isComplete ? Colors.black : Colors.grey,
+                  backgroundColor: Colors.black,
                   isEnabled: _isComplete,
                   onTap: () {},
                 ),
