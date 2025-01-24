@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class ValidationCodeForm extends StatefulWidget {
+class ConfirmationCodeForm extends StatefulWidget {
   final void Function(bool) onComplete;
 
-  const ValidationCodeForm({
+  const ConfirmationCodeForm({
     super.key,
     required this.onComplete,
   });
 
   @override
-  State<ValidationCodeForm> createState() => _ValidationCodeFormState();
+  State<ConfirmationCodeForm> createState() => _ConfirmationCodeFormState();
 }
 
-class _ValidationCodeFormState extends State<ValidationCodeForm> {
+class _ConfirmationCodeFormState extends State<ConfirmationCodeForm> {
   Map<String, String> data = {};
 
   @override

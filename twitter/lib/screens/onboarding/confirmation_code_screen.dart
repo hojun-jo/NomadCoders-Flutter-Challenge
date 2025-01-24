@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
+import 'package:twitter/screens/onboarding/password_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
-import 'package:twitter/screens/onboarding/widgets/validation_code_form.dart';
+import 'package:twitter/screens/onboarding/widgets/confirmation_code_form.dart';
 
 class ConfirmationCodeScreen extends StatefulWidget {
   const ConfirmationCodeScreen({super.key});
@@ -40,7 +41,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                     size: 16,
                   ),
                   Gaps.v28,
-                  ValidationCodeForm(
+                  ConfirmationCodeForm(
                     onComplete: (value) {
                       _isComplete = value;
                       setState(() {});
@@ -71,7 +72,13 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                   text: "Next",
                   backgroundColor: Colors.black,
                   isEnabled: _isComplete,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const PasswordScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             )
