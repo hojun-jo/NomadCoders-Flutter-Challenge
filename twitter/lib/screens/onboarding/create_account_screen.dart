@@ -41,75 +41,72 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return TwitterScaffold(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const BoldTitle(text: "Create your account"),
-                Form(
-                  key: _formKey,
-                  onChanged: () {
-                    _formKey.currentState?.save();
-                    if (_formData.length == 3) {
-                      _isComplete = true;
-                      setState(() {});
-                    }
-                  },
-                  child: Column(
-                    children: [
-                      SignUpFormField(
-                        hintText: "Name",
-                        labelText: "Name",
-                        isDate: false,
-                        onSaved: (value) {
-                          if (value != null && value.isNotEmpty) {
-                            _formData["name"] = value;
-                          }
-                        },
-                      ),
-                      SignUpFormField(
-                        // TODO - email validate
-                        hintText: "Phone number or email address",
-                        labelText: "Email",
-                        isDate: false,
-                        onSaved: (value) {
-                          if (value != null && value.isNotEmpty) {
-                            _formData["email"] = value;
-                          }
-                        },
-                      ),
-                      SignUpFormField(
-                        hintText: "Date of birth",
-                        labelText: "Date of birth",
-                        isDate: true,
-                        controller: _dateController,
-                        onSaved: (value) {
-                          if (value != null && value.isNotEmpty) {
-                            _formData["date"] = value;
-                          }
-                        },
-                      ),
-                    ],
-                  ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const BoldTitle(text: "Create your account"),
+              Form(
+                key: _formKey,
+                onChanged: () {
+                  _formKey.currentState?.save();
+                  if (_formData.length == 3) {
+                    _isComplete = true;
+                    setState(() {});
+                  }
+                },
+                child: Column(
+                  children: [
+                    SignUpFormField(
+                      hintText: "Name",
+                      labelText: "Name",
+                      isDate: false,
+                      onSaved: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          _formData["name"] = value;
+                        }
+                      },
+                    ),
+                    SignUpFormField(
+                      // TODO - email validate
+                      hintText: "Phone number or email address",
+                      labelText: "Email",
+                      isDate: false,
+                      onSaved: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          _formData["email"] = value;
+                        }
+                      },
+                    ),
+                    SignUpFormField(
+                      hintText: "Date of birth",
+                      labelText: "Date of birth",
+                      isDate: true,
+                      controller: _dateController,
+                      onSaved: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          _formData["date"] = value;
+                        }
+                      },
+                    ),
+                  ],
                 ),
-                if (_dateController.text.isNotEmpty)
-                  const Padding(
-                    padding: EdgeInsets.only(top: 8),
-                    child: PolicyText(
-                        text:
-                            "This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.",
-                        size: 15),
-                  ),
-              ],
-            ),
-            if (!_isPoped) _nextButton(context),
-            if (_isPoped) _policySignUpButton(),
-          ],
-        ),
+              ),
+              if (_dateController.text.isNotEmpty)
+                const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: PolicyText(
+                      text:
+                          "This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.",
+                      size: 15),
+                ),
+            ],
+          ),
+          if (!_isPoped) _nextButton(context),
+          if (_isPoped) _policySignUpButton(),
+        ],
       ),
     );
   }

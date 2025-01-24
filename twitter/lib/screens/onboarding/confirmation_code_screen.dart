@@ -21,69 +21,66 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return TwitterScaffold(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BoldTitle(text: "We sent you a code"),
-                  Gaps.v20,
-                  const PolicyText(
-                    text: "Enter it below to verify",
-                    size: 16,
-                  ),
-                  const PolicyText(
-                    text: "jhon.mobbin@gmail.com.",
-                    size: 16,
-                  ),
-                  Gaps.v28,
-                  ConfirmationCodeForm(
-                    onComplete: (value) {
-                      _isComplete = value;
-                      setState(() {});
-                    },
-                  ),
-                  Gaps.v20,
-                  if (_isComplete)
-                    const Align(
-                      alignment: Alignment.center,
-                      child: Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                        size: 30,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-            Column(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SingleChildScrollView(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextLink(
-                  text: "Didn't receive email?",
-                  onTap: () {},
+                const BoldTitle(text: "We sent you a code"),
+                Gaps.v20,
+                const PolicyText(
+                  text: "Enter it below to verify",
+                  size: 16,
                 ),
-                Gaps.v16,
-                RoundButton(
-                  text: "Next",
-                  backgroundColor: Colors.black,
-                  isEnabled: _isComplete,
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const PasswordScreen(),
-                      ),
-                    );
+                const PolicyText(
+                  text: "jhon.mobbin@gmail.com.",
+                  size: 16,
+                ),
+                Gaps.v28,
+                ConfirmationCodeForm(
+                  onComplete: (value) {
+                    _isComplete = value;
+                    setState(() {});
                   },
                 ),
+                Gaps.v20,
+                if (_isComplete)
+                  const Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                      size: 30,
+                    ),
+                  ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextLink(
+                text: "Didn't receive email?",
+                onTap: () {},
+              ),
+              Gaps.v16,
+              RoundButton(
+                text: "Next",
+                backgroundColor: Colors.black,
+                isEnabled: _isComplete,
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const PasswordScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

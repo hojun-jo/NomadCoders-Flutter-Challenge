@@ -13,7 +13,7 @@ class BoldTitle extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: FontWeight.w800,
       ),
     );

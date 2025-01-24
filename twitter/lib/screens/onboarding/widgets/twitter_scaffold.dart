@@ -20,7 +20,13 @@ class TwitterScaffold extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: child,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 40,
+            vertical: 20,
+          ),
+          child: child,
+        ),
       ),
     );
   }
