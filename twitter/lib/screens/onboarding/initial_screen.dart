@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:twitter/models/oauth.dart';
 import 'package:twitter/screens/onboarding/create_account_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
-import 'package:twitter/screens/onboarding/widgets/or_divider.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/oauth_button.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
@@ -32,7 +31,7 @@ class InitialScreen extends StatelessWidget {
             oauth: OAuth.apple,
             onTap: () {},
           ),
-          const OrDivider(),
+          _orDivider(),
           RoundButton(
             text: "Create account",
             backgroundColor: Colors.black,
@@ -66,6 +65,29 @@ class InitialScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Row _orDivider() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            color: Colors.grey.shade300,
+            height: 1,
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Text("or"),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.grey.shade300,
+            height: 1,
+          ),
+        ),
+      ],
     );
   }
 }
