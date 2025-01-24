@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ValidationCodeForm extends StatefulWidget {
-  const ValidationCodeForm({super.key});
+  final void Function(bool) onComplete;
+
+  const ValidationCodeForm({
+    super.key,
+    required this.onComplete,
+  });
 
   @override
   State<ValidationCodeForm> createState() => _ValidationCodeFormState();
 }
 
 class _ValidationCodeFormState extends State<ValidationCodeForm> {
-  List<int> data = [0, 0, 0, 0, 0, 0];
+  Map<String, String> data = {};
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           _makeFormField(
             autofocus: true,
             onChanged: (value) {
-              data[0] = value;
+              data["1"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
@@ -27,7 +32,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           ),
           _makeFormField(
             onChanged: (value) {
-              data[1] = value;
+              data["2"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
@@ -36,7 +41,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           ),
           _makeFormField(
             onChanged: (value) {
-              data[2] = value;
+              data["3"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
@@ -45,7 +50,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           ),
           _makeFormField(
             onChanged: (value) {
-              data[3] = value;
+              data["4"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
@@ -54,7 +59,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           ),
           _makeFormField(
             onChanged: (value) {
-              data[4] = value;
+              data["5"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
@@ -63,8 +68,9 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           ),
           _makeFormField(
             onChanged: (value) {
-              data[5] = value;
+              data["6"] = value;
               FocusScope.of(context).unfocus();
+              widget.onComplete(true);
             },
           ),
         ],
@@ -75,7 +81,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
   _makeFormField({
     bool autofocus = false,
     FocusNode? focusNode,
-    required void Function(int) onChanged,
+    required void Function(String) onChanged,
   }) {
     return Flexible(
       child: TextFormField(
@@ -105,7 +111,7 @@ class _ValidationCodeFormState extends State<ValidationCodeForm> {
           counterText: "",
         ),
         onChanged: (value) {
-          onChanged(int.parse(value));
+          onChanged(value);
         },
       ),
     );

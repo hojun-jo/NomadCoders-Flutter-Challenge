@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
@@ -14,7 +15,7 @@ class ConfirmationCodeScreen extends StatefulWidget {
 }
 
 class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
-  final bool _isComplete = false;
+  bool _isComplete = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const BoldTitle(text: "We sent you a code"),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  Gaps.v20,
                   const PolicyText(
                     text: "Enter it below to verify",
                     size: 16,
@@ -40,29 +39,34 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                     text: "jhon.mobbin@gmail.com.",
                     size: 16,
                   ),
-                  const SizedBox(
-                    height: 30,
+                  Gaps.v28,
+                  ValidationCodeForm(
+                    onComplete: (value) {
+                      _isComplete = value;
+                      setState(() {});
+                    },
                   ),
-                  const ValidationCodeForm(),
+                  Gaps.v20,
                   if (_isComplete)
-                    const Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    )
+                    const Align(
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                        size: 30,
+                      ),
+                    ),
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (!_isComplete)
-                  TextLink(
-                    text: "Didn't receive email?",
-                    onTap: () {},
-                  ),
-                const SizedBox(
-                  height: 15,
+                TextLink(
+                  text: "Didn't receive email?",
+                  onTap: () {},
                 ),
+                Gaps.v16,
                 RoundButton(
                   text: "Next",
                   backgroundColor: Colors.black,
