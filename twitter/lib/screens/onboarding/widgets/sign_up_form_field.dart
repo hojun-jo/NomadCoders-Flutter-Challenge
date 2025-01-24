@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
 
 class SignUpFormField extends StatefulWidget {
   final String hintText;
@@ -36,17 +37,13 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
         ),
         cursorColor: Colors.blue,
         decoration: InputDecoration(
+          // TODO - hint 지우고 label 표시를 hasFocus일 때로 수정
           hintText: widget.hintText,
           labelText: widget.labelText,
           labelStyle: TextStyle(
             color: _isChecked ? Colors.black : Colors.grey,
           ),
-          suffixIcon: _isChecked
-              ? const Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                )
-              : null,
+          suffixIcon: _isChecked ? const CheckIcon() : null,
           hintStyle: const TextStyle(
             color: Colors.grey,
           ),

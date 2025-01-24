@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/password_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
+import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
@@ -49,9 +50,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                 if (_isComplete)
                   const Align(
                     alignment: Alignment.center,
-                    child: Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
+                    child: CheckIcon(
                       size: 30,
                     ),
                   ),
