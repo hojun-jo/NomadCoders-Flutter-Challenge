@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/screens/onboarding/confirmation_code_screen.dart';
 import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
@@ -104,14 +105,64 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 ),
             ],
           ),
-          if (!_isPoped) _nextButton(context),
-          if (_isPoped) _policySignUpButton(),
+          _decideBottomButton(),
         ],
       ),
     );
   }
 
-  Align _nextButton(BuildContext context) {
+  Widget _decideBottomButton() {
+    if (_isPoped) {
+      return _policySignUpButton();
+    }
+    return _nextButton();
+  }
+
+  Column _policySignUpButton() {
+    return Column(
+      children: [
+        Wrap(
+          // TODO - 가로로 붙게 정렬 못 하나?
+          children: [
+            const PolicyText(text: "By signing up, you agree to the "),
+            TextLink(text: "Terms of Service", onTap: () {}),
+            const PolicyText(text: " and "),
+            TextLink(text: "Privacy Policy", onTap: () {}),
+            const PolicyText(text: ", including "),
+            TextLink(text: "Cookie Use", onTap: () {}),
+            const PolicyText(text: ". "),
+            const PolicyText(
+                text:
+                    " Twitter may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. "),
+            TextLink(text: "Learn more", onTap: () {}),
+            const PolicyText(text: ". "),
+            const PolicyText(
+                text:
+                    "Other will be able to find you by email or phone number, when provided, unless you choose otherwise "),
+            TextLink(text: "here", onTap: () {}),
+            const PolicyText(text: "."),
+          ],
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        RoundButton(
+          text: "Sign up",
+          backgroundColor: Colors.blue,
+          isEnabled: true,
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ConfirmationCodeScreen(),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Align _nextButton() {
     return Align(
       // TODO - 데이트피커 위로 올려야 함
       alignment: Alignment.centerRight,
@@ -148,44 +199,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Column _policySignUpButton() {
-    return Column(
-      children: [
-        Wrap(
-          // TODO - 가로로 붙게 정렬 못 하나?
-          children: [
-            const PolicyText(text: "By signing up, you agree to the "),
-            TextLink(text: "Terms of Service", onTap: () {}),
-            const PolicyText(text: " and "),
-            TextLink(text: "Privacy Policy", onTap: () {}),
-            const PolicyText(text: ", including "),
-            TextLink(text: "Cookie Use", onTap: () {}),
-            const PolicyText(text: ". "),
-            const PolicyText(
-                text:
-                    " Twitter may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. "),
-            TextLink(text: "Learn more", onTap: () {}),
-            const PolicyText(text: ". "),
-            const PolicyText(
-                text:
-                    "Other will be able to find you by email or phone number, when provided, unless you choose otherwise "),
-            TextLink(text: "here", onTap: () {}),
-            const PolicyText(text: "."),
-          ],
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        RoundButton(
-          text: "Sign up",
-          backgroundColor: Colors.blue,
-          isEnabled: true,
-          onTap: () {}, // TODO - ConfirmationCodeScreen 이동
-        ),
-      ],
     );
   }
 }
