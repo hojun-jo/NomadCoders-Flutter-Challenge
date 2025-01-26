@@ -4,6 +4,7 @@ import 'package:twitter/screens/onboarding/create_account_screen.dart';
 import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/initial_screen.dart';
 import 'package:twitter/screens/onboarding/interests_screen.dart';
+import 'package:twitter/screens/onboarding/interests_two_screen.dart';
 import 'package:twitter/screens/onboarding/password_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
@@ -19,7 +20,7 @@ class TwitterChallenge extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Twitter Challenge',
-      home: InterestsScreen(),
+      home: InterestsTwoScreen(),
     );
   }
 }

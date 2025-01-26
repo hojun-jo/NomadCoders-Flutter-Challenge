@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
+import 'package:twitter/screens/onboarding/interests_two_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
@@ -44,12 +45,14 @@ class _InterestsScreenState extends State<InterestsScreen> {
           const PolicyText(
               text:
                   "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile."),
-          Gaps.v10,
+          Gaps.v20,
           Transform.scale(
             scaleX: 2,
-            child: const Divider(),
+            child: const Divider(
+              height: 0.5,
+            ),
           ),
-          Gaps.v20,
+          Gaps.v40,
           _interestsGrid(),
           _bottomBar(),
         ],
@@ -67,7 +70,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
         ),
         itemCount: _interests.length,
         itemBuilder: (BuildContext context, int index) {
-          return _interestsCard(index);
+          return _interestsCard(index); // TODO - 아이템 크기 수정 필요
         },
       ),
     );
@@ -136,7 +139,13 @@ class _InterestsScreenState extends State<InterestsScreen> {
             isSmall: true,
             backgroundColor: Colors.black,
             isEnabled: _selectedItems.length >= 3,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const InterestsTwoScreen(),
+                ),
+              );
+            },
           ),
         ],
       ),
