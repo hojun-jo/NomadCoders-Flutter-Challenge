@@ -5,6 +5,7 @@ class RoundButton extends StatelessWidget {
   final Color backgroundColor;
   final bool isEnabled;
   final VoidCallback onTap;
+  final bool isSmall;
 
   const RoundButton({
     super.key,
@@ -12,6 +13,7 @@ class RoundButton extends StatelessWidget {
     required this.backgroundColor,
     required this.isEnabled,
     required this.onTap,
+    this.isSmall = false,
   });
 
   @override
@@ -19,8 +21,13 @@ class RoundButton extends StatelessWidget {
     return GestureDetector(
       onTap: isEnabled ? onTap : () {},
       child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.symmetric(vertical: 15),
+        width: isSmall ? null : MediaQuery.of(context).size.width,
+        padding: isSmall
+            ? const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              )
+            : const EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
           color: isEnabled ? backgroundColor : Colors.grey,
           borderRadius: BorderRadius.circular(60),
@@ -28,9 +35,9 @@ class RoundButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
+            style: TextStyle(
+              color: isEnabled ? Colors.white : Colors.grey.shade400,
+              fontSize: isSmall ? null : 20,
               fontWeight: FontWeight.w800,
             ),
           ),

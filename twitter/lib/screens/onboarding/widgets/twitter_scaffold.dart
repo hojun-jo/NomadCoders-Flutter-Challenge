@@ -16,6 +16,7 @@ class TwitterScaffold extends StatelessWidget {
       appBar: AppBar(
         //TODO - leading 3종류
         backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
         title: twitterIcon,
       ),
       backgroundColor: Colors.white,
