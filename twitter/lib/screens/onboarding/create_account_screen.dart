@@ -162,44 +162,31 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     );
   }
 
-// TODO - RoundButton으로 수정
-  Align _nextButton() {
-    return Align(
-      // TODO - 데이트피커 위로 올려야 함
-      alignment: Alignment.centerRight,
-      child: GestureDetector(
-        onTap: () async {
-          if (_isComplete) {
-            FocusManager.instance.primaryFocus?.unfocus();
-            final result = await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const CustomizeExperienceScreen(),
-              ),
-            );
-            if (result == true) {
-              _isPoped = true;
-              setState(() {});
+  Row _nextButton() {
+    return Row(
+      children: [
+        const Spacer(),
+        RoundButton(
+          text: "Next",
+          backgroundColor: Colors.black,
+          isEnabled: _isComplete,
+          isSmall: true,
+          onTap: () async {
+            if (_isComplete) {
+              FocusManager.instance.primaryFocus?.unfocus();
+              final result = await Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const CustomizeExperienceScreen(),
+                ),
+              );
+              if (result == true) {
+                _isPoped = true;
+                setState(() {});
+              }
             }
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 10,
-          ),
-          decoration: BoxDecoration(
-            color: _isComplete ? Colors.black : Colors.grey,
-            borderRadius: const BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Text(
-            "Next",
-            style: TextStyle(
-              color: _isComplete ? Colors.white : Colors.grey.shade400,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          },
         ),
-      ),
+      ],
     );
   }
 }
