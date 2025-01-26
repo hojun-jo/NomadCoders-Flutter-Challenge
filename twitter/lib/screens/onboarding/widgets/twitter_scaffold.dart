@@ -18,6 +18,16 @@ class TwitterScaffold extends StatelessWidget {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
         title: twitterIcon,
+        leading: Navigator.of(context).canPop()
+            ? IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                ),
+              )
+            : null,
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

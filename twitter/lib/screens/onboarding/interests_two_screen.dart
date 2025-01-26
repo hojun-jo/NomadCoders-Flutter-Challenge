@@ -63,6 +63,14 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
         title: twitterIcon,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+          ),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
