@@ -64,9 +64,7 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
         surfaceTintColor: Colors.transparent,
         title: twitterIcon,
         leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          onPressed: () => _onBackButtonTap(context),
           icon: backIcon,
         ),
       ),
@@ -108,7 +106,10 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
     );
   }
 
-  Column _interestsGrid({required String title, required List<String> items}) {
+  Column _interestsGrid({
+    required String title,
+    required List<String> items,
+  }) {
     return Column(
       children: [
         divider,
@@ -155,14 +156,10 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
     final isSelected = _selectedItems.contains(text);
 
     return GestureDetector(
-      onTap: () {
-        if (isSelected) {
-          _selectedItems.remove(text);
-        } else {
-          _selectedItems.add(text);
-        }
-        setState(() {});
-      },
+      onTap: () => _onInterestsCardTap(
+        isSelected: isSelected,
+        text: text,
+      ),
       child: Container(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -187,5 +184,21 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
         ),
       ),
     );
+  }
+
+  void _onBackButtonTap(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
+  void _onInterestsCardTap({
+    required bool isSelected,
+    required String text,
+  }) {
+    if (isSelected) {
+      _selectedItems.remove(text);
+    } else {
+      _selectedItems.add(text);
+    }
+    setState(() {});
   }
 }

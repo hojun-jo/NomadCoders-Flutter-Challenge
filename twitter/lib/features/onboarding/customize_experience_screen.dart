@@ -48,9 +48,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
             text: "Next",
             backgroundColor: Colors.black,
             isEnabled: _isChecked,
-            onTap: () {
-              Navigator.pop(context, true);
-            },
+            onTap: () => _onNextTap(context),
           ),
         ],
       ),
@@ -72,10 +70,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
         ),
         CupertinoSwitch(
           value: _isChecked,
-          onChanged: (value) {
-            _isChecked = value;
-            setState(() {});
-          },
+          onChanged: _onSwitchTap,
         ),
       ],
     );
@@ -96,5 +91,14 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                 " Twitter may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy. "),
       ],
     );
+  }
+
+  void _onNextTap(BuildContext context) {
+    Navigator.pop(context, true);
+  }
+
+  void _onSwitchTap(value) {
+    _isChecked = value;
+    setState(() {});
   }
 }

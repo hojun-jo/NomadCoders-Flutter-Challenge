@@ -45,35 +45,39 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
             borderSide: BorderSide(color: Colors.grey),
           ),
         ),
-        onChanged: (value) {
-          if (value.isEmpty) {
-            _isChecked = false;
-          } else {
-            _isChecked = true;
-          }
-          setState(() {});
-        },
-        onTap: () {
-          _hasFocus = true;
-          if (widget.isDate) {
-            showModalBottomSheet(
-              context: context,
-              backgroundColor: Colors.white,
-              builder: (context) {
-                return CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  onDateTimeChanged: (value) {
-                    widget.controller?.text = DateFormat.yMMMMd().format(value);
-                    _isChecked = true;
-                  },
-                );
-              },
-            );
-          }
-          setState(() {});
-        },
+        onChanged: _onValueChanged,
+        onTap: _onFieldTap,
         onSaved: widget.onSaved,
       ),
     );
+  }
+
+  void _onValueChanged(String value) {
+    if (value.isEmpty) {
+      _isChecked = false;
+    } else {
+      _isChecked = true;
+    }
+    setState(() {});
+  }
+
+  void _onFieldTap() {
+    _hasFocus = true;
+    if (widget.isDate) {
+      showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (context) {
+          return CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            onDateTimeChanged: (value) {
+              widget.controller?.text = DateFormat.yMMMMd().format(value);
+              _isChecked = true;
+            },
+          );
+        },
+      );
+    }
+    setState(() {});
   }
 }

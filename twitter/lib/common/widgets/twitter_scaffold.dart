@@ -21,9 +21,7 @@ class TwitterScaffold extends StatelessWidget {
         title: twitterIcon,
         leading: Navigator.of(context).canPop()
             ? IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: () => _onBackButtonTap(context),
                 icon: backIcon,
               )
             : null,
@@ -41,5 +39,9 @@ class TwitterScaffold extends StatelessWidget {
       ),
       bottomSheet: bottomSheet,
     );
+  }
+
+  void _onBackButtonTap(BuildContext context) {
+    Navigator.of(context).pop();
   }
 }

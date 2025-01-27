@@ -40,13 +40,7 @@ class InitialScreen extends StatelessWidget {
             text: "Create account",
             backgroundColor: Colors.black,
             isEnabled: true,
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const CreateAccountScreen(),
-                ),
-              );
-            },
+            onTap: () => _onCreateAccountTap(context),
           ),
           Gaps.v20,
           _bottomDescription(),
@@ -55,8 +49,10 @@ class InitialScreen extends StatelessWidget {
     );
   }
 
-  GestureDetector _oAuthButton(
-      {required OAuth oauth, required VoidCallback onTap}) {
+  GestureDetector _oAuthButton({
+    required OAuth oauth,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -137,6 +133,14 @@ class InitialScreen extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  void _onCreateAccountTap(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const CreateAccountScreen(),
+      ),
     );
   }
 }

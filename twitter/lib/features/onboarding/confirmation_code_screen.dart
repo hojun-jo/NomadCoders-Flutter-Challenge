@@ -70,16 +70,18 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
           text: "Next",
           backgroundColor: Colors.black,
           isEnabled: _isComplete,
-          onTap: () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (context) => const PasswordScreen(),
-              ),
-              (route) => false,
-            );
-          },
+          onTap: _onNextTap,
         ),
       ],
+    );
+  }
+
+  void _onNextTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const PasswordScreen(),
+      ),
+      (route) => false,
     );
   }
 }

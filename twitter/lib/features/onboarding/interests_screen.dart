@@ -80,14 +80,10 @@ class _InterestsScreenState extends State<InterestsScreen> {
     final isSelected = _selectedItems.contains(index);
 
     return GestureDetector(
-      onTap: () {
-        if (isSelected) {
-          _selectedItems.remove(index);
-        } else {
-          _selectedItems.add(index);
-        }
-        setState(() {});
-      },
+      onTap: () => _onInterestsCardTap(
+        isSelected: isSelected,
+        index: index,
+      ),
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -131,14 +127,20 @@ class _InterestsScreenState extends State<InterestsScreen> {
         ),
       ),
       isNextEnabled: _selectedItems.length >= 3,
-      onNextTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const InterestsTwoScreen(),
-          ),
-        );
-      },
+      onNextTap: _onNextTap,
     );
+  }
+
+  void _onInterestsCardTap({
+    required bool isSelected,
+    required int index,
+  }) {
+    if (isSelected) {
+      _selectedItems.remove(index);
+    } else {
+      _selectedItems.add(index);
+    }
+    setState(() {});
   }
 
   String _bottomText() {
@@ -148,5 +150,13 @@ class _InterestsScreenState extends State<InterestsScreen> {
     } else {
       return "$count of 3 selected";
     }
+  }
+
+  void _onNextTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const InterestsTwoScreen(),
+      ),
+    );
   }
 }

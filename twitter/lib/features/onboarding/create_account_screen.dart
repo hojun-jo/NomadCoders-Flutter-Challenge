@@ -148,13 +148,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           text: "Sign up",
           backgroundColor: Colors.blue,
           isEnabled: true,
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ConfirmationCodeScreen(),
-              ),
-            );
-          },
+          onTap: _onSignUpTap,
         ),
       ],
     );
@@ -169,22 +163,32 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           backgroundColor: Colors.black,
           isEnabled: _isComplete,
           isSmall: true,
-          onTap: () async {
-            if (_isComplete) {
-              FocusManager.instance.primaryFocus?.unfocus();
-              final result = await Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const CustomizeExperienceScreen(),
-                ),
-              );
-              if (result == true) {
-                _isPoped = true;
-                setState(() {});
-              }
-            }
-          },
+          onTap: _onNextTap,
         ),
       ],
     );
+  }
+
+  void _onSignUpTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ConfirmationCodeScreen(),
+      ),
+    );
+  }
+
+  void _onNextTap() async {
+    if (_isComplete) {
+      FocusManager.instance.primaryFocus?.unfocus();
+      final result = await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const CustomizeExperienceScreen(),
+        ),
+      );
+      if (result == true) {
+        _isPoped = true;
+        setState(() {});
+      }
+    }
   }
 }
