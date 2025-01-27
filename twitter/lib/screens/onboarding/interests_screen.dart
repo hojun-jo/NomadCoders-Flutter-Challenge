@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/interests_two_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
+import 'package:twitter/screens/onboarding/widgets/bottom_bar.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
-import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
 class InterestsScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
   @override
   Widget build(BuildContext context) {
     return TwitterScaffold(
-      child: Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const BoldTitle(text: "What do you want to see on Twitter?"),
@@ -54,9 +54,10 @@ class _InterestsScreenState extends State<InterestsScreen> {
           ),
           Gaps.v40,
           _interestsGrid(),
-          _bottomBar(),
+          Gaps.v64,
         ],
       ),
+      bottomSheet: _bottomBar(),
     );
   }
 
@@ -122,33 +123,22 @@ class _InterestsScreenState extends State<InterestsScreen> {
     );
   }
 
-  Padding _bottomBar() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            _bottomText(),
-            style: const TextStyle(
-              color: Colors.grey,
-            ),
-          ),
-          RoundButton(
-            text: "Next",
-            isSmall: true,
-            backgroundColor: Colors.black,
-            isEnabled: _selectedItems.length >= 3,
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const InterestsTwoScreen(),
-                ),
-              );
-            },
-          ),
-        ],
+  BottomBar _bottomBar() {
+    return BottomBar(
+      leading: Text(
+        _bottomText(),
+        style: const TextStyle(
+          color: Colors.grey,
+        ),
       ),
+      isEnabled: _selectedItems.length >= 3,
+      onNextTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const InterestsTwoScreen(),
+          ),
+        );
+      },
     );
   }
 

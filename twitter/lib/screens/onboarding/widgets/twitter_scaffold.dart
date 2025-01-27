@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:twitter/constants/icons.dart';
 
 class TwitterScaffold extends StatelessWidget {
-  final Widget child;
+  final Widget body;
+  final Widget? bottomSheet;
 
   const TwitterScaffold({
     super.key,
-    required this.child,
+    required this.body,
+    this.bottomSheet,
   });
 
   @override
@@ -14,7 +16,6 @@ class TwitterScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        //TODO - leading 3종류
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
         title: twitterIcon,
@@ -36,9 +37,10 @@ class TwitterScaffold extends StatelessWidget {
             horizontal: 40,
             vertical: 20,
           ),
-          child: child,
+          child: body,
         ),
       ),
+      bottomSheet: bottomSheet,
     );
   }
 }

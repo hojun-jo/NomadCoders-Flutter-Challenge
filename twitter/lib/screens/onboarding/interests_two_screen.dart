@@ -3,8 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
+import 'package:twitter/screens/onboarding/widgets/bottom_bar.dart';
 import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
-import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 
 class InterestsTwoScreen extends StatefulWidget {
   const InterestsTwoScreen({super.key});
@@ -122,7 +122,10 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
           ),
         ),
       ),
-      bottomSheet: _bottomBar(),
+      bottomSheet: BottomBar(
+        isEnabled: _selectedItems.length >= 3,
+        onNextTap: () {},
+      ),
     );
   }
 
@@ -198,39 +201,6 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Container _bottomBar() {
-    return Container(
-      height: 94,
-      padding: const EdgeInsets.only(
-        top: 10,
-        left: 40,
-        right: 40,
-        bottom: 40,
-      ),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        border: Border(
-          top: BorderSide(
-            color: Colors.grey,
-          ),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Spacer(),
-          RoundButton(
-            text: "Next",
-            isSmall: true,
-            backgroundColor: Colors.black,
-            isEnabled: _selectedItems.length >= 3,
-            onTap: () {},
-          ),
-        ],
       ),
     );
   }

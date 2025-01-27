@@ -22,7 +22,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return TwitterScaffold(
-      child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SingleChildScrollView(
