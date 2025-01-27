@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/constants/divider.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/interests_two_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
@@ -48,9 +49,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
           Gaps.v20,
           Transform.scale(
             scaleX: 2,
-            child: const Divider(
-              height: 0.5,
-            ),
+            child: divider,
           ),
           Gaps.v40,
           _interestsGrid(),

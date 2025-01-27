@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:twitter/constants/divider.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
@@ -93,30 +94,22 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
                   ],
                 ),
               ),
-              const Divider(
-                height: 0.5,
-              ),
+              divider,
               _interestsGrid(
                 title: "Music",
                 items: _musics,
               ),
-              const Divider(
-                height: 0.5,
-              ),
+              divider,
               _interestsGrid(
                 title: "Entertainment",
                 items: _entertainment,
               ),
-              const Divider(
-                height: 0.5,
-              ),
+              divider,
               _interestsGrid(
                 title: "Dummy",
                 items: _dummy,
               ),
-              const Divider(
-                height: 0.5,
-              ),
+              divider,
               Gaps.v64,
             ],
           ),
