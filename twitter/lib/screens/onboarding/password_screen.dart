@@ -16,6 +16,7 @@ class PasswordScreen extends StatefulWidget {
 
 class _PasswordScreenState extends State<PasswordScreen> {
   final FocusNode _focusNode = FocusNode();
+
   bool _isShowPassword = false;
   bool _isComplete = false;
 
@@ -47,15 +48,6 @@ class _PasswordScreenState extends State<PasswordScreen> {
     );
   }
 
-  void _onNextTap() {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => const InterestsScreen(),
-      ),
-      (route) => false,
-    );
-  }
-
   TextField _passwordField() {
     return TextField(
       focusNode: _focusNode,
@@ -74,13 +66,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
     );
   }
 
-  void _validatePassword(String value) {
-    if (value.length >= 8) {
-      _isComplete = true;
-    } else {
-      _isComplete = false;
-    }
-    setState(() {});
+  UnderlineInputBorder _greyUnderlineBorder() {
+    return const UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.grey,
+      ),
+    );
   }
 
   Row _suffixIcons() {
@@ -105,11 +96,21 @@ class _PasswordScreenState extends State<PasswordScreen> {
     );
   }
 
-  UnderlineInputBorder _greyUnderlineBorder() {
-    return const UnderlineInputBorder(
-      borderSide: BorderSide(
-        color: Colors.grey,
+  void _validatePassword(String value) {
+    if (value.length >= 8) {
+      _isComplete = true;
+    } else {
+      _isComplete = false;
+    }
+    setState(() {});
+  }
+
+  void _onNextTap() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const InterestsScreen(),
       ),
+      (route) => false,
     );
   }
 }

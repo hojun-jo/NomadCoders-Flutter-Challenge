@@ -51,31 +51,35 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
               ],
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextLink(
-                text: "Didn't receive email?",
-                onTap: () {},
-              ),
-              Gaps.v16,
-              RoundButton(
-                text: "Next",
-                backgroundColor: Colors.black,
-                isEnabled: _isComplete,
-                onTap: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) => const PasswordScreen(),
-                    ),
-                    (route) => false,
-                  );
-                },
-              ),
-            ],
-          )
+          _bottomButtons()
         ],
       ),
+    );
+  }
+
+  Column _bottomButtons() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextLink(
+          text: "Didn't receive email?",
+          onTap: () {},
+        ),
+        Gaps.v16,
+        RoundButton(
+          text: "Next",
+          backgroundColor: Colors.black,
+          isEnabled: _isComplete,
+          onTap: () {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (context) => const PasswordScreen(),
+              ),
+              (route) => false,
+            );
+          },
+        ),
+      ],
     );
   }
 }

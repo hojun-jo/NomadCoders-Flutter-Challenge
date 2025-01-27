@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/models/oauth.dart';
 import 'package:twitter/screens/onboarding/create_account_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
@@ -20,7 +21,8 @@ class InitialScreen extends StatelessWidget {
           const Expanded(
             child: Center(
               child: BoldTitle(
-                  text: "See what's happening in the world right now."),
+                text: "See what's happening in the world right now.",
+              ),
             ),
           ),
           OAuthButton(
@@ -44,25 +46,7 @@ class InitialScreen extends StatelessWidget {
               );
             },
           ),
-          Wrap(
-            children: [
-              const PolicyText(
-                  text: "By signing up, you agree to our ", size: 16),
-              TextLink(text: "Terms", size: 16, onTap: () {}),
-              const PolicyText(text: ", ", size: 16),
-              TextLink(text: "Privacy Policy", size: 16, onTap: () {}),
-              const PolicyText(text: ", and ", size: 16),
-              TextLink(text: "Cookie use", size: 16, onTap: () {}),
-              const PolicyText(text: ".", size: 16),
-            ],
-          ),
-          const SizedBox(height: 40),
-          Wrap(
-            children: [
-              const PolicyText(text: "Have you already account? "),
-              TextLink(text: "Log in", onTap: () {}),
-            ],
-          ),
+          _bottomDescription(),
         ],
       ),
     );
@@ -86,6 +70,33 @@ class InitialScreen extends StatelessWidget {
             color: Colors.grey.shade300,
             height: 1,
           ),
+        ),
+      ],
+    );
+  }
+
+  Column _bottomDescription() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          children: [
+            const PolicyText(
+                text: "By signing up, you agree to our ", size: 16),
+            TextLink(text: "Terms", size: 16, onTap: () {}),
+            const PolicyText(text: ", ", size: 16),
+            TextLink(text: "Privacy Policy", size: 16, onTap: () {}),
+            const PolicyText(text: ", and ", size: 16),
+            TextLink(text: "Cookie use", size: 16, onTap: () {}),
+            const PolicyText(text: ".", size: 16),
+          ],
+        ),
+        Gaps.v40,
+        Wrap(
+          children: [
+            const PolicyText(text: "Have you already account? "),
+            TextLink(text: "Log in", onTap: () {}),
+          ],
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/confirmation_code_screen.dart';
 import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
 import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
@@ -20,6 +21,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
   final TextEditingController _dateController = TextEditingController();
 
   final Map<String, String> _formData = {};
+
   bool _isComplete = false;
   bool _isPoped = false;
 
@@ -99,9 +101,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: PolicyText(
-                      text:
-                          "This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.",
-                      size: 15),
+                    text:
+                        "This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.",
+                    size: 15,
+                  ),
                 ),
             ],
           ),
@@ -143,9 +146,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             const PolicyText(text: "."),
           ],
         ),
-        const SizedBox(
-          height: 15,
-        ),
+        Gaps.v16,
         RoundButton(
           text: "Sign up",
           backgroundColor: Colors.blue,
