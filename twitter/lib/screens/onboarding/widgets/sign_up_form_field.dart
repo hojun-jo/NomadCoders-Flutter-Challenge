@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
 
 class SignUpFormField extends StatefulWidget {
-  final String hintText;
   final String labelText;
   final bool isDate;
   final TextEditingController? controller;
@@ -12,7 +11,6 @@ class SignUpFormField extends StatefulWidget {
 
   const SignUpFormField({
     super.key,
-    required this.hintText,
     required this.labelText,
     required this.isDate,
     this.controller,
@@ -25,6 +23,7 @@ class SignUpFormField extends StatefulWidget {
 
 class _SignUpFormFieldState extends State<SignUpFormField> {
   bool _isChecked = false;
+  bool _hasFocus = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +36,11 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
         ),
         cursorColor: Colors.blue,
         decoration: InputDecoration(
-          // TODO - hint 지우고 label 표시를 hasFocus일 때로 수정
-          hintText: widget.hintText,
           labelText: widget.labelText,
           labelStyle: TextStyle(
-            color: _isChecked ? Colors.black : Colors.grey,
+            color: _hasFocus ? Colors.black : Colors.grey,
           ),
           suffixIcon: _isChecked ? const CheckIcon() : null,
-          hintStyle: const TextStyle(
-            color: Colors.grey,
-          ),
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.grey),
           ),
@@ -60,6 +54,7 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
           setState(() {});
         },
         onTap: () {
+          _hasFocus = true;
           if (widget.isDate) {
             showModalBottomSheet(
               context: context,
@@ -75,6 +70,7 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
               },
             );
           }
+          setState(() {});
         },
         onSaved: widget.onSaved,
       ),

@@ -63,7 +63,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 child: Column(
                   children: [
                     SignUpFormField(
-                      hintText: "Name",
                       labelText: "Name",
                       isDate: false,
                       onSaved: (value) {
@@ -74,7 +73,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     ),
                     SignUpFormField(
                       // TODO - email validate
-                      hintText: "Phone number or email address",
                       labelText: "Email",
                       isDate: false,
                       onSaved: (value) {
@@ -84,7 +82,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       },
                     ),
                     SignUpFormField(
-                      hintText: "Date of birth",
                       labelText: "Date of birth",
                       isDate: true,
                       controller: _dateController,
