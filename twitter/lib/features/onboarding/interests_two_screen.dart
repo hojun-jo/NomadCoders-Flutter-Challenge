@@ -3,8 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:twitter/constants/divider.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
-import 'package:twitter/screens/onboarding/widgets/bottom_bar.dart';
-import 'package:twitter/screens/onboarding/widgets/title_description.dart';
+import 'package:twitter/features/onboarding/widgets/bottom_bar.dart';
+import 'package:twitter/features/onboarding/widgets/title_description.dart';
 
 class InterestsTwoScreen extends StatefulWidget {
   const InterestsTwoScreen({super.key});

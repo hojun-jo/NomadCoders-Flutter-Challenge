@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/constants/divider.dart';
 import 'package:twitter/constants/gaps.dart';
-import 'package:twitter/screens/onboarding/interests_two_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/bottom_bar.dart';
-import 'package:twitter/screens/onboarding/widgets/title_description.dart';
-import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
+import 'package:twitter/features/onboarding/interests_two_screen.dart';
+import 'package:twitter/features/onboarding/widgets/bottom_bar.dart';
+import 'package:twitter/features/onboarding/widgets/title_description.dart';
+import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 class InterestsScreen extends StatefulWidget {
   const InterestsScreen({super.key});

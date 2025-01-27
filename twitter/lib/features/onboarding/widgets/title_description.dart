@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
-import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
-import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
+import 'package:twitter/common/widgets/bold_title.dart';
+import 'package:twitter/common/widgets/policy_text.dart';
 
 class TitleDescription extends StatelessWidget {
   final String title;

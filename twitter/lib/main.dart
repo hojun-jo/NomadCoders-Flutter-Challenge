@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/screens/onboarding/confirmation_code_screen.dart';
-import 'package:twitter/screens/onboarding/create_account_screen.dart';
-import 'package:twitter/screens/onboarding/customize_experience_screen.dart';
-import 'package:twitter/screens/onboarding/initial_screen.dart';
-import 'package:twitter/screens/onboarding/interests_screen.dart';
-import 'package:twitter/screens/onboarding/interests_two_screen.dart';
-import 'package:twitter/screens/onboarding/password_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
+import 'package:twitter/features/onboarding/confirmation_code_screen.dart';
+import 'package:twitter/features/onboarding/create_account_screen.dart';
+import 'package:twitter/features/onboarding/customize_experience_screen.dart';
+import 'package:twitter/features/onboarding/initial_screen.dart';
+import 'package:twitter/features/onboarding/interests_screen.dart';
+import 'package:twitter/features/onboarding/interests_two_screen.dart';
+import 'package:twitter/features/onboarding/password_screen.dart';
+import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 void main() {
   runApp(const TwitterChallenge());

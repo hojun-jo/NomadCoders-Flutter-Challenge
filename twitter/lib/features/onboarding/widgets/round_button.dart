@@ -27,7 +27,7 @@ class RoundButton extends StatelessWidget {
                 horizontal: 20,
                 vertical: 10,
               )
-            : const EdgeInsets.symmetric(vertical: 15),
+            : const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           color: isEnabled ? backgroundColor : Colors.grey,
           borderRadius: BorderRadius.circular(60),
@@ -37,7 +37,7 @@ class RoundButton extends StatelessWidget {
             text,
             style: TextStyle(
               color: isEnabled ? Colors.white : Colors.grey.shade400,
-              fontSize: isSmall ? null : 20,
+              fontSize: isSmall ? null : 16,
               fontWeight: FontWeight.w800,
             ),
           ),

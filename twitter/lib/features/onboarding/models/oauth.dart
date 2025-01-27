@@ -18,9 +18,9 @@ enum OAuth {
   String toString() {
     switch (this) {
       case OAuth.google:
-        return "google";
+        return "Google";
       case OAuth.apple:
-        return "apple";
+        return "Apple";
     }
   }
 }

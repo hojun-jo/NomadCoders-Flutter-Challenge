@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
-import 'package:twitter/screens/onboarding/interests_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/round_button.dart';
-import 'package:twitter/screens/onboarding/widgets/title_description.dart';
-import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
+import 'package:twitter/features/onboarding/interests_screen.dart';
+import 'package:twitter/features/onboarding/widgets/round_button.dart';
+import 'package:twitter/features/onboarding/widgets/title_description.dart';
+import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({super.key});

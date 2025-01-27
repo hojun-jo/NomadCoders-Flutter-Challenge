@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:twitter/models/oauth.dart';
+import 'package:twitter/features/onboarding/models/oauth.dart';
 
 class OAuthButton extends StatelessWidget {
   final OAuth oauth;
@@ -19,13 +19,12 @@ class OAuthButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
-          borderRadius: const BorderRadius.all(Radius.circular(40)),
+          borderRadius: BorderRadius.circular(40),
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 40,
-          vertical: 15,
+          vertical: 12,
         ),
-        margin: const EdgeInsets.only(bottom: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -33,7 +32,7 @@ class OAuthButton extends StatelessWidget {
             Text(
               "Continue with ${oauth.toString()}",
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w800,
               ),
             ),

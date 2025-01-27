@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
-import 'package:twitter/models/oauth.dart';
-import 'package:twitter/screens/onboarding/create_account_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
-import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
-import 'package:twitter/screens/onboarding/widgets/oauth_button.dart';
-import 'package:twitter/screens/onboarding/widgets/round_button.dart';
-import 'package:twitter/screens/onboarding/widgets/text_link.dart';
-import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
+import 'package:twitter/features/onboarding/models/oauth.dart';
+import 'package:twitter/features/onboarding/create_account_screen.dart';
+import 'package:twitter/common/widgets/bold_title.dart';
+import 'package:twitter/common/widgets/policy_text.dart';
+import 'package:twitter/features/onboarding/widgets/oauth_button.dart';
+import 'package:twitter/features/onboarding/widgets/round_button.dart';
+import 'package:twitter/common/widgets/text_link.dart';
+import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});
@@ -29,10 +29,12 @@ class InitialScreen extends StatelessWidget {
             oauth: OAuth.google,
             onTap: () {},
           ),
+          Gaps.v10,
           OAuthButton(
             oauth: OAuth.apple,
             onTap: () {},
           ),
+          Gaps.v10,
           _orDivider(),
           RoundButton(
             text: "Create account",
@@ -46,6 +48,7 @@ class InitialScreen extends StatelessWidget {
               );
             },
           ),
+          Gaps.v20,
           _bottomDescription(),
         ],
       ),
@@ -63,7 +66,12 @@ class InitialScreen extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Text("or"),
+          child: Text(
+            "or",
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
         ),
         Expanded(
           child: Container(
@@ -82,13 +90,13 @@ class InitialScreen extends StatelessWidget {
         Wrap(
           children: [
             const PolicyText(
-                text: "By signing up, you agree to our ", size: 16),
-            TextLink(text: "Terms", size: 16, onTap: () {}),
-            const PolicyText(text: ", ", size: 16),
-            TextLink(text: "Privacy Policy", size: 16, onTap: () {}),
-            const PolicyText(text: ", and ", size: 16),
-            TextLink(text: "Cookie use", size: 16, onTap: () {}),
-            const PolicyText(text: ".", size: 16),
+                text: "By signing up, you agree to our ", size: 15),
+            TextLink(text: "Terms", size: 15, onTap: () {}),
+            const PolicyText(text: ", ", size: 15),
+            TextLink(text: "Privacy Policy", size: 15, onTap: () {}),
+            const PolicyText(text: ", and ", size: 15),
+            TextLink(text: "Cookie use", size: 15, onTap: () {}),
+            const PolicyText(text: ".", size: 15),
           ],
         ),
         Gaps.v40,

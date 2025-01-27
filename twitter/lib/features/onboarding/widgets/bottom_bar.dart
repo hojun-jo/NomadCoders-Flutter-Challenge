@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/screens/onboarding/widgets/round_button.dart';
+import 'package:twitter/features/onboarding/widgets/round_button.dart';
 
 class BottomBar extends StatelessWidget {
   final Widget leading;
