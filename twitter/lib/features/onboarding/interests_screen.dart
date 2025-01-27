@@ -69,12 +69,13 @@ class _InterestsScreenState extends State<InterestsScreen> {
         ),
         itemCount: _interests.length,
         itemBuilder: (BuildContext context, int index) {
-          return _interestsCard(index); // TODO - 아이템 크기 수정 필요
+          return _interestsCard(index);
         },
       ),
     );
   }
 
+// TODO - 아이템 크기 수정 필요
   GestureDetector _interestsCard(int index) {
     final isSelected = _selectedItems.contains(index);
 

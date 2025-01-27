@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/features/onboarding/models/oauth.dart';
 import 'package:twitter/features/onboarding/create_account_screen.dart';
 import 'package:twitter/common/widgets/bold_title.dart';
 import 'package:twitter/common/widgets/policy_text.dart';
-import 'package:twitter/features/onboarding/widgets/oauth_button.dart';
 import 'package:twitter/features/onboarding/widgets/round_button.dart';
 import 'package:twitter/common/widgets/text_link.dart';
 import 'package:twitter/common/widgets/twitter_scaffold.dart';
@@ -25,12 +25,12 @@ class InitialScreen extends StatelessWidget {
               ),
             ),
           ),
-          OAuthButton(
+          _oAuthButton(
             oauth: OAuth.google,
             onTap: () {},
           ),
           Gaps.v10,
-          OAuthButton(
+          _oAuthButton(
             oauth: OAuth.apple,
             onTap: () {},
           ),
@@ -51,6 +51,36 @@ class InitialScreen extends StatelessWidget {
           Gaps.v20,
           _bottomDescription(),
         ],
+      ),
+    );
+  }
+
+  GestureDetector _oAuthButton(
+      {required OAuth oauth, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(40),
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 40,
+          vertical: 12,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            FaIcon(oauth.toIcon()),
+            Text(
+              "Continue with ${oauth.toString()}",
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
