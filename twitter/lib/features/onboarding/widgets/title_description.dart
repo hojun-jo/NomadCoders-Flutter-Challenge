@@ -24,7 +24,7 @@ class TitleDescription extends StatelessWidget {
         Gaps.v20,
         PolicyText(
           text: description,
-          size: 16,
+          size: 14,
         ),
       ],
     );

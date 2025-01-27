@@ -31,9 +31,10 @@ class TwitterScaffold extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 40,
-            vertical: 20,
+          padding: const EdgeInsets.only(
+            top: 20,
+            left: 36,
+            right: 36,
           ),
           child: body,
         ),

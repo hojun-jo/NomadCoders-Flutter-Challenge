@@ -9,7 +9,7 @@ class TextLink extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
-    this.size,
+    this.size = 13,
   });
 
   @override

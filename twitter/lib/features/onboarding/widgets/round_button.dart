@@ -24,8 +24,8 @@ class RoundButton extends StatelessWidget {
         width: isSmall ? null : MediaQuery.of(context).size.width,
         padding: isSmall
             ? const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
+                horizontal: 16,
+                vertical: 8,
               )
             : const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(

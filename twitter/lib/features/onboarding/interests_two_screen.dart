@@ -124,13 +124,13 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),
               ),
               Gaps.v20,
               SizedBox(
-                height: 180,
+                height: 140,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: StaggeredGrid.count(
@@ -180,8 +180,8 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
             text,
             style: TextStyle(
               color: isSelected ? Colors.white : null,
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

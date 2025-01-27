@@ -50,7 +50,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
             scaleX: 2,
             child: divider,
           ),
-          Gaps.v40,
+          Gaps.v32,
           _interestsGrid(),
           Gaps.v64,
         ],

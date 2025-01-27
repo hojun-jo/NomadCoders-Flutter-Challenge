@@ -94,7 +94,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   ],
                 ),
               ),
-              if (_dateController.text.isNotEmpty)
+              if (_dateController.text.isNotEmpty && !_isPoped)
                 const Padding(
                   padding: EdgeInsets.only(top: 8),
                   child: PolicyText(

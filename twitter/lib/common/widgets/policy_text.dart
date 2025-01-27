@@ -7,7 +7,7 @@ class PolicyText extends StatelessWidget {
   const PolicyText({
     super.key,
     required this.text,
-    this.size,
+    this.size = 13,
   });
 
   @override

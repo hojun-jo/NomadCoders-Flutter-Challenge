@@ -32,11 +32,11 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
                 const Text(
                   "Track where you see Twitter content across the web",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                Gaps.v20,
+                Gaps.v10,
                 _policyAgreeSwitch(),
                 Gaps.v28,
                 _policyText(),
@@ -65,7 +65,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
           child: Text(
             "Twitter uses this data to personalize your experience. This web browsing history will never be stored with your name, email, or phone number.",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
           ),
