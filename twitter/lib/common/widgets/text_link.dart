@@ -11,7 +11,7 @@ class TextLink extends StatelessWidget {
     required this.onTap,
     this.size,
   });
-// TODO - TextButton으로 대체 가능한지
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
