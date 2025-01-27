@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
+import 'package:twitter/constants/icons.dart';
 
 class SignUpFormField extends StatefulWidget {
   final String labelText;
@@ -40,7 +40,7 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
           labelStyle: TextStyle(
             color: _hasFocus ? Colors.black : Colors.grey,
           ),
-          suffixIcon: _isChecked ? const CheckIcon() : null,
+          suffixIcon: _isChecked ? checkIcon : null,
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.grey),
           ),

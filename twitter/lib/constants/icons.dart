@@ -6,3 +6,12 @@ const FaIcon twitterIcon = FaIcon(
   size: 40,
   color: Colors.blue,
 );
+
+const Icon backIcon = Icon(
+  Icons.arrow_back,
+);
+
+const Icon checkIcon = Icon(
+  Icons.check_circle,
+  color: Colors.green,
+);

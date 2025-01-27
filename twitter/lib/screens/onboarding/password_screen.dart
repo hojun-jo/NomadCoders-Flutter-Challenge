@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twitter/constants/gaps.dart';
+import 'package:twitter/constants/icons.dart';
 import 'package:twitter/screens/onboarding/interests_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/title_description.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
@@ -89,8 +89,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
           ),
         ),
         if (_isComplete)
-          const CheckIcon(
-            size: 28,
+          Transform.scale(
+            scale: 1.2,
+            child: checkIcon,
           ),
       ],
     );

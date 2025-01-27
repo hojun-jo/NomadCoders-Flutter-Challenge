@@ -67,9 +67,7 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(
-            Icons.arrow_back,
-          ),
+          icon: backIcon,
         ),
       ),
       backgroundColor: Colors.white,

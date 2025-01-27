@@ -20,7 +20,7 @@ class TwitterChallenge extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Twitter Challenge',
-      home: ConfirmationCodeScreen(),
+      home: PasswordScreen(),
     );
   }
 }
