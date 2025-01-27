@@ -3,9 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:twitter/constants/divider.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
-import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/bottom_bar.dart';
-import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
+import 'package:twitter/screens/onboarding/widgets/title_description.dart';
 
 class InterestsTwoScreen extends StatefulWidget {
   const InterestsTwoScreen({super.key});
@@ -83,32 +82,21 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
                   horizontal: 40,
                   vertical: 20,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    BoldTitle(text: "What do you want to see on Twitter?"),
-                    Gaps.v16,
-                    PolicyText(
-                        text:
-                            "Interests are used to personalize your experience and will be visible on your profile."),
-                  ],
+                child: TitleDescription(
+                  title: "What do you want to see on Twitter?",
+                  description:
+                      "Interests are used to personalize your experience and will be visible on your profile.",
                 ),
               ),
-              divider,
-              _interestsGrid(
-                title: "Music",
-                items: _musics,
-              ),
-              divider,
-              _interestsGrid(
-                title: "Entertainment",
-                items: _entertainment,
-              ),
-              divider,
-              _interestsGrid(
-                title: "Dummy",
-                items: _dummy,
-              ),
+              for (final (title, items) in [
+                ("Music", _musics),
+                ("Entertainment", _entertainment),
+                ("Dummy", _dummy)
+              ])
+                _interestsGrid(
+                  title: title,
+                  items: items,
+                ),
               divider,
               Gaps.v64,
             ],
@@ -122,41 +110,46 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
     );
   }
 
-  Padding _interestsGrid({required String title, required List<String> items}) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 30,
-        left: 20,
-        bottom: 30,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w800,
-            ),
+  Column _interestsGrid({required String title, required List<String> items}) {
+    return Column(
+      children: [
+        divider,
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 30,
+            left: 20,
+            bottom: 30,
           ),
-          Gaps.v20,
-          SizedBox(
-            height: 180,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: StaggeredGrid.count(
-                axisDirection: AxisDirection.right,
-                crossAxisCount: 3,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                children: [
-                  for (final text in items) _interestsGridCard(text),
-                ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
-            ),
+              Gaps.v20,
+              SizedBox(
+                height: 180,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: StaggeredGrid.count(
+                    axisDirection: AxisDirection.right,
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    children: [
+                      for (final text in items) _interestsGridCard(text),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

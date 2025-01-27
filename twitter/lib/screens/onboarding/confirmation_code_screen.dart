@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/password_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
-import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 import 'package:twitter/screens/onboarding/widgets/text_link.dart';
+import 'package:twitter/screens/onboarding/widgets/title_description.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 import 'package:twitter/screens/onboarding/widgets/confirmation_code_form.dart';
 
@@ -29,15 +28,10 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const BoldTitle(text: "We sent you a code"),
-                Gaps.v20,
-                const PolicyText(
-                  text: "Enter it below to verify",
-                  size: 16,
-                ),
-                const PolicyText(
-                  text: "jhon.mobbin@gmail.com.",
-                  size: 16,
+                const TitleDescription(
+                  title: "We sent you a code",
+                  description:
+                      "Enter it below to verify\njhon.mobbin@gmail.com.",
                 ),
                 Gaps.v28,
                 ConfirmationCodeForm(

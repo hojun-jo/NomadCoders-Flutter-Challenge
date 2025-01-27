@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/interests_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/check_icon.dart';
-import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
 import 'package:twitter/screens/onboarding/widgets/round_button.dart';
+import 'package:twitter/screens/onboarding/widgets/title_description.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
 class PasswordScreen extends StatefulWidget {
@@ -29,12 +28,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const BoldTitle(
-                text: "You'll need a password",
-              ),
-              Gaps.v20,
-              const PolicyText(
-                text: "Make sure it's 8 characters or more.",
+              const TitleDescription(
+                title: "You'll need a password",
+                description: "Make sure it's 8 characters or more.",
               ),
               Gaps.v20,
               _passwordField(),

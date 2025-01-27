@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:twitter/constants/divider.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/screens/onboarding/interests_two_screen.dart';
-import 'package:twitter/screens/onboarding/widgets/bold_title.dart';
 import 'package:twitter/screens/onboarding/widgets/bottom_bar.dart';
-import 'package:twitter/screens/onboarding/widgets/policy_text.dart';
+import 'package:twitter/screens/onboarding/widgets/title_description.dart';
 import 'package:twitter/screens/onboarding/widgets/twitter_scaffold.dart';
 
 class InterestsScreen extends StatefulWidget {
@@ -41,11 +40,11 @@ class _InterestsScreenState extends State<InterestsScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const BoldTitle(text: "What do you want to see on Twitter?"),
-          Gaps.v16,
-          const PolicyText(
-              text:
-                  "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile."),
+          const TitleDescription(
+            title: "What do you want to see on Twitter?",
+            description:
+                "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile.",
+          ),
           Gaps.v20,
           Transform.scale(
             scaleX: 2,
