@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/constants/gaps.dart';
 
 class ConfirmationCodeForm extends StatefulWidget {
   final void Function(bool) onComplete;
@@ -27,45 +28,35 @@ class _ConfirmationCodeFormState extends State<ConfirmationCodeForm> {
               FocusScope.of(context).nextFocus();
             },
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          Gaps.h10,
           _makeFormField(
             onChanged: (value) {
               data["2"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          Gaps.h10,
           _makeFormField(
             onChanged: (value) {
               data["3"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          Gaps.h10,
           _makeFormField(
             onChanged: (value) {
               data["4"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          Gaps.h10,
           _makeFormField(
             onChanged: (value) {
               data["5"] = value;
               FocusScope.of(context).nextFocus();
             },
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          Gaps.h10,
           _makeFormField(
             onChanged: (value) {
               data["6"] = value;

@@ -104,7 +104,7 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
         ),
       ),
       bottomSheet: BottomBar(
-        isEnabled: _selectedItems.length >= 3,
+        isNextEnabled: _selectedItems.length >= 3,
         onNextTap: () {},
       ),
     );

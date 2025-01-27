@@ -129,7 +129,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
           color: Colors.grey,
         ),
       ),
-      isEnabled: _selectedItems.length >= 3,
+      isNextEnabled: _selectedItems.length >= 3,
       onNextTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(

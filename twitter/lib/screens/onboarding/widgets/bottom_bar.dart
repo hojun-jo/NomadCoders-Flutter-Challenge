@@ -3,13 +3,13 @@ import 'package:twitter/screens/onboarding/widgets/round_button.dart';
 
 class BottomBar extends StatelessWidget {
   final Widget leading;
-  final bool isEnabled;
+  final bool isNextEnabled;
   final VoidCallback onNextTap;
 
   const BottomBar({
     super.key,
     this.leading = const Spacer(),
-    required this.isEnabled,
+    required this.isNextEnabled,
     required this.onNextTap,
   });
 
@@ -39,7 +39,7 @@ class BottomBar extends StatelessWidget {
             text: "Next",
             isSmall: true,
             backgroundColor: Colors.black,
-            isEnabled: isEnabled,
+            isEnabled: isNextEnabled,
             onTap: onNextTap,
           ),
         ],
