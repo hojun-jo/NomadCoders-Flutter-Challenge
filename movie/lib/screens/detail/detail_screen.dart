@@ -12,7 +12,7 @@ class DetailScreen extends StatelessWidget {
     super.key,
     required this.id,
   });
-// TODO - rating star 직접 구현 -> ShaderMask면 될듯?
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -45,18 +45,16 @@ class DetailScreen extends StatelessWidget {
                 ),
                 backgroundColor: Colors.transparent,
                 body: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: Container(),
-                        ),
-                        Flexible(
-                          flex: 2,
-                          child: MovieInformationColumn(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 4,
+                          ),
+                          MovieInformationColumn(
                             movieTitle: snapshot.data!.$1.title,
                             rating: snapshot.data!.$1.voteAverage / 2,
                             runtime: _formatRuntime(snapshot.data!.$1.runtime),
@@ -65,9 +63,9 @@ class DetailScreen extends StatelessWidget {
                             isAdult: snapshot.data!.$1.isAdult,
                             overview: snapshot.data!.$1.overview,
                           ),
-                        ),
-                        const BuyTicketButton()
-                      ],
+                          const BuyTicketButton()
+                        ],
+                      ),
                     ),
                   ),
                 ),
