@@ -6,7 +6,6 @@ import 'package:twitter/features/onboarding/initial_screen.dart';
 import 'package:twitter/features/onboarding/interests_screen.dart';
 import 'package:twitter/features/onboarding/interests_two_screen.dart';
 import 'package:twitter/features/onboarding/password_screen.dart';
-import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 void main() {
   runApp(const TwitterChallenge());

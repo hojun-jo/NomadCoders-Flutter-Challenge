@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:twitter/common/common.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/features/onboarding/models/oauth.dart';
 import 'package:twitter/features/onboarding/create_account_screen.dart';
-import 'package:twitter/common/widgets/bold_title.dart';
-import 'package:twitter/common/widgets/policy_text.dart';
 import 'package:twitter/features/onboarding/widgets/round_button.dart';
-import 'package:twitter/common/widgets/text_link.dart';
-import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});

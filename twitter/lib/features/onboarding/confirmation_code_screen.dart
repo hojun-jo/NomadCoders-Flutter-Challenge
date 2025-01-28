@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/common/common.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
 import 'package:twitter/features/onboarding/password_screen.dart';
 import 'package:twitter/features/onboarding/widgets/round_button.dart';
-import 'package:twitter/common/widgets/text_link.dart';
 import 'package:twitter/features/onboarding/widgets/title_description.dart';
-import 'package:twitter/common/widgets/twitter_scaffold.dart';
 import 'package:twitter/features/onboarding/widgets/confirmation_code_form.dart';
 
 class ConfirmationCodeScreen extends StatefulWidget {

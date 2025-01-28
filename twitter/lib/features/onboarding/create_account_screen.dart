@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:twitter/common/common.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/features/onboarding/confirmation_code_screen.dart';
 import 'package:twitter/features/onboarding/customize_experience_screen.dart';
-import 'package:twitter/common/widgets/bold_title.dart';
 import 'package:twitter/features/onboarding/widgets/round_button.dart';
-import 'package:twitter/common/widgets/policy_text.dart';
 import 'package:twitter/features/onboarding/widgets/sign_up_form_field.dart';
-import 'package:twitter/common/widgets/text_link.dart';
-import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});

@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:twitter/common/common.dart';
 import 'package:twitter/constants/gaps.dart';
-import 'package:twitter/common/widgets/bold_title.dart';
 import 'package:twitter/features/onboarding/widgets/round_button.dart';
-import 'package:twitter/common/widgets/policy_text.dart';
-import 'package:twitter/common/widgets/text_link.dart';
-import 'package:twitter/common/widgets/twitter_scaffold.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
   const CustomizeExperienceScreen({super.key});
