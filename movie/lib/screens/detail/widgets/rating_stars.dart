@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class RatingStar extends StatelessWidget {
+class RatingStars extends StatelessWidget {
   final double rating;
 
-  RatingStar({
+  RatingStars({
     super.key,
     required this.rating,
   });
@@ -87,6 +87,7 @@ class Stars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         for (int i = 0; i < 5; i++)
           Icon(
