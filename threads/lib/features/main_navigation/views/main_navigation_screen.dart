@@ -24,70 +24,49 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            Offstage(
-              offstage: _selectedTab != MainNavigationTab.home,
-              child: const HomeScreen(),
-            ),
-            Offstage(
-              offstage: _selectedTab != MainNavigationTab.search,
-              child: const SearchScreen(),
-            ),
-            Offstage(
-              offstage: _selectedTab != MainNavigationTab.post,
-              child: const PostScreen(),
-            ),
-            Offstage(
-              offstage: _selectedTab != MainNavigationTab.likes,
-              child: const LikesScreen(),
-            ),
-            Offstage(
-              offstage: _selectedTab != MainNavigationTab.profile,
-              child: const ProfileScreen(),
+            ...[
+              (tab: MainNavigationTab.home, screen: const HomeScreen()),
+              (tab: MainNavigationTab.search, screen: const SearchScreen()),
+              (tab: MainNavigationTab.post, screen: const PostScreen()),
+              (tab: MainNavigationTab.likes, screen: const LikesScreen()),
+              (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
+            ].map(
+              (e) => Offstage(
+                offstage: _selectedTab != e.tab,
+                child: e.screen,
+              ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: _bottomNavigationBar(),
-    );
-  }
-
-  Container _bottomNavigationBar() {
-    return Container(
-      padding: const EdgeInsets.only(
-        top: 20,
-        left: 40,
-        right: 40,
-        bottom: 48,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          NavigationTab(
-            isSelected: _selectedTab == MainNavigationTab.home,
-            icon: FontAwesomeIcons.house,
-            onTap: () => _onNavigationTabTap(MainNavigationTab.home),
-          ),
-          NavigationTab(
-            isSelected: _selectedTab == MainNavigationTab.search,
-            icon: FontAwesomeIcons.magnifyingGlass,
-            onTap: () => _onNavigationTabTap(MainNavigationTab.search),
-          ),
-          NavigationTab(
-            isSelected: _selectedTab == MainNavigationTab.post,
-            icon: FontAwesomeIcons.penToSquare,
-            onTap: () => _onNavigationTabTap(MainNavigationTab.post),
-          ),
-          NavigationTab(
-            isSelected: _selectedTab == MainNavigationTab.likes,
-            icon: FontAwesomeIcons.heart,
-            onTap: () => _onNavigationTabTap(MainNavigationTab.likes),
-          ),
-          NavigationTab(
-            isSelected: _selectedTab == MainNavigationTab.profile,
-            icon: FontAwesomeIcons.user,
-            onTap: () => _onNavigationTabTap(MainNavigationTab.profile),
-          ),
-        ],
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.only(
+          top: 20,
+          left: 40,
+          right: 40,
+          bottom: 48,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ...[
+              (tab: MainNavigationTab.home, icon: FontAwesomeIcons.house),
+              (
+                tab: MainNavigationTab.search,
+                icon: FontAwesomeIcons.magnifyingGlass
+              ),
+              (tab: MainNavigationTab.post, icon: FontAwesomeIcons.penToSquare),
+              (tab: MainNavigationTab.likes, icon: FontAwesomeIcons.heart),
+              (tab: MainNavigationTab.profile, icon: FontAwesomeIcons.user),
+            ].map(
+              (e) => NavigationTab(
+                isSelected: _selectedTab == e.tab,
+                icon: e.icon,
+                onTap: () => _onNavigationTabTap(e.tab),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
