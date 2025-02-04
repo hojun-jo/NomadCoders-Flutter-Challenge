@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/features/home/views/widgets/avatar.dart';
+import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
 import 'package:threads/features/home/views/widgets/small_icon_button.dart';
 
 class PostContentRow extends StatelessWidget {
@@ -32,45 +33,9 @@ class PostContentRow extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "data",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Gaps.h4,
-                      Icon(
-                        Icons.check_circle,
-                        size: 14,
-                        color: Colors.blue,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        "2m",
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Gaps.h14,
-                      SmallIconButton(
-                        icon: FontAwesomeIcons.ellipsis,
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-                ],
+              const PostContentUserRow(
+                userName: 'asdf',
+                postTime: '2m',
               ),
               const Text("asdlfkj oiasdjf okasdjflkjwel aowejoij sadfl"),
               Gaps.v10,
