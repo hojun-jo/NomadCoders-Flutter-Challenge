@@ -37,13 +37,13 @@ class PostRepliesRow extends StatelessWidget {
           backgroundColor: Colors.white,
         );
       case 1:
-        return Avatar(
+        return const Avatar(
           imageUrl: dummyAvatarUrl,
         );
       case 2:
-        return Stack(
+        return const Stack(
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               backgroundColor: Colors.white,
             ),
             PostRepliesAvatar(
@@ -61,9 +61,9 @@ class PostRepliesRow extends StatelessWidget {
           ],
         );
       default:
-        return Stack(
+        return const Stack(
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               backgroundColor: Colors.white,
             ),
             PostRepliesAvatar(

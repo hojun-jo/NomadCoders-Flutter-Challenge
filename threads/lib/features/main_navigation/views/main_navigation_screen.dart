@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads/core/utils/date_formatter.dart';
+import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
 import 'package:threads/features/likes/views/likes_screen.dart';
 import 'package:threads/features/main_navigation/models/main_navigation_tab.dart';
@@ -25,7 +27,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         child: Stack(
           children: [
             ...[
-              (tab: MainNavigationTab.home, screen: const HomeScreen()),
+              (
+                tab: MainNavigationTab.home,
+                screen: HomeScreen(
+                  viewModel: HomeViewModel(
+                    dateFormatter: DateFormatter(),
+                  ),
+                ),
+              ),
               (tab: MainNavigationTab.search, screen: const SearchScreen()),
               (tab: MainNavigationTab.post, screen: const PostScreen()),
               (tab: MainNavigationTab.likes, screen: const LikesScreen()),

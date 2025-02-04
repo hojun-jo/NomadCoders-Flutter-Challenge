@@ -11,9 +11,9 @@ final List<PostModel> dummyPosts = [
       userAvatarUrl: dummyAvatarUrl,
       description: faker.lorem.sentence(),
       images: _generateImages(),
-      postTime: faker.date.dateTime(
-        minYear: 2024,
-        maxYear: 2024,
+      postTime: faker.date.dateTimeBetween(
+        DateTime(2025, 2, 1),
+        DateTime.now(),
       ),
       replies: faker.randomGenerator.integer(10),
       likes: faker.randomGenerator.integer(100),

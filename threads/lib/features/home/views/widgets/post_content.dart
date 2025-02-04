@@ -9,7 +9,7 @@ class PostContent extends StatelessWidget {
   final String? userAvatarUrl;
   final String description;
   final List<String>? images;
-  final DateTime postTime;
+  final String postTime;
 
   const PostContent({
     super.key,
@@ -48,7 +48,7 @@ class PostContent extends StatelessWidget {
             children: [
               PostContentUserRow(
                 userName: userName,
-                postTime: '2m',
+                postTime: postTime,
               ),
               Text(description),
               Gaps.v10,
