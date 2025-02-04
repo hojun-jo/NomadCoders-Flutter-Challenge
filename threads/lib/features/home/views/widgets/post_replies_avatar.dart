@@ -7,6 +7,7 @@ class PostRepliesAvatar extends StatelessWidget {
   final double? right;
   final double? bottom;
   final double size;
+  final String? imageUrl;
 
   const PostRepliesAvatar({
     super.key,
@@ -15,6 +16,7 @@ class PostRepliesAvatar extends StatelessWidget {
     this.right,
     this.bottom,
     required this.size,
+    this.imageUrl,
   });
 
   @override
@@ -34,7 +36,9 @@ class PostRepliesAvatar extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(size / 2),
         ),
-        child: const Avatar(),
+        child: Avatar(
+          imageUrl: imageUrl,
+        ),
       ),
     );
   }

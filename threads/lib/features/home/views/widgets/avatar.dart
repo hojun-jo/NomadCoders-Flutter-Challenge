@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
+  final String? imageUrl;
   final bool isShowAdd;
 
   const Avatar({
     super.key,
+    required this.imageUrl,
     this.isShowAdd = false,
   });
 
@@ -12,8 +14,9 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const CircleAvatar(
-          backgroundColor: Colors.orange,
+        CircleAvatar(
+          backgroundColor: Colors.white,
+          foregroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
         ),
         if (isShowAdd)
           Positioned(

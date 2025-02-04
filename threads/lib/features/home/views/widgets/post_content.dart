@@ -5,8 +5,19 @@ import 'package:threads/features/home/views/widgets/post_content_button_row.dart
 import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
 
 class PostContent extends StatelessWidget {
+  final String userName;
+  final String? userAvatarUrl;
+  final String description;
+  final List<String>? images;
+  final DateTime postTime;
+
   const PostContent({
     super.key,
+    required this.userName,
+    this.userAvatarUrl,
+    required this.description,
+    this.images,
+    required this.postTime,
   });
 
   @override
@@ -14,11 +25,12 @@ class PostContent extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Column(
+        Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
             Avatar(
+              imageUrl: userAvatarUrl,
               isShowAdd: true,
             ),
             // Expanded(
@@ -34,17 +46,23 @@ class PostContent extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const PostContentUserRow(
-                userName: 'asdf',
+              PostContentUserRow(
+                userName: userName,
                 postTime: '2m',
               ),
-              const Text("asdlfkj oiasdjf okasdjflkjwel aowejoij sadfl"),
+              Text(description),
               Gaps.v10,
-              Container(
-                color: Colors.green,
-                width: 200,
-                height: 160,
-              ),
+              if (images != null && images!.isNotEmpty)
+                SizedBox(
+                  height: 160,
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) => Gaps.h10,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: images!.length,
+                    itemBuilder: (context, index) =>
+                        Image.network(images![index]),
+                  ),
+                ),
               Gaps.v10,
               const PostContentButtonRow(),
             ],

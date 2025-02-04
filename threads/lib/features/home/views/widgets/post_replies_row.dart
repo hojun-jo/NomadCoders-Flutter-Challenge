@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:threads/constants/dummy.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/features/home/views/widgets/avatar.dart';
 import 'package:threads/features/home/views/widgets/post_replies_avatar.dart';
@@ -36,45 +37,52 @@ class PostRepliesRow extends StatelessWidget {
           backgroundColor: Colors.white,
         );
       case 1:
-        return const Avatar();
+        return Avatar(
+          imageUrl: dummyAvatarUrl,
+        );
       case 2:
-        return const Stack(
+        return Stack(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               backgroundColor: Colors.white,
             ),
             PostRepliesAvatar(
               left: 4,
               top: 10,
               size: 18,
+              imageUrl: dummyAvatarUrl,
             ),
             PostRepliesAvatar(
               right: 4,
               top: 10,
               size: 18,
+              imageUrl: dummyAvatarUrl,
             ),
           ],
         );
       default:
-        return const Stack(
+        return Stack(
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               backgroundColor: Colors.white,
             ),
             PostRepliesAvatar(
               left: 2,
               top: 10,
               size: 18,
+              imageUrl: dummyAvatarUrl,
             ),
             PostRepliesAvatar(
               top: 2,
               right: 2,
               size: 20,
+              imageUrl: dummyAvatarUrl,
             ),
             PostRepliesAvatar(
               left: 16,
               bottom: 2,
               size: 14,
+              imageUrl: dummyAvatarUrl,
             ),
           ],
         );
