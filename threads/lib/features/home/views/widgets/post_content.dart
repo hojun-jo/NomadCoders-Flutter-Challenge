@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/constants/gaps.dart';
 import 'package:threads/features/home/views/widgets/avatar.dart';
+import 'package:threads/features/home/views/widgets/post_content_button_row.dart';
 import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
-import 'package:threads/features/home/views/widgets/small_icon_button.dart';
 
-class PostContentRow extends StatelessWidget {
-  const PostContentRow({
+class PostContent extends StatelessWidget {
+  const PostContent({
     super.key,
   });
 
@@ -45,29 +44,7 @@ class PostContentRow extends StatelessWidget {
                 height: 160,
               ),
               Gaps.v10,
-              Row(
-                children: [
-                  SmallIconButton(
-                    icon: FontAwesomeIcons.heart,
-                    onTap: () {},
-                  ),
-                  Gaps.h14,
-                  SmallIconButton(
-                    icon: FontAwesomeIcons.comment,
-                    onTap: () {},
-                  ),
-                  Gaps.h14,
-                  SmallIconButton(
-                    icon: FontAwesomeIcons.arrowsRotate,
-                    onTap: () {},
-                  ),
-                  Gaps.h14,
-                  SmallIconButton(
-                    icon: FontAwesomeIcons.paperPlane,
-                    onTap: () {},
-                  ),
-                ],
-              ),
+              const PostContentButtonRow(),
             ],
           ),
         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:threads/features/home/views/widgets/post_content_row.dart';
+import 'package:threads/features/home/views/widgets/post_content.dart';
 import 'package:threads/features/home/views/widgets/post_replies_row.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,7 +41,7 @@ class PostItem extends StatelessWidget {
       color: Colors.yellow,
       child: const Column(
         children: [
-          PostContentRow(),
+          PostContent(),
           PostRepliesRow(
             replies: 36,
             likes: 391,
