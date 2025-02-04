@@ -18,7 +18,9 @@ class PostContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Avatar(),
+            Avatar(
+              isShowAdd: true,
+            ),
             // Expanded(
             //   child: Container(
             //     color: Colors.grey,

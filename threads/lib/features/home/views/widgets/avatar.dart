@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
+  final bool isShowAdd;
+
   const Avatar({
     super.key,
+    this.isShowAdd = false,
   });
 
   @override
@@ -12,29 +15,30 @@ class Avatar extends StatelessWidget {
         const CircleAvatar(
           backgroundColor: Colors.orange,
         ),
-        Positioned(
-          bottom: -2,
-          right: -2,
-          child: Container(
-            width: 20,
-            height: 20,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              border: Border.all(
-                color: Colors.white,
-                width: 2,
+        if (isShowAdd)
+          Positioned(
+            bottom: -2,
+            right: -2,
+            child: Container(
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(10),
               ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Center(
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 16,
+              child: const Center(
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 16,
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }
