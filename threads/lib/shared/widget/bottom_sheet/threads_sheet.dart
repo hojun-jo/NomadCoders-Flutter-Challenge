@@ -1,46 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/bottom_sheet/threads_sheet_section.dart';
 
 class ThreadsSheet extends StatelessWidget {
-  final List<ThreadsSheetSection> sections;
+  final List<Widget> children;
+  final bool isVerticalPadding;
 
   const ThreadsSheet({
     super.key,
-    required this.sections,
+    required this.children,
+    this.isVerticalPadding = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    final length = sections.length;
-    return IntrinsicHeight(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.only(
-          top: 14,
-          left: 20,
-          right: 20,
-          bottom: 60,
-        ),
-        child: Column(
-          children: [
-            Container(
-              width: 36,
-              height: 3,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(3),
-              ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: isVerticalPadding
+          ? const EdgeInsets.only(bottom: 60)
+          : const EdgeInsets.only(
+              left: 20,
+              right: 20,
+              bottom: 60,
             ),
-            Gaps.v16,
-            if (length > 1)
-              for (int i = 0; i < length - 1; i++) ...[
-                sections[i],
-                Gaps.v20,
-              ],
-            sections.last,
-          ],
-        ),
+      child: Column(
+        children: [
+          Gaps.v14,
+          Container(
+            width: 36,
+            height: 3,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(3),
+            ),
+          ),
+          Gaps.v16,
+          ...children,
+        ],
       ),
     );
   }

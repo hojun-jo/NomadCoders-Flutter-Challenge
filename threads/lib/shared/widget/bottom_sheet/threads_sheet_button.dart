@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class ThreadsSheetButton extends StatelessWidget {
   final String text;
-  final VoidCallback onTap;
   final bool isDestructive;
+  final VoidCallback onTap;
 
   const ThreadsSheetButton({
     super.key,
     required this.text,
-    required this.onTap,
     this.isDestructive = false,
+    required this.onTap,
   });
 
   @override
@@ -17,6 +17,7 @@ class ThreadsSheetButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        color: Colors.transparent,
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
