@@ -1,4 +1,4 @@
-import 'package:threads/constants/dummy.dart';
+import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/features/home/models/post_model.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads/constants/gaps.dart';
+import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/shared/widget/bottom_sheet/threads_sheet_section.dart';
 
 class ThreadsSheet extends StatelessWidget {

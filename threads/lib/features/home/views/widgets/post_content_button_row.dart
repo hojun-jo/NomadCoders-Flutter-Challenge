@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:threads/constants/gaps.dart';
+import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/features/home/views/widgets/small_icon_button.dart';
 
 class PostContentButtonRow extends StatelessWidget {

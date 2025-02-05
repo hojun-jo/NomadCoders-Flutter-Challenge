@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads/constants/gaps.dart';
+import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/features/home/views/widgets/avatar.dart';
 import 'package:threads/features/home/views/widgets/post_content_button_row.dart';
 import 'package:threads/features/home/views/widgets/post_content_user_row.dart';

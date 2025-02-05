@@ -1,25 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:threads/features/main_navigation/views/main_navigation_screen.dart';
+import 'package:threads/app.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Threads',
-      theme: ThemeData(
-        useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-        ),
-      ),
-      home: const MainNavigationScreen(),
-    );
-  }
+  runApp(const ThreadsApp());
 }
