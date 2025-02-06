@@ -6,7 +6,7 @@ import 'package:threads/features/home/views/home_screen.dart';
 import 'package:threads/features/likes/views/likes_screen.dart';
 import 'package:threads/features/main_navigation/models/main_navigation_tab.dart';
 import 'package:threads/features/main_navigation/views/widgets/navigation_tab.dart';
-import 'package:threads/features/post/views/post_screen.dart';
+import 'package:threads/features/write/views/write_screen.dart';
 import 'package:threads/features/profile/views/profile_screen.dart';
 import 'package:threads/features/search/views/search_screen.dart';
 
@@ -98,7 +98,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       clipBehavior: Clip.hardEdge,
       context: context,
       builder: (context) {
-        return const PostScreen();
+        return const WriteScreen();
       },
     );
   }

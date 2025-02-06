@@ -5,14 +5,14 @@ import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/shared/widget/profile/avatar.dart';
 import 'package:threads/shared/widget/small_icon_button.dart';
 
-class PostScreen extends StatefulWidget {
-  const PostScreen({super.key});
+class WriteScreen extends StatefulWidget {
+  const WriteScreen({super.key});
 
   @override
-  State<PostScreen> createState() => _PostScreenState();
+  State<WriteScreen> createState() => _WriteScreenState();
 }
 
-class _PostScreenState extends State<PostScreen> {
+class _WriteScreenState extends State<WriteScreen> {
   bool isPostable = false;
 
   @override
@@ -107,7 +107,7 @@ class _PostScreenState extends State<PostScreen> {
               ),
             ),
             const Spacer(),
-            PostBottomRow(isPostable: isPostable)
+            WriteBottomRow(isPostable: isPostable)
           ],
         ),
       ),
@@ -124,10 +124,10 @@ class _PostScreenState extends State<PostScreen> {
   }
 }
 
-class PostBottomRow extends StatelessWidget {
+class WriteBottomRow extends StatelessWidget {
   final bool isPostable;
 
-  const PostBottomRow({
+  const WriteBottomRow({
     super.key,
     required this.isPostable,
   });
