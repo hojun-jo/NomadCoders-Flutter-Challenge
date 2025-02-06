@@ -61,7 +61,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   children: [
                     SignUpFormField(
                       labelText: "Name",
-                      isDate: false,
                       onSaved: (value) {
                         if (value != null && value.isNotEmpty) {
                           _formData["name"] = value;
@@ -69,9 +68,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       },
                     ),
                     SignUpFormField(
-                      // TODO - email validate
                       labelText: "Email",
-                      isDate: false,
+                      isEmail: true,
                       onSaved: (value) {
                         if (value != null && value.isNotEmpty) {
                           _formData["email"] = value;

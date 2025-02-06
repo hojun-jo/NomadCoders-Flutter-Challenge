@@ -5,16 +5,18 @@ import 'package:twitter/constants/icons.dart';
 
 class SignUpFormField extends StatefulWidget {
   final String labelText;
-  final bool isDate;
   final TextEditingController? controller;
   final void Function(String?) onSaved;
+  final bool isDate;
+  final bool isEmail;
 
   const SignUpFormField({
     super.key,
     required this.labelText,
-    required this.isDate,
     this.controller,
     required this.onSaved,
+    this.isDate = false,
+    this.isEmail = false,
   });
 
   @override
@@ -24,6 +26,8 @@ class SignUpFormField extends StatefulWidget {
 class _SignUpFormFieldState extends State<SignUpFormField> {
   bool _isChecked = false;
   bool _hasFocus = false;
+
+  String? _errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +44,7 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
           labelStyle: TextStyle(
             color: _hasFocus ? Colors.black : Colors.grey,
           ),
+          errorText: _errorText,
           suffixIcon: _isChecked ? checkIcon : null,
           focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.grey),
@@ -57,6 +62,9 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
       _isChecked = false;
     } else {
       _isChecked = true;
+    }
+    if (widget.isEmail) {
+      _errorText = _isEmailValid(value);
     }
     setState(() {});
   }
@@ -79,5 +87,15 @@ class _SignUpFormFieldState extends State<SignUpFormField> {
       );
     }
     setState(() {});
+  }
+
+  String? _isEmailValid(String email) {
+    if (email.isEmpty) return null;
+    final regExp = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    if (!regExp.hasMatch(email)) {
+      return "Email not valid";
+    }
+    return null;
   }
 }
