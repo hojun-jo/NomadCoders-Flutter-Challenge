@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:twitter/constants/divider.dart';
+import 'package:twitter/constants/dummy_interests.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/constants/icons.dart';
 import 'package:twitter/features/onboarding/widgets/bottom_bar.dart';
@@ -14,46 +15,6 @@ class InterestsTwoScreen extends StatefulWidget {
 }
 
 class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
-  final List<String> _musics = [
-    "Rap",
-    "R&B & soul",
-    "Grammy Awards",
-    "Pop",
-    "K-pop",
-    "Music industry",
-    "EDM",
-    "Music news",
-    "Hip hop",
-    "Reggae",
-    "Jazz",
-    "Rock",
-    "Hard rock",
-    "Metal",
-    "Instruments",
-  ];
-  final List<String> _entertainment = [
-    "Anime",
-    "Movies & TV",
-    "Harry Potter",
-    "Marvel Universe",
-    "Movie news",
-    "Naruto",
-    "Movies",
-    "Grammy Awards",
-    "Entertainment",
-  ];
-  final List<String> _dummy = [
-    "Apple",
-    "Banana",
-    "Cherry",
-    "Date",
-    "Elderberry",
-    "Fig",
-    "Grapes",
-    "Honeydew",
-    "Iceberg Lettuce",
-  ];
-
   final Set<String> _selectedItems = {};
 
   @override
@@ -85,9 +46,9 @@ class _InterestsTwoScreenState extends State<InterestsTwoScreen> {
                 ),
               ),
               for (final (title, items) in [
-                ("Music", _musics),
-                ("Entertainment", _entertainment),
-                ("Dummy", _dummy)
+                ("Music", musics),
+                ("Entertainment", entertainment),
+                ("Dummy", dummy)
               ])
                 _interestsGrid(
                   title: title,

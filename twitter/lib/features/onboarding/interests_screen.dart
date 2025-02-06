@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/common/common.dart';
 import 'package:twitter/constants/divider.dart';
+import 'package:twitter/constants/dummy_interests.dart';
 import 'package:twitter/constants/gaps.dart';
 import 'package:twitter/features/onboarding/interests_two_screen.dart';
 import 'package:twitter/features/onboarding/widgets/bottom_bar.dart';
@@ -14,24 +15,6 @@ class InterestsScreen extends StatefulWidget {
 }
 
 class _InterestsScreenState extends State<InterestsScreen> {
-  final List<String> _interests = [
-    "Fashion & beauty",
-    "Outdoors",
-    "Arts & culture",
-    "Animation & comics",
-    "Business & finance",
-    "Food",
-    "Travel",
-    "Entertainment",
-    "Music",
-    "Gaming",
-    "Food",
-    "Travel",
-    "Entertainment",
-    "Music",
-    "Gaming",
-  ];
-
   final Set<int> _selectedItems = {};
 
   @override
@@ -62,12 +45,13 @@ class _InterestsScreenState extends State<InterestsScreen> {
   Expanded _interestsGrid() {
     return Expanded(
       child: GridView.builder(
+        // TODO: child aspect ratio?
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
         ),
-        itemCount: _interests.length,
+        itemCount: interests.length,
         itemBuilder: (BuildContext context, int index) {
           return _interestsCard(index);
         },
@@ -104,7 +88,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
             Align(
               alignment: Alignment.bottomLeft,
               child: Text(
-                _interests[index],
+                interests[index],
                 style: TextStyle(
                   color: isSelected ? Colors.white : null,
                   fontSize: 16,
