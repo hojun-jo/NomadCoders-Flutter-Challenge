@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/features/write/views/widgets/write_bottom_row.dart';
 import 'package:threads/shared/widget/profile/avatar.dart';
 import 'package:threads/shared/widget/small_icon_button.dart';
 
@@ -107,7 +108,10 @@ class _WriteScreenState extends State<WriteScreen> {
               ),
             ),
             const Spacer(),
-            WriteBottomRow(isPostable: isPostable)
+            WriteBottomRow(
+              isPostable: isPostable,
+              onPostTap: () {},
+            ),
           ],
         ),
       ),
@@ -121,43 +125,5 @@ class _WriteScreenState extends State<WriteScreen> {
       isPostable = false;
     }
     setState(() {});
-  }
-}
-
-class WriteBottomRow extends StatelessWidget {
-  final bool isPostable;
-
-  const WriteBottomRow({
-    super.key,
-    required this.isPostable,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        TextButton(
-          onPressed: () {},
-          child: const Text(
-            "Anyone can reply",
-            style: TextStyle(
-              color: Colors.grey,
-            ),
-          ),
-        ),
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            "Post",
-            style: TextStyle(
-              color: isPostable ? Colors.blue : Colors.blue.withOpacity(0.5),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ],
-    );
   }
 }
