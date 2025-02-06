@@ -19,6 +19,11 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   MainNavigationTab _selectedTab = MainNavigationTab.home;
+  final HomeScreen _homeScreen = HomeScreen(
+    viewModel: HomeViewModel(
+      dateFormatter: DateFormatter(),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +32,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         child: Stack(
           children: [
             ...[
-              (
-                tab: MainNavigationTab.home,
-                screen: HomeScreen(
-                  viewModel: HomeViewModel(
-                    dateFormatter: DateFormatter(),
-                  ),
-                ),
-              ),
+              (tab: MainNavigationTab.home, screen: _homeScreen),
               (tab: MainNavigationTab.search, screen: const SearchScreen()),
-              (tab: MainNavigationTab.post, screen: const PostScreen()),
+              (tab: MainNavigationTab.post, screen: _homeScreen),
               (tab: MainNavigationTab.likes, screen: const LikesScreen()),
               (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
             ].map(
@@ -83,5 +81,25 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   void _onNavigationTabTap(MainNavigationTab tab) {
     _selectedTab = tab;
     setState(() {});
+
+    if (tab == MainNavigationTab.post) {
+      _showPostScreen();
+    }
+  }
+
+  void _showPostScreen() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      constraints:
+          BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.93),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      clipBehavior: Clip.hardEdge,
+      context: context,
+      builder: (context) {
+        return const PostScreen();
+      },
+    );
   }
 }

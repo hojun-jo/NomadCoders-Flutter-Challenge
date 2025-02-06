@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads/features/home/views/widgets/avatar.dart';
+import 'package:threads/shared/widget/profile/avatar.dart';
 
 class PostRepliesAvatar extends StatelessWidget {
   final double? left;
