@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/follow_button.dart';
-import 'package:threads/shared/widget/profile/avatar.dart';
-import 'package:threads/shared/widget/profile/user_name_check_icon_row.dart';
+import 'package:threads/features/search/views/widgets/search_list_item.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -39,14 +36,8 @@ class SearchScreen extends StatelessWidget {
             ),
             itemCount: 10,
             itemBuilder: (context, index) {
-              return const ListTile(
-                leading: Avatar(imageUrl: dummyAvatarUrl),
-                title: UserNameCheckIconRow(
-                  userName: "userName",
-                  isChecked: true,
-                ),
-                subtitle: Text("data"),
-                trailing: FollowButton(),
+              return const SearchListItem(
+                isShowIcon: true,
               );
             },
           ),
