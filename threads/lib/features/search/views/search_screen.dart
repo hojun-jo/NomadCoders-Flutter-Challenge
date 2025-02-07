@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/shared/widget/follow_button.dart';
 import 'package:threads/shared/widget/profile/avatar.dart';
+import 'package:threads/shared/widget/profile/user_name_check_icon_row.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -37,27 +39,14 @@ class SearchScreen extends StatelessWidget {
             ),
             itemCount: 10,
             itemBuilder: (context, index) {
-              return ListTile(
-                leading: const Avatar(imageUrl: dummyAvatarUrl),
-                title: const Text("user name"),
-                subtitle: const Text("data"),
-                trailing: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 5,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Text(
-                    "Follow",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+              return const ListTile(
+                leading: Avatar(imageUrl: dummyAvatarUrl),
+                title: UserNameCheckIconRow(
+                  userName: "userName",
+                  isChecked: true,
                 ),
+                subtitle: Text("data"),
+                trailing: FollowButton(),
               );
             },
           ),
