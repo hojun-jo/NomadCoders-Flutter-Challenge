@@ -3,12 +3,12 @@ import 'package:threads/core/constants/gaps.dart';
 
 class UserNameCheckIconRow extends StatelessWidget {
   final String userName;
-  final bool isChecked;
+  final bool isVerified;
 
   const UserNameCheckIconRow({
     super.key,
     required this.userName,
-    required this.isChecked,
+    required this.isVerified,
   });
 
   @override
@@ -24,7 +24,7 @@ class UserNameCheckIconRow extends StatelessWidget {
           ),
         ),
         Gaps.h4,
-        if (isChecked)
+        if (isVerified)
           const Icon(
             Icons.check_circle,
             size: 14,

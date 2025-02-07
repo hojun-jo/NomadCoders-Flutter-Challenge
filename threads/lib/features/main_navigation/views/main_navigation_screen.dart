@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
-import 'package:threads/features/likes/views/likes_screen.dart';
+import 'package:threads/features/activity/views/activity_screen.dart';
 import 'package:threads/features/main_navigation/models/main_navigation_tab.dart';
 import 'package:threads/features/main_navigation/views/widgets/navigation_tab.dart';
 import 'package:threads/features/write/views/write_screen.dart';
@@ -16,8 +16,10 @@ class MainNavigationScreen extends StatefulWidget {
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }
 
+// TODO: _homeScreen 제거, WriteScreen은 _selectedTab, post -> write
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   MainNavigationTab _selectedTab = MainNavigationTab.home;
+
   final HomeScreen _homeScreen = HomeScreen(
     viewModel: HomeViewModel(),
   );
@@ -32,7 +34,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               (tab: MainNavigationTab.home, screen: _homeScreen),
               (tab: MainNavigationTab.search, screen: const SearchScreen()),
               (tab: MainNavigationTab.post, screen: _homeScreen),
-              (tab: MainNavigationTab.likes, screen: const LikesScreen()),
+              (tab: MainNavigationTab.likes, screen: const ActivityScreen()),
               (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
             ].map(
               (e) => Offstage(

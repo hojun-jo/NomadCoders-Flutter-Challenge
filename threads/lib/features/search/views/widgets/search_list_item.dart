@@ -22,7 +22,7 @@ class SearchListItem extends StatelessWidget {
           leading: Avatar(imageUrl: dummyAvatarUrl),
           title: UserNameCheckIconRow(
             userName: "userName",
-            isChecked: true,
+            isVerified: true,
           ),
           subtitle: Text(
             "one line introduce?",
@@ -43,7 +43,7 @@ class SearchListItem extends StatelessWidget {
             const Text(
               "301K followers",
               style: TextStyle(
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],

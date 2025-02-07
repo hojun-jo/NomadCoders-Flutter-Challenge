@@ -7,13 +7,13 @@ import 'package:threads/shared/widget/small_icon_button.dart';
 
 class PostContentUserRow extends StatelessWidget {
   final String userName;
-  final bool userIsChecked;
+  final bool userIsVerified;
   final String postTime;
 
   const PostContentUserRow({
     super.key,
     required this.userName,
-    required this.userIsChecked,
+    required this.userIsVerified,
     required this.postTime,
   });
 
@@ -25,7 +25,7 @@ class PostContentUserRow extends StatelessWidget {
       children: [
         UserNameCheckIconRow(
           userName: userName,
-          isChecked: userIsChecked,
+          isVerified: userIsVerified,
         ),
         Row(
           mainAxisSize: MainAxisSize.min,
