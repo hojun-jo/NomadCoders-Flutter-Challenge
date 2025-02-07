@@ -31,8 +31,10 @@ class SearchScreen extends StatelessWidget {
         Gaps.v10,
         Expanded(
           child: ListView.separated(
-            separatorBuilder: (context, index) => const Divider(
-              indent: 54,
+            separatorBuilder: (context, index) => Container(
+              color: Colors.grey.shade200,
+              height: 1,
+              margin: const EdgeInsets.only(left: 72, top: 10),
             ),
             itemCount: 10,
             itemBuilder: (context, index) {
