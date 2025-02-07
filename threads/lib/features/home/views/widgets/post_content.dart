@@ -49,6 +49,8 @@ class PostContent extends StatelessWidget {
             children: [
               PostContentUserRow(
                 userName: userName,
+                //TODO: user model에 isChecked 필요
+                userIsChecked: true,
                 postTime: postTime,
               ),
               Text(description),

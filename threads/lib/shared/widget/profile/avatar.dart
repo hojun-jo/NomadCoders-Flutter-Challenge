@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
   final String? imageUrl;
+  // TODO: Icon enum으로 만들고 넣어야할 듯
   final bool isShowAdd;
 
   const Avatar({
