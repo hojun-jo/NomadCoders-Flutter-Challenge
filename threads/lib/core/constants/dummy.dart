@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:threads/features/home/models/post_model.dart';
 
 const String dummyAvatarUrl = "https://picsum.photos/20/20";
+// TODO: faker.image로 수정
 const String dummyImageUrl = "https://picsum.photos/300/160";
 
 final List<PostModel> dummyPosts = [
