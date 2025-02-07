@@ -33,10 +33,11 @@ class PostContent extends StatelessWidget {
               imageUrl: userAvatarUrl,
               isShowAdd: true,
             ),
+            // TODO: 오른쪽 Column 크기에 맞춰 세로선
             // Expanded(
             //   child: Container(
-            //     color: Colors.grey,
-            //     width: 1,
+            //     color: Colors.grey.shade200,
+            //     width: 2,
             //   ),
             // ),
           ],

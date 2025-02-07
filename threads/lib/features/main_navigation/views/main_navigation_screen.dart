@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
 import 'package:threads/features/likes/views/likes_screen.dart';
@@ -20,9 +19,7 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   MainNavigationTab _selectedTab = MainNavigationTab.home;
   final HomeScreen _homeScreen = HomeScreen(
-    viewModel: HomeViewModel(
-      dateFormatter: DateFormatter(),
-    ),
+    viewModel: HomeViewModel(),
   );
 
   @override

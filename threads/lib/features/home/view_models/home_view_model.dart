@@ -4,11 +4,6 @@ import 'package:threads/features/home/models/post_model.dart';
 
 class HomeViewModel {
   final List<PostModel> items = dummyPosts;
-  final DateFormatter dateFormatter;
-
-  HomeViewModel({
-    required this.dateFormatter,
-  });
 
   int get itemCount => items.length;
 
@@ -29,7 +24,7 @@ class HomeViewModel {
   }
 
   String getPostTime(int index) {
-    return dateFormatter.postDifference(items[index].postTime);
+    return DateFormatter.postDifference(items[index].postTime);
   }
 
   int getReplies(int index) {
