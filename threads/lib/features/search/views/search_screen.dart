@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/features/search/views/widgets/search_list_item.dart';
+import 'package:threads/shared/widget/screen_title.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -16,13 +17,7 @@ class SearchScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "Search",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              ScreenTitle(text: "Search"),
               Gaps.v10,
               CupertinoSearchTextField(),
             ],
