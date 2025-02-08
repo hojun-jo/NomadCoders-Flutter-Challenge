@@ -1,29 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:threads/features/activity/models/activity_tab.dart';
+import 'package:threads/features/activity/views/widgets/activity_tab_item.dart';
 import 'package:threads/shared/widget/screen_title.dart';
 
-enum ActivityTab {
-  all,
-  replies,
-  mentions,
-  verified;
+class ActivityScreen extends StatefulWidget {
+  const ActivityScreen({super.key});
 
   @override
-  String toString() {
-    switch (this) {
-      case ActivityTab.all:
-        return "All";
-      case ActivityTab.replies:
-        return "Replies";
-      case ActivityTab.mentions:
-        return "Mentions";
-      case ActivityTab.verified:
-        return "Verified";
-    }
-  }
+  State<ActivityScreen> createState() => _ActivityScreenState();
 }
 
-class ActivityScreen extends StatelessWidget {
-  const ActivityScreen({super.key});
+class _ActivityScreenState extends State<ActivityScreen> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,30 +27,17 @@ class ActivityScreen extends StatelessWidget {
             indicatorColor: Colors.transparent,
             overlayColor: WidgetStateColor.transparent,
             tabAlignment: TabAlignment.start,
-            tabs: ActivityTab.values.map(
-              (e) {
-                return Tab(
-                  // text: e.toString(),
-                  child: Container(
-                    width: 100,
-                    height: 36,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Text(
-                        e.toString(),
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ).toList(),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+            tabs: ActivityTab.values.map((tab) {
+              return ActivityTabItem(
+                text: tab.toString(),
+                isSelected: _selectedIndex == tab.toIndex(),
+              );
+            }).toList(),
+            onTap: (index) {
+              _selectedIndex = index;
+              setState(() {});
+            },
           ),
         ),
       ),
