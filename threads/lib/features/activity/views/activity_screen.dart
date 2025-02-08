@@ -40,6 +40,15 @@ class _ActivityScreenState extends State<ActivityScreen> {
             },
           ),
         ),
+        body: TabBarView(
+          children: [
+            ListView.builder(
+              itemBuilder: (context, index) {
+                return Container();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

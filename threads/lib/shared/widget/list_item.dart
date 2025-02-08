@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/shared/widget/follow_button.dart';
+import 'package:threads/shared/widget/profile/avatar.dart';
+import 'package:threads/shared/widget/profile/user_name_check_icon_row.dart';
+
+class ListItem extends StatelessWidget {
+  final String? avatarUrl;
+  final String userName;
+  final bool userIsVerified;
+  final String? notifiedTime;
+  final String subtitle;
+  final bool isShowFollowButton;
+  final IconData? avatarDecoration;
+  final String? description;
+  final bool isShowStar;
+
+  const ListItem({
+    super.key,
+    this.avatarUrl,
+    required this.userName,
+    required this.userIsVerified,
+    this.notifiedTime,
+    required this.subtitle,
+    required this.isShowFollowButton,
+    this.avatarDecoration,
+    this.description,
+    this.isShowStar = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Avatar(
+            imageUrl: avatarUrl,
+            avatarDecoration: avatarDecoration,
+          ),
+          title: UserNameCheckIconRow(
+            userName: userName,
+            isVerified: userIsVerified,
+            notifiedTime: notifiedTime,
+          ),
+          subtitle: Text(
+            subtitle,
+            style: const TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          trailing: isShowFollowButton ? const FollowButton() : null,
+        ),
+        if (description != null)
+          Row(
+            children: [
+              Gaps.h72,
+              if (isShowStar)
+                const Icon(
+                  Icons.star_rounded,
+                  size: 20,
+                ),
+              Text(
+                description!,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+      ],
+    );
+  }
+}

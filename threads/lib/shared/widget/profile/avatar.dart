@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
   final String? imageUrl;
-  // TODO: Icon enum으로 만들고 넣어야할 듯
-  final bool isShowAdd;
+  final IconData? avatarDecoration;
+  final Color avatarDecorationColor;
 
   const Avatar({
     super.key,
     required this.imageUrl,
-    this.isShowAdd = false,
+    this.avatarDecoration,
+    this.avatarDecorationColor = Colors.black,
   });
 
   @override
@@ -19,7 +20,7 @@ class Avatar extends StatelessWidget {
           backgroundColor: Colors.white,
           foregroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
         ),
-        if (isShowAdd)
+        if (avatarDecoration != null)
           Positioned(
             bottom: -2,
             right: -2,
@@ -27,16 +28,16 @@ class Avatar extends StatelessWidget {
               width: 20,
               height: 20,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: avatarDecorationColor,
                 border: Border.all(
                   color: Colors.white,
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Center(
+              child: Center(
                 child: Icon(
-                  Icons.add,
+                  avatarDecoration,
                   color: Colors.white,
                   size: 16,
                 ),

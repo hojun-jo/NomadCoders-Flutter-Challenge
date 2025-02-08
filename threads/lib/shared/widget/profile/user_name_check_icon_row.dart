@@ -4,11 +4,13 @@ import 'package:threads/core/constants/gaps.dart';
 class UserNameCheckIconRow extends StatelessWidget {
   final String userName;
   final bool isVerified;
+  final String? notifiedTime;
 
   const UserNameCheckIconRow({
     super.key,
     required this.userName,
     required this.isVerified,
+    this.notifiedTime,
   });
 
   @override
@@ -29,6 +31,14 @@ class UserNameCheckIconRow extends StatelessWidget {
             Icons.check_circle,
             size: 14,
             color: Colors.blue,
+          ),
+        if (notifiedTime != null)
+          Text(
+            notifiedTime!,
+            style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 15,
+            ),
           ),
       ],
     );

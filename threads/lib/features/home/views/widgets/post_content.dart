@@ -3,6 +3,7 @@ import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/shared/widget/profile/avatar.dart';
 import 'package:threads/features/home/views/widgets/post_content_button_row.dart';
 import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
+import 'package:threads/shared/widget/profile/avatar_decoration.dart';
 
 class PostContent extends StatelessWidget {
   final String userName;
@@ -31,7 +32,7 @@ class PostContent extends StatelessWidget {
           children: [
             Avatar(
               imageUrl: userAvatarUrl,
-              isShowAdd: true,
+              avatarDecoration: AvatarDecoration.add.toIcon(),
             ),
             // TODO: 오른쪽 Column 크기에 맞춰 세로선
             // Expanded(
