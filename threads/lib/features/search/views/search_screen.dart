@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/shared/widget/list_item.dart';
+import 'package:threads/shared/widget/list_separator.dart';
 import 'package:threads/shared/widget/screen_title.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -27,11 +28,7 @@ class SearchScreen extends StatelessWidget {
         Gaps.v10,
         Expanded(
           child: ListView.separated(
-            separatorBuilder: (context, index) => Container(
-              color: Colors.grey.shade200,
-              height: 1,
-              margin: const EdgeInsets.only(left: 72, top: 10),
-            ),
+            separatorBuilder: (context, index) => const ListSeparator(),
             itemCount: 10,
             itemBuilder: (context, index) {
               return const ListItem(

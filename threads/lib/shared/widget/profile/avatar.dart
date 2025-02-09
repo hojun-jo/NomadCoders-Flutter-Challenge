@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
   final String? imageUrl;
-  final IconData? avatarDecoration;
-  final Color avatarDecorationColor;
+  final IconData? decoration;
+  final Color? decorationColor;
 
   const Avatar({
     super.key,
     required this.imageUrl,
-    this.avatarDecoration,
-    this.avatarDecorationColor = Colors.black,
+    this.decoration,
+    this.decorationColor = Colors.black,
   });
 
   @override
@@ -20,7 +20,7 @@ class Avatar extends StatelessWidget {
           backgroundColor: Colors.white,
           foregroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
         ),
-        if (avatarDecoration != null)
+        if (decoration != null)
           Positioned(
             bottom: -2,
             right: -2,
@@ -28,7 +28,7 @@ class Avatar extends StatelessWidget {
               width: 20,
               height: 20,
               decoration: BoxDecoration(
-                color: avatarDecorationColor,
+                color: decorationColor,
                 border: Border.all(
                   color: Colors.white,
                   width: 2,
@@ -37,9 +37,9 @@ class Avatar extends StatelessWidget {
               ),
               child: Center(
                 child: Icon(
-                  avatarDecoration,
+                  decoration,
                   color: Colors.white,
-                  size: 16,
+                  size: 13,
                 ),
               ),
             ),

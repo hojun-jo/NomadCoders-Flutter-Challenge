@@ -12,6 +12,7 @@ class ListItem extends StatelessWidget {
   final String subtitle;
   final bool isShowFollowButton;
   final IconData? avatarDecoration;
+  final Color? avatarDecorationColor;
   final String? description;
   final bool isShowStar;
 
@@ -24,6 +25,7 @@ class ListItem extends StatelessWidget {
     required this.subtitle,
     required this.isShowFollowButton,
     this.avatarDecoration,
+    this.avatarDecorationColor,
     this.description,
     this.isShowStar = false,
   });
@@ -35,7 +37,8 @@ class ListItem extends StatelessWidget {
         ListTile(
           leading: Avatar(
             imageUrl: avatarUrl,
-            avatarDecoration: avatarDecoration,
+            decoration: avatarDecoration,
+            decorationColor: avatarDecorationColor,
           ),
           title: UserNameCheckIconRow(
             userName: userName,

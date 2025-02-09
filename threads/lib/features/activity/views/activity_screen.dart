@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/features/activity/models/activity_tab.dart';
 import 'package:threads/features/activity/views/widgets/activity_tab_item.dart';
+import 'package:threads/shared/widget/list_item.dart';
+import 'package:threads/shared/widget/list_separator.dart';
+import 'package:threads/shared/widget/profile/avatar_decoration.dart';
 import 'package:threads/shared/widget/screen_title.dart';
 
 // TODO: dummy activity data
@@ -61,10 +65,20 @@ class _ActivityScreenState extends State<ActivityScreen>
       body: TabBarView(
         controller: _controller,
         children: ActivityTab.values.map((tab) {
-          return ListView.builder(
-            itemCount: 1,
+          return ListView.separated(
+            separatorBuilder: (context, index) => const ListSeparator(),
+            itemCount: 3,
             itemBuilder: (context, index) {
-              return Text(tab.toString());
+              return ListItem(
+                avatarUrl: dummyAvatarUrl,
+                avatarDecoration: AvatarDecoration.mentions.toIcon(),
+                avatarDecorationColor: Colors.green,
+                userName: "userName",
+                userIsVerified: false,
+                notifiedTime: "4h",
+                subtitle: "Mentioned you",
+                isShowFollowButton: false,
+              );
             },
           );
         }).toList(),

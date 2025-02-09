@@ -32,7 +32,7 @@ class PostContent extends StatelessWidget {
           children: [
             Avatar(
               imageUrl: userAvatarUrl,
-              avatarDecoration: AvatarDecoration.add.toIcon(),
+              decoration: AvatarDecoration.add.toIcon(),
             ),
             // TODO: 오른쪽 Column 크기에 맞춰 세로선
             // Expanded(
