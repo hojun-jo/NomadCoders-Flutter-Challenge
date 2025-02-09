@@ -32,7 +32,7 @@ class SearchScreen extends StatelessWidget {
             ),
             itemCount: 10,
             itemBuilder: (context, index) {
-              return Container();
+              return const Text("asdf");
             },
           ),
         ),
