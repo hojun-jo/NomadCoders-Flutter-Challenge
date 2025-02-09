@@ -17,9 +17,24 @@ enum AvatarDecoration {
       case AvatarDecoration.mentions:
         return FontAwesomeIcons.threads;
       case AvatarDecoration.following:
-        return FontAwesomeIcons.user;
+        return FontAwesomeIcons.solidUser;
       case AvatarDecoration.likes:
-        return FontAwesomeIcons.heart;
+        return FontAwesomeIcons.solidHeart;
+    }
+  }
+
+  Color toColor() {
+    switch (this) {
+      case AvatarDecoration.add:
+        return Colors.black;
+      case AvatarDecoration.replies:
+        return Colors.lightBlue;
+      case AvatarDecoration.mentions:
+        return Colors.green;
+      case AvatarDecoration.following:
+        return Colors.deepPurple;
+      case AvatarDecoration.likes:
+        return Colors.pink;
     }
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/list_item.dart';

@@ -33,7 +33,7 @@ class HomeViewModel {
   }
 
   String getPostTime(int index) {
-    return DateFormatter.postDifference(items[index].postTime);
+    return DateFormatter.difference(items[index].postTime);
   }
 
   int getReplies(int index) {

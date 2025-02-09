@@ -1,7 +1,7 @@
 abstract class DateFormatter {
   DateFormatter._();
 
-  static String postDifference(DateTime postedTime) {
+  static String difference(DateTime postedTime) {
     final difference = DateTime.now().difference(postedTime);
 
     if (difference.inMinutes < 1) {

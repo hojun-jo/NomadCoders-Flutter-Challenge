@@ -50,6 +50,8 @@ class ListItem extends StatelessWidget {
             style: const TextStyle(
               color: Colors.grey,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
           trailing: isShowFollowButton ? const FollowButton() : null,
         ),
@@ -62,10 +64,12 @@ class ListItem extends StatelessWidget {
                   Icons.star_rounded,
                   size: 20,
                 ),
-              Text(
-                description!,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
+              Flexible(
+                child: Text(
+                  description!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ],

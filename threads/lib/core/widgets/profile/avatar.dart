@@ -39,7 +39,7 @@ class Avatar extends StatelessWidget {
                 child: Icon(
                   decoration,
                   color: Colors.white,
-                  size: 13,
+                  size: 10,
                 ),
               ),
             ),
