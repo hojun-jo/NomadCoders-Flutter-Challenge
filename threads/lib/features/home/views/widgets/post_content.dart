@@ -3,11 +3,12 @@ import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/profile/avatar.dart';
 import 'package:threads/features/home/views/widgets/post_content_button_row.dart';
 import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
-import 'package:threads/core/models/profile/avatar_decoration.dart';
 
 class PostContent extends StatelessWidget {
   final String userName;
-  final String? userAvatarUrl;
+  final String? avatarUrl;
+  final IconData? avatarDecoration;
+  final bool userIsVerified;
   final String description;
   final List<String>? images;
   final String postTime;
@@ -15,7 +16,9 @@ class PostContent extends StatelessWidget {
   const PostContent({
     super.key,
     required this.userName,
-    this.userAvatarUrl,
+    this.avatarUrl,
+    this.avatarDecoration,
+    required this.userIsVerified,
     required this.description,
     this.images,
     required this.postTime,
@@ -31,8 +34,8 @@ class PostContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             Avatar(
-              imageUrl: userAvatarUrl,
-              decoration: AvatarDecoration.add.toIcon(),
+              imageUrl: avatarUrl,
+              decoration: avatarDecoration,
             ),
             // TODO: 오른쪽 Column 크기에 맞춰 세로선
             // Expanded(
@@ -50,8 +53,7 @@ class PostContent extends StatelessWidget {
             children: [
               PostContentUserRow(
                 userName: userName,
-                //TODO: user model에 isVerified 필요
-                userIsVerified: true,
+                userIsVerified: userIsVerified,
                 postTime: postTime,
               ),
               Text(description),

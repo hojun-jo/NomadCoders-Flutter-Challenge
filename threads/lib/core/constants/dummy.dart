@@ -1,4 +1,6 @@
 import 'package:faker/faker.dart';
+import 'package:threads/core/models/profile/avatar_decoration.dart';
+import 'package:threads/core/models/profile/user.dart';
 import 'package:threads/features/home/models/post_model.dart';
 
 const String dummyAvatarUrl = "https://picsum.photos/20/20";
@@ -8,8 +10,14 @@ const String dummyImageUrl = "https://picsum.photos/300/160";
 final List<PostModel> dummyPosts = [
   for (int i = 0; i < 10; i++)
     PostModel(
-      userName: faker.internet.userName(),
-      userAvatarUrl: dummyAvatarUrl,
+      user: User(
+        avatarUrl: dummyAvatarUrl,
+        name: faker.internet.userName(),
+        isVerified: faker.randomGenerator.boolean(),
+        bio: faker.lorem.sentence(),
+        followers: faker.randomGenerator.integer(10000),
+      ),
+      avatarDecoration: AvatarDecoration.add,
       description: faker.lorem.sentence(),
       images: _generateImages(),
       postTime: faker.date.dateTimeBetween(

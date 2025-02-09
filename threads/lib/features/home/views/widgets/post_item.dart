@@ -4,7 +4,9 @@ import 'package:threads/features/home/views/widgets/post_replies_row.dart';
 
 class PostItem extends StatelessWidget {
   final String userName;
-  final String? userAvatarUrl;
+  final String? avatarUrl;
+  final IconData? avatarDecoration;
+  final bool userIsVerified;
   final String description;
   final List<String>? images;
   final String postTime;
@@ -14,7 +16,9 @@ class PostItem extends StatelessWidget {
   const PostItem({
     super.key,
     required this.userName,
-    this.userAvatarUrl,
+    this.avatarUrl,
+    this.avatarDecoration,
+    required this.userIsVerified,
     required this.description,
     this.images,
     required this.postTime,
@@ -30,7 +34,9 @@ class PostItem extends StatelessWidget {
         children: [
           PostContent(
             userName: userName,
-            userAvatarUrl: userAvatarUrl,
+            avatarUrl: avatarUrl,
+            avatarDecoration: avatarDecoration,
+            userIsVerified: userIsVerified,
             description: description,
             images: images,
             postTime: postTime,

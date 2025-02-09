@@ -29,7 +29,9 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return PostItem(
               userName: viewModel.getUserName(index),
-              userAvatarUrl: viewModel.getUserAvatarUrl(index),
+              avatarUrl: viewModel.getUserAvatarUrl(index),
+              avatarDecoration: viewModel.getAvatarDecoration(index),
+              userIsVerified: viewModel.getUserIsVerified(index),
               description: viewModel.getDescription(index),
               images: viewModel.getImages(index),
               postTime: viewModel.getPostTime(index),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/features/home/models/post_model.dart';
@@ -8,11 +9,19 @@ class HomeViewModel {
   int get itemCount => items.length;
 
   String getUserName(int index) {
-    return items[index].userName;
+    return items[index].user.name;
   }
 
   String? getUserAvatarUrl(int index) {
-    return items[index].userAvatarUrl;
+    return items[index].user.avatarUrl;
+  }
+
+  IconData? getAvatarDecoration(int index) {
+    return items[index].avatarDecoration?.toIcon();
+  }
+
+  bool getUserIsVerified(int index) {
+    return items[index].user.isVerified;
   }
 
   String getDescription(int index) {
