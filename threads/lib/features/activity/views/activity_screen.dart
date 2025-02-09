@@ -33,6 +33,14 @@ class _ActivityScreenState extends State<ActivityScreen>
       _selectedIndex = _controller.index;
       setState(() {});
     });
+    _controller.animation?.addListener(() {
+      final offsetChange = _controller.offset.round();
+      final nextIndex = _controller.index + offsetChange;
+
+      if (nextIndex != _selectedIndex) {
+        setState(() => _selectedIndex = nextIndex);
+      }
+    });
   }
 
   @override
@@ -47,7 +55,6 @@ class _ActivityScreenState extends State<ActivityScreen>
       appBar: AppBar(
         title: const ScreenTitle(text: "Activity"),
         centerTitle: false,
-        // TODO: 스와이프 시 탭이랑 싱크
         bottom: TabBar(
           controller: _controller,
           isScrollable: true,
