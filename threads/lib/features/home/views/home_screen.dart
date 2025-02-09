@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
             size: 36,
           ),
         ),
+        // TODO: 데이터 바인딩
         SliverList.separated(
           itemCount: viewModel.itemCount,
           separatorBuilder: (context, index) => const Divider(

@@ -47,6 +47,7 @@ class _ActivityScreenState extends State<ActivityScreen>
       appBar: AppBar(
         title: const ScreenTitle(text: "Activity"),
         centerTitle: false,
+        // TODO: 스와이프 시 탭이랑 싱크
         bottom: TabBar(
           controller: _controller,
           isScrollable: true,
@@ -67,6 +68,8 @@ class _ActivityScreenState extends State<ActivityScreen>
         controller: _controller,
         children: ActivityTab.values.map((tab) {
           final items = _filterItems(tab);
+          // TODO: items.length == 0일 때 화면 추가
+          // TODO: 데이터 바인딩
           return ListView.separated(
             separatorBuilder: (context, index) => const ListSeparator(),
             itemCount: items.length,
@@ -91,6 +94,7 @@ class _ActivityScreenState extends State<ActivityScreen>
     );
   }
 
+// TODO: 로직 분리
   List<ActivityModel> _filterItems(ActivityTab tab) {
     switch (tab) {
       case ActivityTab.all:
