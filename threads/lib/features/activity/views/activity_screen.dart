@@ -4,7 +4,7 @@ import 'package:threads/features/activity/models/activity_tab.dart';
 import 'package:threads/features/activity/views/widgets/activity_tab_item.dart';
 import 'package:threads/core/widgets/list_item.dart';
 import 'package:threads/core/widgets/list_separator.dart';
-import 'package:threads/core/models/user/avatar_decoration.dart';
+import 'package:threads/core/models/profile/avatar_decoration.dart';
 import 'package:threads/core/widgets/screen_title.dart';
 
 // TODO: dummy activity data
