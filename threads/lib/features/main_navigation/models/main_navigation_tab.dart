@@ -1,7 +1,25 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 enum MainNavigationTab {
   home,
   search,
-  post,
+  write,
   likes,
-  profile,
+  profile;
+
+  IconData toIcon() {
+    switch (this) {
+      case MainNavigationTab.home:
+        return FontAwesomeIcons.house;
+      case MainNavigationTab.search:
+        return FontAwesomeIcons.magnifyingGlass;
+      case MainNavigationTab.write:
+        return FontAwesomeIcons.penToSquare;
+      case MainNavigationTab.likes:
+        return FontAwesomeIcons.heart;
+      case MainNavigationTab.profile:
+        return FontAwesomeIcons.user;
+    }
+  }
 }

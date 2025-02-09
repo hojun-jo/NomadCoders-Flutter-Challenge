@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
 import 'package:threads/features/activity/views/activity_screen.dart';
@@ -16,13 +15,8 @@ class MainNavigationScreen extends StatefulWidget {
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }
 
-// TODO: _homeScreen 제거, WriteScreen은 _selectedTab, post -> write
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   MainNavigationTab _selectedTab = MainNavigationTab.home;
-
-  final HomeScreen _homeScreen = HomeScreen(
-    viewModel: HomeViewModel(),
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +25,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         child: Stack(
           children: [
             ...[
-              (tab: MainNavigationTab.home, screen: _homeScreen),
+              (
+                tab: MainNavigationTab.home,
+                screen: HomeScreen(viewModel: HomeViewModel()),
+              ),
               (tab: MainNavigationTab.search, screen: const SearchScreen()),
-              (tab: MainNavigationTab.post, screen: _homeScreen),
               (tab: MainNavigationTab.likes, screen: const ActivityScreen()),
               (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
             ].map(
@@ -54,39 +50,30 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ...[
-              (tab: MainNavigationTab.home, icon: FontAwesomeIcons.house),
-              (
-                tab: MainNavigationTab.search,
-                icon: FontAwesomeIcons.magnifyingGlass
-              ),
-              (tab: MainNavigationTab.post, icon: FontAwesomeIcons.penToSquare),
-              (tab: MainNavigationTab.likes, icon: FontAwesomeIcons.heart),
-              (tab: MainNavigationTab.profile, icon: FontAwesomeIcons.user),
-            ].map(
-              (e) => NavigationTab(
-                isSelected: _selectedTab == e.tab,
-                icon: e.icon,
-                onTap: () => _onNavigationTabTap(e.tab),
-              ),
-            ),
-          ],
+          children: MainNavigationTab.values
+              .map(
+                (tab) => NavigationTab(
+                  isSelected: _selectedTab == tab,
+                  icon: tab.toIcon(),
+                  onTap: () => _onNavigationTabTap(tab),
+                ),
+              )
+              .toList(),
         ),
       ),
     );
   }
 
   void _onNavigationTabTap(MainNavigationTab tab) {
+    if (tab == MainNavigationTab.write) {
+      _showWriteScreen();
+      return;
+    }
     _selectedTab = tab;
     setState(() {});
-
-    if (tab == MainNavigationTab.post) {
-      _showPostScreen();
-    }
   }
 
-  void _showPostScreen() {
+  void _showWriteScreen() {
     showModalBottomSheet(
       isScrollControlled: true,
       constraints:
