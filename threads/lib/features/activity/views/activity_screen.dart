@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/features/activity/models/activity_tab.dart';
 import 'package:threads/features/activity/views/widgets/activity_tab_item.dart';
-import 'package:threads/shared/widget/list_item.dart';
-import 'package:threads/shared/widget/list_separator.dart';
-import 'package:threads/shared/widget/profile/avatar_decoration.dart';
-import 'package:threads/shared/widget/screen_title.dart';
+import 'package:threads/core/widgets/list_item.dart';
+import 'package:threads/core/widgets/list_separator.dart';
+import 'package:threads/core/models/user/avatar_decoration.dart';
+import 'package:threads/core/widgets/screen_title.dart';
 
 // TODO: dummy activity data
 class ActivityScreen extends StatefulWidget {

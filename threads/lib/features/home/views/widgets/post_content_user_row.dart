@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/features/home/views/widgets/home_bottom_sheet.dart';
-import 'package:threads/shared/widget/profile/user_name_check_icon_row.dart';
-import 'package:threads/shared/widget/small_icon_button.dart';
+import 'package:threads/core/widgets/profile/user_name_check_icon_row.dart';
+import 'package:threads/core/widgets/small_icon_button.dart';
 
 class PostContentUserRow extends StatelessWidget {
   final String userName;

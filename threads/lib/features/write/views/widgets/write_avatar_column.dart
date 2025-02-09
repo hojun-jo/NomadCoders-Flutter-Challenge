@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/profile/avatar.dart';
+import 'package:threads/core/widgets/profile/avatar.dart';
 
 class WriteAvatarColumn extends StatelessWidget {
   const WriteAvatarColumn({

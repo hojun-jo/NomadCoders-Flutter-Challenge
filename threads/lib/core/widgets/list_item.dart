@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/follow_button.dart';
-import 'package:threads/shared/widget/profile/avatar.dart';
-import 'package:threads/shared/widget/profile/user_name_check_icon_row.dart';
+import 'package:threads/core/widgets/follow_button.dart';
+import 'package:threads/core/widgets/profile/avatar.dart';
+import 'package:threads/core/widgets/profile/user_name_check_icon_row.dart';
 
 class ListItem extends StatelessWidget {
   final String? avatarUrl;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:threads/shared/widget/bottom_sheet/report_sheet.dart';
-import 'package:threads/shared/widget/bottom_sheet/threads_button_sheet.dart';
-import 'package:threads/shared/widget/bottom_sheet/threads_sheet_button.dart';
-import 'package:threads/shared/widget/bottom_sheet/threads_sheet_section.dart';
+import 'package:threads/core/widgets/bottom_sheet/report_sheet.dart';
+import 'package:threads/core/widgets/bottom_sheet/threads_button_sheet.dart';
+import 'package:threads/core/widgets/bottom_sheet/threads_sheet_button.dart';
+import 'package:threads/core/widgets/bottom_sheet/threads_sheet_section.dart';
 
 class HomeBottomSheet extends StatelessWidget {
   const HomeBottomSheet({super.key});

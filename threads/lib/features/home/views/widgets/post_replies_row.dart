@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/profile/avatar.dart';
+import 'package:threads/core/widgets/profile/avatar.dart';
 import 'package:threads/features/home/views/widgets/post_replies_avatar.dart';
 
 class PostRepliesRow extends StatelessWidget {

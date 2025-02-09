@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:threads/shared/widget/bottom_sheet/constants/report_titles.dart';
-import 'package:threads/shared/widget/bottom_sheet/threads_sheet.dart';
+import 'package:threads/core/constants/dummy.dart';
+import 'package:threads/core/widgets/bottom_sheet/threads_sheet.dart';
 
 class ReportSheet extends StatelessWidget {
   const ReportSheet({
@@ -41,7 +41,7 @@ class ReportSheet extends StatelessWidget {
         ),
         Expanded(
           child: ListView.separated(
-            itemCount: reportTitles.length,
+            itemCount: dummyReportTitles.length,
             separatorBuilder: (context, index) => Container(
               color: Colors.grey,
               height: 1,
@@ -49,7 +49,7 @@ class ReportSheet extends StatelessWidget {
             itemBuilder: (context, index) {
               return ListTile(
                 style: ListTileStyle.drawer,
-                title: Text(reportTitles[index]),
+                title: Text(dummyReportTitles[index]),
                 trailing: const Icon(Icons.chevron_right),
               );
             },

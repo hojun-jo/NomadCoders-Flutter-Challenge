@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/list_item.dart';
-import 'package:threads/shared/widget/list_separator.dart';
-import 'package:threads/shared/widget/screen_title.dart';
+import 'package:threads/core/widgets/list_item.dart';
+import 'package:threads/core/widgets/list_separator.dart';
+import 'package:threads/core/widgets/screen_title.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

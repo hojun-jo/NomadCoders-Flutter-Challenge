@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/shared/widget/profile/avatar.dart';
+import 'package:threads/core/widgets/profile/avatar.dart';
 import 'package:threads/features/home/views/widgets/post_content_button_row.dart';
 import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
-import 'package:threads/shared/widget/profile/avatar_decoration.dart';
+import 'package:threads/core/models/user/avatar_decoration.dart';
 
 class PostContent extends StatelessWidget {
   final String userName;

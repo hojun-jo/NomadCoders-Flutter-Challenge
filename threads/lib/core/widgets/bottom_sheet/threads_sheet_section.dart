@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:threads/shared/widget/bottom_sheet/threads_sheet_button.dart';
+import 'package:threads/core/widgets/bottom_sheet/threads_sheet_button.dart';
 
 class ThreadsSheetSection extends StatelessWidget {
   final List<ThreadsSheetButton> buttons;
