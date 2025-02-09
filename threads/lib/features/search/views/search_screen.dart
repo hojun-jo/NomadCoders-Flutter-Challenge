@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/shared/widget/list_item.dart';
 import 'package:threads/shared/widget/screen_title.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -32,7 +34,15 @@ class SearchScreen extends StatelessWidget {
             ),
             itemCount: 10,
             itemBuilder: (context, index) {
-              return const Text("asdf");
+              return const ListItem(
+                avatarUrl: dummyAvatarUrl,
+                userName: "userName",
+                userIsVerified: true,
+                subtitle: "one line introduce?",
+                isShowFollowButton: true,
+                description: "301K followers",
+                isShowStar: true,
+              );
             },
           ),
         ),
