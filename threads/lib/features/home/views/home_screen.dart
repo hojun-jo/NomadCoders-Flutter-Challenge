@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads/core/constants/thread_separator.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/core/widgets/thread/thread_item.dart';
 
@@ -24,9 +25,7 @@ class HomeScreen extends StatelessWidget {
         // TODO: 데이터 바인딩
         SliverList.separated(
           itemCount: viewModel.itemCount,
-          separatorBuilder: (context, index) => const Divider(
-            thickness: 0.5,
-          ),
+          separatorBuilder: (context, index) => threadSeparator,
           itemBuilder: (context, index) {
             return ThreadItem(
               userName: viewModel.getUserName(index),

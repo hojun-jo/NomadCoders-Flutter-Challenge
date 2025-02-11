@@ -19,7 +19,7 @@ final List<User> dummyUsers = [
     ),
 ];
 
-final List<ThreadModel> dummyPosts = [
+final List<ThreadModel> dummyThreads = [
   for (int i = 0; i < 10; i++)
     ThreadModel(
       user: dummyUsers[i],

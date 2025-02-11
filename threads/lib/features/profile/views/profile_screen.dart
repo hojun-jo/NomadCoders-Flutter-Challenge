@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/core/constants/dummy.dart';
+import 'package:threads/core/constants/thread_separator.dart';
+import 'package:threads/core/utils/date_formatter.dart';
+import 'package:threads/core/widgets/thread/thread_item.dart';
 import 'package:threads/features/profile/models/profile_tab.dart';
 import 'package:threads/features/profile/views/widgets/profile_information.dart';
 import 'package:threads/features/profile/views/widgets/profile_tab_bar.dart';
@@ -52,8 +55,33 @@ class _ProfileScreenState extends State<ProfileScreen>
           ),
         ),
         SliverPersistentHeader(
+          pinned: true,
+          floating: true,
           delegate: ProfileTabBar(controller: _controller),
         ),
+        SliverFillRemaining(
+          child: TabBarView(
+            controller: _controller,
+            children: ProfileTab.values.map((tab) {
+              // TODO: 데이터 바인딩
+              final items = dummyThreads;
+              return ListView.separated(
+                separatorBuilder: (context, index) => threadSeparator,
+                itemCount: items.length,
+                itemBuilder: (context, index) => ThreadItem(
+                  avatarUrl: items[index].user.avatarUrl,
+                  userName: items[index].user.name,
+                  userIsVerified: items[index].user.isVerified,
+                  images: items[index].images,
+                  description: items[index].description,
+                  postTime: DateFormatter.difference(items[index].postTime),
+                  replies: items[index].replies,
+                  likes: items[index].likes,
+                ),
+              );
+            }).toList(),
+          ),
+        )
       ],
     );
   }

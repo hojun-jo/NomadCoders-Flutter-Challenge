@@ -4,7 +4,7 @@ import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/core/models/thread/thread_model.dart';
 
 class HomeViewModel {
-  final List<ThreadModel> items = dummyPosts;
+  final List<ThreadModel> items = dummyThreads;
 
   int get itemCount => items.length;
 
