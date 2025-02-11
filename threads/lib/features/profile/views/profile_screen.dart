@@ -7,6 +7,7 @@ import 'package:threads/core/widgets/thread/thread_item.dart';
 import 'package:threads/features/profile/models/profile_tab.dart';
 import 'package:threads/features/profile/views/widgets/profile_information.dart';
 import 'package:threads/features/profile/views/widgets/profile_tab_bar.dart';
+import 'package:threads/features/settings/views/settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -41,7 +42,14 @@ class _ProfileScreenState extends State<ProfileScreen>
             ),
             IconButton(
               icon: const Icon(FontAwesomeIcons.barsStaggered),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),

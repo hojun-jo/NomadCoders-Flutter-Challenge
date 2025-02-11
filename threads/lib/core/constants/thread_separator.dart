@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-const threadSeparator = Divider(
+const Divider threadSeparator = Divider(
   thickness: 0.5,
 );
