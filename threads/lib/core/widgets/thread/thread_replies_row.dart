@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/profile/avatar.dart';
-import 'package:threads/features/home/views/widgets/post_replies_avatar.dart';
+import 'package:threads/core/widgets/thread/thread_replies_avatar.dart';
 
-class PostRepliesRow extends StatelessWidget {
+class ThreadRepliesRow extends StatelessWidget {
   final int replies;
   final int likes;
 
-  const PostRepliesRow({
+  const ThreadRepliesRow({
     super.key,
     required this.replies,
     required this.likes,
@@ -46,13 +46,13 @@ class PostRepliesRow extends StatelessWidget {
             CircleAvatar(
               backgroundColor: Colors.white,
             ),
-            PostRepliesAvatar(
+            ThreadRepliesAvatar(
               left: 4,
               top: 10,
               size: 18,
               imageUrl: dummyAvatarUrl,
             ),
-            PostRepliesAvatar(
+            ThreadRepliesAvatar(
               right: 4,
               top: 10,
               size: 18,
@@ -66,19 +66,19 @@ class PostRepliesRow extends StatelessWidget {
             CircleAvatar(
               backgroundColor: Colors.white,
             ),
-            PostRepliesAvatar(
+            ThreadRepliesAvatar(
               left: 2,
               top: 10,
               size: 18,
               imageUrl: dummyAvatarUrl,
             ),
-            PostRepliesAvatar(
+            ThreadRepliesAvatar(
               top: 2,
               right: 2,
               size: 20,
               imageUrl: dummyAvatarUrl,
             ),
-            PostRepliesAvatar(
+            ThreadRepliesAvatar(
               left: 16,
               bottom: 2,
               size: 14,

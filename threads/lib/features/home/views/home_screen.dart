@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
-import 'package:threads/features/home/views/widgets/post_item.dart';
+import 'package:threads/core/widgets/thread/thread_item.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeViewModel viewModel;
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             thickness: 0.5,
           ),
           itemBuilder: (context, index) {
-            return PostItem(
+            return ThreadItem(
               userName: viewModel.getUserName(index),
               avatarUrl: viewModel.getUserAvatarUrl(index),
               avatarDecoration: viewModel.getAvatarDecoration(index),

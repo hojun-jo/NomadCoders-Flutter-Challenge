@@ -2,7 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:threads/core/models/profile/avatar_decoration.dart';
 import 'package:threads/core/models/profile/user.dart';
 import 'package:threads/features/activity/models/activity_model.dart';
-import 'package:threads/features/home/models/post_model.dart';
+import 'package:threads/core/models/thread/thread_model.dart';
 
 const String dummyAvatarUrl = "https://picsum.photos/20/20";
 // TODO: faker.image로 수정
@@ -19,9 +19,9 @@ final List<User> dummyUsers = [
     ),
 ];
 
-final List<PostModel> dummyPosts = [
+final List<ThreadModel> dummyPosts = [
   for (int i = 0; i < 10; i++)
-    PostModel(
+    ThreadModel(
       user: dummyUsers[i],
       avatarDecoration: AvatarDecoration.add,
       description: faker.lorem.sentence(),

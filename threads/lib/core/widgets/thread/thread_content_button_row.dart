@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/small_icon_button.dart';
 
-class PostContentButtonRow extends StatelessWidget {
-  const PostContentButtonRow({
+class ThreadContentButtonRow extends StatelessWidget {
+  const ThreadContentButtonRow({
     super.key,
   });
 

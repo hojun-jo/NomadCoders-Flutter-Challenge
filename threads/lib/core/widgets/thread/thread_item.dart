@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:threads/features/home/views/widgets/post_content.dart';
-import 'package:threads/features/home/views/widgets/post_replies_row.dart';
+import 'package:threads/core/widgets/thread/thread_content.dart';
+import 'package:threads/core/widgets/thread/thread_replies_row.dart';
 
-class PostItem extends StatelessWidget {
+class ThreadItem extends StatelessWidget {
   final String userName;
   final String? avatarUrl;
   final IconData? avatarDecoration;
@@ -13,7 +13,7 @@ class PostItem extends StatelessWidget {
   final int replies;
   final int likes;
 
-  const PostItem({
+  const ThreadItem({
     super.key,
     required this.userName,
     this.avatarUrl,
@@ -32,7 +32,7 @@ class PostItem extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       child: Column(
         children: [
-          PostContent(
+          ThreadContent(
             userName: userName,
             avatarUrl: avatarUrl,
             avatarDecoration: avatarDecoration,
@@ -41,7 +41,7 @@ class PostItem extends StatelessWidget {
             images: images,
             postTime: postTime,
           ),
-          PostRepliesRow(
+          ThreadRepliesRow(
             replies: replies,
             likes: likes,
           ),

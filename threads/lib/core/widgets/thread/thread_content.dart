@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/profile/avatar.dart';
-import 'package:threads/features/home/views/widgets/post_content_button_row.dart';
-import 'package:threads/features/home/views/widgets/post_content_user_row.dart';
+import 'package:threads/core/widgets/thread/thread_content_button_row.dart';
+import 'package:threads/core/widgets/thread/thread_content_user_row.dart';
 
-class PostContent extends StatelessWidget {
+class ThreadContent extends StatelessWidget {
   final String userName;
   final String? avatarUrl;
   final IconData? avatarDecoration;
@@ -13,7 +13,7 @@ class PostContent extends StatelessWidget {
   final List<String>? images;
   final String postTime;
 
-  const PostContent({
+  const ThreadContent({
     super.key,
     required this.userName,
     this.avatarUrl,
@@ -51,7 +51,7 @@ class PostContent extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              PostContentUserRow(
+              ThreadContentUserRow(
                 userName: userName,
                 userIsVerified: userIsVerified,
                 postTime: postTime,
@@ -70,7 +70,7 @@ class PostContent extends StatelessWidget {
                   ),
                 ),
               Gaps.v10,
-              const PostContentButtonRow(),
+              const ThreadContentButtonRow(),
             ],
           ),
         ),

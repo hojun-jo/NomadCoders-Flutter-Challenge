@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/utils/date_formatter.dart';
-import 'package:threads/features/home/models/post_model.dart';
+import 'package:threads/core/models/thread/thread_model.dart';
 
 class HomeViewModel {
-  final List<PostModel> items = dummyPosts;
+  final List<ThreadModel> items = dummyPosts;
 
   int get itemCount => items.length;
 

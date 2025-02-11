@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/widgets/profile/avatar.dart';
 
-class PostRepliesAvatar extends StatelessWidget {
+class ThreadRepliesAvatar extends StatelessWidget {
   final double? left;
   final double? top;
   final double? right;
@@ -9,7 +9,7 @@ class PostRepliesAvatar extends StatelessWidget {
   final double size;
   final String? imageUrl;
 
-  const PostRepliesAvatar({
+  const ThreadRepliesAvatar({
     super.key,
     this.left,
     this.top,

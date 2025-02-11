@@ -5,12 +5,12 @@ import 'package:threads/features/home/views/widgets/home_bottom_sheet.dart';
 import 'package:threads/core/widgets/profile/user_name_check_icon_row.dart';
 import 'package:threads/core/widgets/small_icon_button.dart';
 
-class PostContentUserRow extends StatelessWidget {
+class ThreadContentUserRow extends StatelessWidget {
   final String userName;
   final bool userIsVerified;
   final String postTime;
 
-  const PostContentUserRow({
+  const ThreadContentUserRow({
     super.key,
     required this.userName,
     required this.userIsVerified,
