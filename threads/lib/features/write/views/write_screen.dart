@@ -14,6 +14,7 @@ class WriteScreen extends StatefulWidget {
 
 class _WriteScreenState extends State<WriteScreen> {
   bool isPostable = false;
+  List<String> images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,7 @@ class _WriteScreenState extends State<WriteScreen> {
                     Gaps.h10,
                     WriteContentColumn(
                       userName: "user name",
+                      images: Future.value(images),
                       onTextFieldChanged: _onTextFieldChanged,
                       onClipTap: () => _onClipTap(context),
                     ),
@@ -82,12 +84,14 @@ class _WriteScreenState extends State<WriteScreen> {
     setState(() {});
   }
 
-  void _onClipTap(BuildContext context) {
-    Navigator.push(
+  Future<void> _onClipTap(BuildContext context) async {
+    final imagePath = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const CameraScreen(),
       ),
     );
+    images.add(imagePath);
+    setState(() {});
   }
 }

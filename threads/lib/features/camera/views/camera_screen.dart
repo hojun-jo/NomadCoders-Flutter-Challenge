@@ -18,7 +18,8 @@ class CameraScreen extends StatefulWidget {
   State<CameraScreen> createState() => _CameraScreenState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
+class _CameraScreenState extends State<CameraScreen>
+    with WidgetsBindingObserver {
   late final bool _noCamera = kDebugMode && Platform.isIOS;
   late CameraController _cameraController;
   late FlashMode _flashMode;
@@ -28,13 +29,15 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   void initState() {
     super.initState();
+
     if (!_noCamera) {
       initPermissions();
     } else {
-      setState(() {
-        _hasPermission = true;
-      });
+      _hasPermission = true;
+      setState(() {});
     }
+
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -42,6 +45,7 @@ class _CameraScreenState extends State<CameraScreen> {
     if (!_noCamera) {
       _cameraController.dispose();
     }
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -120,9 +124,7 @@ class _CameraScreenState extends State<CameraScreen> {
                             _cameraController,
                           ),
                         ),
-                      BackIconButton(
-                        onTap: () {},
-                      ),
+                      const BackIconButton(),
                       Positioned(
                         bottom: 40,
                         width: MediaQuery.sizeOf(context).width,
@@ -134,7 +136,7 @@ class _CameraScreenState extends State<CameraScreen> {
                               onTap: () {},
                             ),
                             Shutter(
-                              onTap: () {},
+                              onTap: () => _onShutterTap(),
                             ),
                             CameraButton(
                               icon: FontAwesomeIcons.arrowsRotate,
@@ -174,5 +176,14 @@ class _CameraScreenState extends State<CameraScreen> {
               ],
             ),
     );
+  }
+
+  Future<void> _onShutterTap() async {
+    try {
+      final xfile = await _cameraController.takePicture();
+      Navigator.pop(context, xfile.path);
+    } catch (e) {
+      print(e);
+    }
   }
 }

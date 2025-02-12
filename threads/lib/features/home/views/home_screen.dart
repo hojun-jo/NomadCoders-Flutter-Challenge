@@ -17,9 +17,11 @@ class HomeScreen extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         const SliverAppBar(
-          title: Icon(
-            FontAwesomeIcons.threads,
-            size: 36,
+          title: Center(
+            child: Icon(
+              FontAwesomeIcons.threads,
+              size: 36,
+            ),
           ),
         ),
         // TODO: 데이터 바인딩

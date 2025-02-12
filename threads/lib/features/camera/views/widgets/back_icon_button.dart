@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BackIconButton extends StatelessWidget {
-  final VoidCallback onTap;
-
   const BackIconButton({
     super.key,
-    required this.onTap,
   });
 
   @override
@@ -14,7 +11,9 @@ class BackIconButton extends StatelessWidget {
       top: 60,
       left: 10,
       child: IconButton(
-        onPressed: onTap,
+        onPressed: () {
+          Navigator.pop(context);
+        },
         icon: const Icon(
           Icons.chevron_left,
           color: Colors.white,
