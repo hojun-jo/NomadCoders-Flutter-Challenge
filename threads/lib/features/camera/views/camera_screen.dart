@@ -6,6 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/features/camera/views/widgets/back_icon_button.dart';
+import 'package:threads/features/camera/views/widgets/camera_button.dart';
+import 'package:threads/features/camera/views/widgets/camera_initializing_indicator.dart';
+import 'package:threads/features/camera/views/widgets/shutter.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -94,21 +98,7 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: !_hasPermission
-          ? const Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Initializing...",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                Gaps.v20,
-                CircularProgressIndicator.adaptive(),
-              ],
-            )
+          ? const CameraInitializingIndicator()
           : Column(
               children: [
                 Container(
@@ -130,7 +120,9 @@ class _CameraScreenState extends State<CameraScreen> {
                             _cameraController,
                           ),
                         ),
-                      const BackButton(),
+                      BackIconButton(
+                        onTap: () {},
+                      ),
                       Positioned(
                         bottom: 40,
                         width: MediaQuery.sizeOf(context).width,
@@ -181,87 +173,6 @@ class _CameraScreenState extends State<CameraScreen> {
                 )
               ],
             ),
-    );
-  }
-}
-
-class Shutter extends StatelessWidget {
-  final VoidCallback onTap;
-
-  const Shutter({
-    super.key,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const SizedBox(
-            width: 100,
-            height: 100,
-            child: CircularProgressIndicator(
-              value: 1,
-              color: Colors.white,
-            ),
-          ),
-          Container(
-            width: 80,
-            height: 80,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CameraButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
-
-  const CameraButton({
-    super.key,
-    required this.icon,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: onTap,
-      icon: Icon(
-        icon,
-        color: Colors.white,
-        size: 30,
-      ),
-    );
-  }
-}
-
-class BackButton extends StatelessWidget {
-  const BackButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: 60,
-      left: 10,
-      child: IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          FontAwesomeIcons.chevronLeft,
-          color: Colors.white,
-        ),
-      ),
     );
   }
 }
