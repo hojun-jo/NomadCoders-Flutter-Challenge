@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/features/camera/views/camera_screen.dart';
 import 'package:threads/features/write/views/widgets/write_avatar_column.dart';
 import 'package:threads/features/write/views/widgets/write_bottom_row.dart';
 import 'package:threads/features/write/views/widgets/write_content_column.dart';
@@ -55,7 +56,7 @@ class _WriteScreenState extends State<WriteScreen> {
                     WriteContentColumn(
                       userName: "user name",
                       onTextFieldChanged: _onTextFieldChanged,
-                      onClipTap: () {},
+                      onClipTap: () => _onClipTap(context),
                     ),
                   ],
                 ),
@@ -79,5 +80,14 @@ class _WriteScreenState extends State<WriteScreen> {
       isPostable = false;
     }
     setState(() {});
+  }
+
+  void _onClipTap(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const CameraScreen(),
+      ),
+    );
   }
 }

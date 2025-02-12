@@ -18,22 +18,28 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen>
     with SingleTickerProviderStateMixin {
-  late final TabController _controller = TabController(
+  late final TabController _tabController = TabController(
     length: ProfileTab.values.length,
     vsync: this,
   );
+  late final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
-    _controller.dispose();
+    _tabController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
+      controller: _scrollController,
       slivers: [
         SliverAppBar(
+          floating: true,
+          snap: true,
+          surfaceTintColor: Colors.white,
           leading: const Icon(FontAwesomeIcons.globe),
           actions: [
             IconButton(
@@ -42,14 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             ),
             IconButton(
               icon: const Icon(FontAwesomeIcons.barsStaggered),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsScreen(),
-                  ),
-                );
-              },
+              onPressed: () => _onSettingsTap(context),
             ),
           ],
         ),
@@ -63,17 +62,18 @@ class _ProfileScreenState extends State<ProfileScreen>
           ),
         ),
         SliverPersistentHeader(
-          pinned: true,
+          // pinned: true,
           floating: true,
-          delegate: ProfileTabBar(controller: _controller),
+          delegate: ProfileTabBar(controller: _tabController),
         ),
         SliverFillRemaining(
           child: TabBarView(
-            controller: _controller,
+            controller: _tabController,
             children: ProfileTab.values.map((tab) {
               // TODO: 데이터 바인딩
               final items = dummyThreads;
               return ListView.separated(
+                controller: _scrollController,
                 separatorBuilder: (context, index) => threadSeparator,
                 itemCount: items.length,
                 itemBuilder: (context, index) => ThreadItem(
@@ -91,6 +91,15 @@ class _ProfileScreenState extends State<ProfileScreen>
           ),
         )
       ],
+    );
+  }
+
+  void _onSettingsTap(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      ),
     );
   }
 }
