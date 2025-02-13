@@ -47,37 +47,41 @@ class WriteContentColumn extends StatelessWidget {
             future: images,
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                final images = snapshot.data!;
+                final imagePaths = snapshot.data!;
                 return SizedBox(
                   height: 300,
                   child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemCount: images.length,
+                      itemCount: imagePaths.length,
                       separatorBuilder: (context, index) => Gaps.h10,
                       itemBuilder: (context, index) {
                         return Stack(
                           children: [
                             Container(
-                              // height: 300,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               clipBehavior: Clip.hardEdge,
-                              child: Image.file(File(images[index])),
+                              child: Image.file(File(imagePaths[index])),
                             ),
                             Positioned(
                               top: 10,
                               right: 10,
-                              child: Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: const BoxDecoration(
-                                  color: Colors.grey,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  FontAwesomeIcons.x,
-                                  color: Colors.white,
-                                  size: 14,
+                              child: GestureDetector(
+                                onTap: () {
+                                  // TODO: 이미지 삭제
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: const BoxDecoration(
+                                    color: Colors.grey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    FontAwesomeIcons.x,
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
                                 ),
                               ),
                             ),

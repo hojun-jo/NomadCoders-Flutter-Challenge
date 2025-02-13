@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/features/camera/views/widgets/back_icon_button.dart';
@@ -25,6 +26,7 @@ class _CameraScreenState extends State<CameraScreen>
   late FlashMode _flashMode;
   bool _hasPermission = false;
   final bool _isSelfieMode = false;
+  bool _isDisposed = false;
 
   @override
   void initState() {
@@ -42,6 +44,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   @override
   void dispose() {
+    _isDisposed = true;
     if (!_noCamera) {
       _cameraController.dispose();
     }
@@ -82,16 +85,16 @@ class _CameraScreenState extends State<CameraScreen>
   Future<void> initCamera() async {
     final cameras = await availableCameras();
 
-    if (cameras.isEmpty) {
-      return;
-    }
+    if (cameras.isEmpty) return;
 
     _cameraController = CameraController(
       cameras[_isSelfieMode ? 0 : 1],
       ResolutionPreset.ultraHigh,
     );
 
+    if (_isDisposed) return;
     await _cameraController.initialize();
+    if (_isDisposed) return;
 
     _flashMode = _cameraController.value.flashMode;
     setState(() {});
@@ -161,7 +164,7 @@ class _CameraScreenState extends State<CameraScreen>
                     ),
                     Expanded(
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: _onLibraryTap,
                         child: const Text(
                           "Library",
                           style: TextStyle(
@@ -181,7 +184,28 @@ class _CameraScreenState extends State<CameraScreen>
   Future<void> _onShutterTap() async {
     try {
       final xfile = await _cameraController.takePicture();
-      Navigator.pop(context, xfile.path);
+
+      if (_isDisposed) return;
+
+      Navigator.pop(context, [xfile.path]);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void _onLibraryTap() async {
+    try {
+      final imageXFiles = await ImagePicker().pickMultiImage(limit: 10);
+
+      if (imageXFiles.isEmpty) return;
+
+      final imagePaths = imageXFiles.map((xFile) {
+        return xFile.path;
+      }).toList();
+
+      if (_isDisposed) return;
+
+      Navigator.pop(context, imagePaths);
     } catch (e) {
       print(e);
     }

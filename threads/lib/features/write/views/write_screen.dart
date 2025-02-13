@@ -91,7 +91,10 @@ class _WriteScreenState extends State<WriteScreen> {
         builder: (context) => const CameraScreen(),
       ),
     );
-    images.add(imagePath);
+
+    if (imagePath == null) return;
+
+    images.addAll(imagePath);
     setState(() {});
   }
 }
