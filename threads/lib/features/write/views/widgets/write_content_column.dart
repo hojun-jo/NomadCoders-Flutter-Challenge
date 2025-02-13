@@ -9,6 +9,7 @@ class WriteContentColumn extends StatelessWidget {
   final String userName;
   final Function(String) onTextFieldChanged;
   final Future<List<String>> images;
+  final Function(int) deleteImage;
   final VoidCallback onClipTap;
 
   const WriteContentColumn({
@@ -16,6 +17,7 @@ class WriteContentColumn extends StatelessWidget {
     required this.userName,
     required this.onTextFieldChanged,
     required this.images,
+    required this.deleteImage,
     required this.onClipTap,
   });
 
@@ -68,9 +70,7 @@ class WriteContentColumn extends StatelessWidget {
                               top: 10,
                               right: 10,
                               child: GestureDetector(
-                                onTap: () {
-                                  // TODO: 이미지 삭제
-                                },
+                                onTap: () => deleteImage(index),
                                 child: Container(
                                   padding: const EdgeInsets.all(8),
                                   decoration: const BoxDecoration(

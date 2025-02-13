@@ -57,6 +57,7 @@ class _WriteScreenState extends State<WriteScreen> {
                     WriteContentColumn(
                       userName: "user name",
                       images: Future.value(images),
+                      deleteImage: _deleteImage,
                       onTextFieldChanged: _onTextFieldChanged,
                       onClipTap: () => _onClipTap(context),
                     ),
@@ -73,6 +74,11 @@ class _WriteScreenState extends State<WriteScreen> {
         ),
       ),
     );
+  }
+
+  void _deleteImage(int index) {
+    images.removeAt(index);
+    setState(() {});
   }
 
   void _onTextFieldChanged(String text) {
