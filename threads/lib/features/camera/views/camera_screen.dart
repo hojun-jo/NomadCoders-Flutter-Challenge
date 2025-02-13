@@ -24,8 +24,9 @@ class _CameraScreenState extends State<CameraScreen>
   late final bool _noCamera = kDebugMode && Platform.isIOS;
   late CameraController _cameraController;
   late FlashMode _flashMode;
+
   bool _hasPermission = false;
-  final bool _isSelfieMode = false;
+  bool _isSelfieMode = false;
   bool _isDisposed = false;
 
   @override
@@ -135,15 +136,17 @@ class _CameraScreenState extends State<CameraScreen>
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             CameraButton(
-                              icon: Icons.flash_off,
-                              onTap: () {},
+                              icon: _flashMode == FlashMode.off
+                                  ? Icons.flash_off
+                                  : Icons.flash_on,
+                              onTap: _onFlashTap,
                             ),
                             Shutter(
                               onTap: () => _onShutterTap(),
                             ),
                             CameraButton(
                               icon: FontAwesomeIcons.arrowsRotate,
-                              onTap: () {},
+                              onTap: _onSelfieTap,
                             ),
                           ],
                         ),
@@ -181,6 +184,15 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 
+  void _onFlashTap() {
+    if (_flashMode == FlashMode.off) {
+      _flashMode = FlashMode.always;
+    } else {
+      _flashMode = FlashMode.off;
+    }
+    setState(() {});
+  }
+
   Future<void> _onShutterTap() async {
     try {
       final xfile = await _cameraController.takePicture();
@@ -191,6 +203,12 @@ class _CameraScreenState extends State<CameraScreen>
     } catch (e) {
       print(e);
     }
+  }
+
+  void _onSelfieTap() async {
+    _isSelfieMode = !_isSelfieMode;
+    await initCamera();
+    setState(() {});
   }
 
   void _onLibraryTap() async {
