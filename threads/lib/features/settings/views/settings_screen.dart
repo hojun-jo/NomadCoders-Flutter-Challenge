@@ -86,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _showLogoutDialog(BuildContext context) async {
+  Future<void> _showLogoutDialog(BuildContext context) async {
     setState(() {
       _isShowIndicator = true;
     });

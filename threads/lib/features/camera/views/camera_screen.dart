@@ -205,13 +205,13 @@ class _CameraScreenState extends State<CameraScreen>
     }
   }
 
-  void _onSelfieTap() async {
+  Future<void> _onSelfieTap() async {
     _isSelfieMode = !_isSelfieMode;
     await initCamera();
     setState(() {});
   }
 
-  void _onLibraryTap() async {
+  Future<void> _onLibraryTap() async {
     try {
       final imageXFiles = await ImagePicker().pickMultiImage(limit: 10);
 
