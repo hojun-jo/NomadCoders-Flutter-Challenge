@@ -34,7 +34,8 @@ class ProfileInformation extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
@@ -43,7 +44,8 @@ class ProfileInformation extends StatelessWidget {
                     children: [
                       Text(
                         userName,
-                        style: const TextStyle(
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
                           fontSize: 15,
                         ),
                       ),
@@ -69,7 +71,8 @@ class ProfileInformation extends StatelessWidget {
                   Gaps.v10,
                   Text(
                     bio,
-                    style: const TextStyle(
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
                       fontSize: 15,
                     ),
                   ),

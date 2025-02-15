@@ -17,15 +17,21 @@ class ActivityTabItem extends StatelessWidget {
         width: 100,
         height: 36,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.black : Colors.white,
-          border: Border.all(color: isSelected ? Colors.black : Colors.grey),
+          color: isSelected
+              ? Theme.of(context).primaryColor
+              : Theme.of(context).scaffoldBackgroundColor,
+          border: Border.all(
+            color: isSelected ? Theme.of(context).primaryColor : Colors.grey,
+          ),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Center(
           child: Text(
             text,
             style: TextStyle(
-              color: isSelected ? Colors.white : Colors.black,
+              color: isSelected
+                  ? Theme.of(context).scaffoldBackgroundColor
+                  : Theme.of(context).primaryColor,
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),

@@ -22,7 +22,8 @@ class SettingsTile extends StatelessWidget {
       leading: Icon(icon),
       title: Text(
         text,
-        style: const TextStyle(
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
           fontSize: 17,
         ),
       ),

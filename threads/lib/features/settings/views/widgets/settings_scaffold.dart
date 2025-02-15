@@ -18,15 +18,16 @@ class SettingsScaffold extends StatelessWidget {
         leading: Navigator.canPop(context)
             ? GestureDetector(
                 onTap: () => Navigator.pop(context),
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.chevron_left,
                       size: 30,
                     ),
                     Text(
                       "Back",
                       style: TextStyle(
+                        color: Theme.of(context).primaryColor,
                         fontSize: 18,
                       ),
                     ),
@@ -37,7 +38,8 @@ class SettingsScaffold extends StatelessWidget {
         leadingWidth: 80,
         title: Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

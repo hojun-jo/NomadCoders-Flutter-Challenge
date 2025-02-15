@@ -12,7 +12,8 @@ class ScreenTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
+        color: Theme.of(context).primaryColor,
         fontSize: 30,
         fontWeight: FontWeight.bold,
       ),

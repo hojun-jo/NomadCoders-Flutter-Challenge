@@ -22,14 +22,15 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
       child: Column(
         children: [
           SwitchListTile.adaptive(
-            activeColor: Colors.black,
-            title: const Row(
+            activeColor: Theme.of(context).primaryColor,
+            title: Row(
               children: [
-                Icon(FontAwesomeIcons.lock),
+                const Icon(FontAwesomeIcons.lock),
                 Gaps.h16,
                 Text(
                   "Private profile",
                   style: TextStyle(
+                    color: Theme.of(context).primaryColor,
                     fontSize: 17,
                   ),
                 ),
@@ -67,22 +68,23 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             onTap: () {},
           ),
           threadDivider,
-          const ListTile(
+          ListTile(
             title: Text(
               "Ohter privacy settings",
               style: TextStyle(
+                color: Theme.of(context).primaryColor,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle: Text(
+            subtitle: const Text(
               "Some settings, like restrict, apply to both Threads and Instagram and can be managed on Instagram.",
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 16,
               ),
             ),
-            trailing: Column(
+            trailing: const Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(

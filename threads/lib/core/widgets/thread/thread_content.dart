@@ -56,7 +56,12 @@ class ThreadContent extends StatelessWidget {
                 userIsVerified: userIsVerified,
                 postTime: postTime,
               ),
-              Text(description),
+              Text(
+                description,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               Gaps.v10,
               if (images != null && images!.isNotEmpty)
                 SizedBox(

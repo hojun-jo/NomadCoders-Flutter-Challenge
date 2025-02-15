@@ -15,7 +15,7 @@ class ThreadsSheetSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: Colors.grey,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(

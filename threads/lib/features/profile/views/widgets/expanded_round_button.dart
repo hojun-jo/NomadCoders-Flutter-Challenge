@@ -24,7 +24,8 @@ class ExpandedRoundButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),

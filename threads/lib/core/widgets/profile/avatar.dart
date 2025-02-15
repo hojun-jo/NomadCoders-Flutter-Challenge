@@ -17,7 +17,7 @@ class Avatar extends StatelessWidget {
     return Stack(
       children: [
         CircleAvatar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           foregroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
         ),
         if (decoration != null)

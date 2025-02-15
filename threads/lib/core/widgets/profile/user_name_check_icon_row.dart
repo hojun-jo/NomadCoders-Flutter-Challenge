@@ -20,7 +20,8 @@ class UserNameCheckIconRow extends StatelessWidget {
       children: [
         Text(
           userName,
-          style: const TextStyle(
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),

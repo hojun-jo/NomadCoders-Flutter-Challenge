@@ -39,7 +39,6 @@ class _ProfileScreenState extends State<ProfileScreen>
         SliverAppBar(
           floating: true,
           snap: true,
-          surfaceTintColor: Colors.white,
           leading: const Icon(FontAwesomeIcons.globe),
           actions: [
             IconButton(

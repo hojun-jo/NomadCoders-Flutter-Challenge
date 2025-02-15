@@ -23,17 +23,18 @@ class _WriteScreenState extends State<WriteScreen> {
         leadingWidth: 80,
         leading: TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text(
+          child: Text(
             "Cancel",
             style: TextStyle(
-              color: Colors.black,
+              color: Theme.of(context).primaryColor,
               fontSize: 16,
             ),
           ),
         ),
-        title: const Text(
+        title: Text(
           "New thread",
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),

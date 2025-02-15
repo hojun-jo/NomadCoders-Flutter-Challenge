@@ -18,7 +18,10 @@ class ThreadRepliesRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _decideAvatarCount(replies),
+        _decideAvatarCount(
+          context,
+          replies,
+        ),
         Gaps.h10,
         Text(
           "$replies replies · $likes likes",
@@ -30,29 +33,29 @@ class ThreadRepliesRow extends StatelessWidget {
     );
   }
 
-  Widget _decideAvatarCount(int replies) {
+  Widget _decideAvatarCount(BuildContext context, int replies) {
     switch (replies) {
       case 0:
-        return const CircleAvatar(
-          backgroundColor: Colors.white,
+        return CircleAvatar(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         );
       case 1:
         return const Avatar(
           imageUrl: dummyAvatarUrl,
         );
       case 2:
-        return const Stack(
+        return Stack(
           children: [
             CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             ),
-            ThreadRepliesAvatar(
+            const ThreadRepliesAvatar(
               left: 4,
               top: 10,
               size: 18,
               imageUrl: dummyAvatarUrl,
             ),
-            ThreadRepliesAvatar(
+            const ThreadRepliesAvatar(
               right: 4,
               top: 10,
               size: 18,
@@ -61,24 +64,24 @@ class ThreadRepliesRow extends StatelessWidget {
           ],
         );
       default:
-        return const Stack(
+        return Stack(
           children: [
             CircleAvatar(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             ),
-            ThreadRepliesAvatar(
+            const ThreadRepliesAvatar(
               left: 2,
               top: 10,
               size: 18,
               imageUrl: dummyAvatarUrl,
             ),
-            ThreadRepliesAvatar(
+            const ThreadRepliesAvatar(
               top: 2,
               right: 2,
               size: 20,
               imageUrl: dummyAvatarUrl,
             ),
-            ThreadRepliesAvatar(
+            const ThreadRepliesAvatar(
               left: 16,
               bottom: 2,
               size: 14,

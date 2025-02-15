@@ -67,7 +67,8 @@ class ListItem extends StatelessWidget {
               Flexible(
                 child: Text(
                   description!,
-                  style: const TextStyle(
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

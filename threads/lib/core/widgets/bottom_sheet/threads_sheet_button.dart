@@ -27,7 +27,7 @@ class ThreadsSheetButton extends StatelessWidget {
           text,
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            color: isDestructive ? Colors.red : Colors.black,
+            color: isDestructive ? Colors.red : Theme.of(context).primaryColor,
           ),
         ),
       ),

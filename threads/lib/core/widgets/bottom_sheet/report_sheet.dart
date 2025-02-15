@@ -12,23 +12,25 @@ class ReportSheet extends StatelessWidget {
     return ThreadsSheet(
       isVerticalPadding: true,
       children: [
-        const Text(
+        Text(
           "Report",
           style: TextStyle(
+            color: Theme.of(context).primaryColor,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
         const Divider(),
-        const ListTile(
+        ListTile(
           title: Text(
             "Why are you reporting this thread?",
             style: TextStyle(
+              color: Theme.of(context).primaryColor,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             "Your report is anonymous, except if you're reporting an intellectual property infringement. If someone is in immediate danger, call the local emergency services - don't wait.",
             style: TextStyle(
               color: Colors.grey,
@@ -49,8 +51,16 @@ class ReportSheet extends StatelessWidget {
             itemBuilder: (context, index) {
               return ListTile(
                 style: ListTileStyle.drawer,
-                title: Text(dummyReportTitles[index]),
-                trailing: const Icon(Icons.chevron_right),
+                title: Text(
+                  dummyReportTitles[index],
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.chevron_right,
+                  color: Theme.of(context).primaryColor,
+                ),
               );
             },
           ),

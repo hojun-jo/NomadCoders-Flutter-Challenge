@@ -28,7 +28,7 @@ class _FollowButtonState extends State<FollowButton> {
         child: Text(
           _isFollowing ? "Following" : "Follow",
           style: TextStyle(
-            color: _isFollowing ? Colors.grey : Colors.black,
+            color: _isFollowing ? Colors.grey : Theme.of(context).primaryColor,
             fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
