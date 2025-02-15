@@ -17,7 +17,8 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
         indicatorColor: Theme.of(context).primaryColor,
         indicatorSize: TabBarIndicatorSize.tab,
         labelColor: Theme.of(context).primaryColor,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
+          color: Theme.of(context).primaryColor,
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
