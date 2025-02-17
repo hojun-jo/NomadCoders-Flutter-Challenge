@@ -110,10 +110,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text(
+            child: const Text(
               "Cancel",
               style: TextStyle(
-                color: Theme.of(context).primaryColor,
+                color: Colors.black,
               ),
             ),
           ),
