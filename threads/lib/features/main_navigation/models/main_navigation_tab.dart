@@ -5,7 +5,7 @@ enum MainNavigationTab {
   home,
   search,
   write,
-  likes,
+  activity,
   profile;
 
   IconData toIcon() {
@@ -16,10 +16,25 @@ enum MainNavigationTab {
         return FontAwesomeIcons.magnifyingGlass;
       case MainNavigationTab.write:
         return FontAwesomeIcons.penToSquare;
-      case MainNavigationTab.likes:
+      case MainNavigationTab.activity:
         return FontAwesomeIcons.heart;
       case MainNavigationTab.profile:
         return FontAwesomeIcons.user;
+    }
+  }
+
+  int toIndex() {
+    switch (this) {
+      case MainNavigationTab.home:
+        return 0;
+      case MainNavigationTab.search:
+        return 1;
+      case MainNavigationTab.write:
+        return -1;
+      case MainNavigationTab.activity:
+        return 2;
+      case MainNavigationTab.profile:
+        return 3;
     }
   }
 }

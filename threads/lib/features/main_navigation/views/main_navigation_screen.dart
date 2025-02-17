@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:threads/features/home/view_models/home_view_model.dart';
-import 'package:threads/features/home/views/home_screen.dart';
-import 'package:threads/features/activity/views/activity_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads/features/main_navigation/models/main_navigation_tab.dart';
 import 'package:threads/features/main_navigation/views/widgets/navigation_tab.dart';
 import 'package:threads/features/write/views/write_screen.dart';
-import 'package:threads/features/profile/views/profile_screen.dart';
-import 'package:threads/features/search/views/search_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
+  final StatefulNavigationShell navigationShell;
+
+  const MainNavigationScreen({
+    super.key,
+    required this.navigationShell,
+  });
 
   @override
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
@@ -19,27 +20,31 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   MainNavigationTab _selectedTab = MainNavigationTab.home;
 
   @override
+  void initState() {
+    super.initState();
+    _setSelectedTab(widget.navigationShell.currentIndex);
+  }
+
+  void _setSelectedTab(int index) {
+    if (index == 0) {
+      _selectedTab = MainNavigationTab.home;
+    }
+    if (index == 1) {
+      _selectedTab = MainNavigationTab.search;
+    }
+    if (index == 2) {
+      _selectedTab = MainNavigationTab.activity;
+    }
+    if (index == 3) {
+      _selectedTab = MainNavigationTab.profile;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: [
-            ...[
-              (
-                tab: MainNavigationTab.home,
-                screen: HomeScreen(viewModel: HomeViewModel()),
-              ),
-              (tab: MainNavigationTab.search, screen: const SearchScreen()),
-              (tab: MainNavigationTab.likes, screen: const ActivityScreen()),
-              (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
-            ].map(
-              (e) => Offstage(
-                offstage: _selectedTab != e.tab,
-                child: e.screen,
-              ),
-            ),
-          ],
-        ),
+        child: widget.navigationShell,
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(
@@ -71,6 +76,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     }
     _selectedTab = tab;
     setState(() {});
+    widget.navigationShell.goBranch(tab.toIndex());
   }
 
   void _showWriteScreen() {
