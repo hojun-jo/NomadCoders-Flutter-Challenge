@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/constants/thread_divider.dart';
 import 'package:threads/features/settings/views/widgets/settings_scaffold.dart';
@@ -19,6 +20,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
   Widget build(BuildContext context) {
     return SettingsScaffold(
       title: "Privacy",
+      onBackTap: () => _onBackTap(context),
       child: Column(
         children: [
           SwitchListTile.adaptive(
@@ -110,5 +112,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
         ],
       ),
     );
+  }
+
+  void _onBackTap(BuildContext context) {
+    context.pop();
   }
 }

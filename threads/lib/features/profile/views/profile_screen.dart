@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/dummy.dart';
+import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/core/constants/thread_separator.dart';
 import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/core/widgets/thread/thread_item.dart';
 import 'package:threads/features/profile/models/profile_tab.dart';
 import 'package:threads/features/profile/views/widgets/profile_information.dart';
 import 'package:threads/features/profile/views/widgets/profile_tab_bar.dart';
-import 'package:threads/features/settings/views/settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -88,17 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen>
               );
             }).toList(),
           ),
-        )
+        ),
       ],
     );
   }
 
   void _onSettingsTap(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SettingsScreen(),
-      ),
-    );
+    context.go(AppRoutes.settings);
   }
 }

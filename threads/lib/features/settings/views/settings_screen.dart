@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/core/constants/thread_divider.dart';
-import 'package:threads/features/settings/views/Privacy_screen.dart';
 import 'package:threads/features/settings/views/widgets/settings_scaffold.dart';
 import 'package:threads/features/settings/views/widgets/settings_tile.dart';
 
@@ -19,6 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return SettingsScaffold(
       title: "Settings",
+      onBackTap: () => _onBackTap(context),
       child: Column(
         children: [
           SettingsTile(
@@ -77,13 +79,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  void _onBackTap(BuildContext context) {
+    context.go(AppRoutes.profile);
+  }
+
   void _onPrivacyTap(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const PrivacyScreen(),
-      ),
-    );
+    context.push(AppRoutes.privacy);
   }
 
   Future<void> _showLogoutDialog(BuildContext context) async {
