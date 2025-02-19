@@ -22,20 +22,17 @@ class _ProfileScreenState extends State<ProfileScreen>
     length: ProfileTab.values.length,
     vsync: this,
   );
-  late final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
     _tabController.dispose();
-    _scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: [
+    return NestedScrollView(
+      headerSliverBuilder: (context, innerBoxIsScrolled) => [
         SliverAppBar(
           floating: true,
           snap: true,
@@ -61,18 +58,19 @@ class _ProfileScreenState extends State<ProfileScreen>
           ),
         ),
         SliverPersistentHeader(
-          // pinned: true,
+          pinned: true,
           floating: true,
           delegate: ProfileTabBar(controller: _tabController),
         ),
-        SliverFillRemaining(
-          child: TabBarView(
-            controller: _tabController,
-            children: ProfileTab.values.map((tab) {
-              // TODO: 데이터 바인딩
-              final items = dummyThreads;
-              return ListView.separated(
-                controller: _scrollController,
+      ],
+      body: TabBarView(
+        controller: _tabController,
+        children: ProfileTab.values.map((tab) {
+          // TODO: 데이터 바인딩
+          final items = dummyThreads;
+          return CustomScrollView(
+            slivers: [
+              SliverList.separated(
                 separatorBuilder: (context, index) => threadSeparator,
                 itemCount: items.length,
                 itemBuilder: (context, index) => ThreadItem(
@@ -85,11 +83,11 @@ class _ProfileScreenState extends State<ProfileScreen>
                   replies: items[index].replies,
                   likes: items[index].likes,
                 ),
-              );
-            }).toList(),
-          ),
-        )
-      ],
+              ),
+            ],
+          );
+        }).toList(),
+      ),
     );
   }
 
