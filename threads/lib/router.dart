@@ -57,17 +57,17 @@ final router = GoRouter(
               path: AppRoutes.profile,
               builder: (context, state) => const ProfileScreen(),
             ),
+            GoRoute(
+              path: AppRoutes.settings,
+              builder: (context, state) => const SettingsScreen(),
+            ),
+            GoRoute(
+              path: AppRoutes.privacy,
+              builder: (context, state) => const PrivacyScreen(),
+            ),
           ],
         ),
       ],
-    ),
-    GoRoute(
-      path: AppRoutes.settings,
-      builder: (context, state) => const SettingsScreen(),
-    ),
-    GoRoute(
-      path: AppRoutes.privacy,
-      builder: (context, state) => const PrivacyScreen(),
     ),
   ],
 );
