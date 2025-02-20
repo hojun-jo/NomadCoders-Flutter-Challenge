@@ -93,6 +93,6 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   void _onSettingsTap(BuildContext context) {
-    context.go(AppRoutes.settings);
+    context.push(AppRoutes.settings);
   }
 }

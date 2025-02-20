@@ -21,7 +21,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
     final theme = Theme.of(context);
     return SettingsScaffold(
       title: "Privacy",
-      onBackTap: () => _onBackTap(context),
+      onBackTap: () => _onBackTap(),
       child: Column(
         children: [
           SwitchListTile.adaptive(
@@ -115,7 +115,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
     );
   }
 
-  void _onBackTap(BuildContext context) {
+  void _onBackTap() {
     context.pop();
   }
 }

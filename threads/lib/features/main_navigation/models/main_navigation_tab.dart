@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:threads/core/constants/namespace/app_routes.dart';
 
 enum MainNavigationTab {
   home,
@@ -24,18 +23,18 @@ enum MainNavigationTab {
     }
   }
 
-  String toPath() {
+  int toIndex() {
     switch (this) {
       case MainNavigationTab.home:
-        return AppRoutes.home;
+        return 0;
       case MainNavigationTab.search:
-        return AppRoutes.search;
+        return 1;
       case MainNavigationTab.write:
-        return "";
+        return -1;
       case MainNavigationTab.activity:
-        return AppRoutes.activity;
+        return 2;
       case MainNavigationTab.profile:
-        return AppRoutes.profile;
+        return 3;
     }
   }
 }

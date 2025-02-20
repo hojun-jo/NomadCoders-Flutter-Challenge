@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:threads/core/constants/namespace/app_routes.dart';
-import 'package:threads/features/home/view_models/home_view_model.dart';
-import 'package:threads/features/home/views/home_screen.dart';
-import 'package:threads/features/activity/views/activity_screen.dart';
 import 'package:threads/features/main_navigation/models/main_navigation_tab.dart';
 import 'package:threads/features/main_navigation/views/widgets/navigation_tab.dart';
 import 'package:threads/features/write/views/write_screen.dart';
-import 'package:threads/features/profile/views/profile_screen.dart';
-import 'package:threads/features/search/views/search_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  final String tab;
+  final StatefulNavigationShell navigationShell;
 
   const MainNavigationScreen({
     super.key,
-    required this.tab,
+    required this.navigationShell,
   });
 
   @override
@@ -28,20 +22,20 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   @override
   void initState() {
     super.initState();
-    _setSelectedTab(widget.tab);
+    _setSelectedTab(widget.navigationShell.currentIndex);
   }
 
-  void _setSelectedTab(String tab) {
-    if (tab == AppRoutes.home) {
+  void _setSelectedTab(int index) {
+    if (index == 0) {
       _selectedTab = MainNavigationTab.home;
     }
-    if (tab == AppRoutes.search) {
+    if (index == 1) {
       _selectedTab = MainNavigationTab.search;
     }
-    if (tab == AppRoutes.activity) {
+    if (index == 2) {
       _selectedTab = MainNavigationTab.activity;
     }
-    if (tab == AppRoutes.profile) {
+    if (index == 3) {
       _selectedTab = MainNavigationTab.profile;
     }
   }
@@ -50,24 +44,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: [
-            ...[
-              (
-                tab: MainNavigationTab.home,
-                screen: HomeScreen(viewModel: HomeViewModel()),
-              ),
-              (tab: MainNavigationTab.search, screen: const SearchScreen()),
-              (tab: MainNavigationTab.activity, screen: const ActivityScreen()),
-              (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
-            ].map(
-              (e) => Offstage(
-                offstage: _selectedTab != e.tab,
-                child: e.screen,
-              ),
-            ),
-          ],
-        ),
+        child: widget.navigationShell,
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(
@@ -83,7 +60,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 (tab) => NavigationTab(
                   isSelected: _selectedTab == tab,
                   icon: tab.toIcon(),
-                  onTap: () => _onNavigationTabTap(tab, context),
+                  onTap: () => _onNavigationTabTap(tab),
                 ),
               )
               .toList(),
@@ -92,14 +69,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     );
   }
 
-  void _onNavigationTabTap(MainNavigationTab tab, BuildContext context) {
+  void _onNavigationTabTap(MainNavigationTab tab) {
     if (tab == MainNavigationTab.write) {
       _showWriteScreen();
       return;
     }
-    context.go(tab.toPath());
     _selectedTab = tab;
     setState(() {});
+    widget.navigationShell.goBranch(tab.toIndex());
   }
 
   void _showWriteScreen() {

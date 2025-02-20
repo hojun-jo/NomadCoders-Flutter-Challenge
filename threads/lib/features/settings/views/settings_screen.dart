@@ -21,7 +21,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return SettingsScaffold(
       title: "Settings",
-      onBackTap: () => _onBackTap(context),
+      onBackTap: () => _onBackTap(),
       child: Column(
         children: [
           const ThemeModeSwitch(),
@@ -38,7 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           SettingsTile(
             icon: FontAwesomeIcons.lock,
             text: "Privacy",
-            onTap: () => _onPrivacyTap(context),
+            onTap: () => _onPrivacyTap(),
           ),
           SettingsTile(
             icon: FontAwesomeIcons.circleUser,
@@ -60,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
-                onPressed: () => _showLogoutDialog(context),
+                onPressed: () => _showLogoutDialog(),
                 child: const Text(
                   "Log out",
                   style: TextStyle(
@@ -81,15 +81,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _onBackTap(BuildContext context) {
-    context.go(AppRoutes.profile);
+  void _onBackTap() {
+    context.pop();
   }
 
-  void _onPrivacyTap(BuildContext context) {
+  void _onPrivacyTap() {
     context.push(AppRoutes.privacy);
   }
 
-  Future<void> _showLogoutDialog(BuildContext context) async {
+  Future<void> _showLogoutDialog() async {
     setState(() {
       _isShowIndicator = true;
     });
