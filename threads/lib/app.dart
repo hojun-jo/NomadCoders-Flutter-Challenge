@@ -1,13 +1,14 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:threads/features/main_navigation/views/main_navigation_screen.dart';
+import 'package:threads/router.dart';
 
 class ThreadsApp extends StatelessWidget {
   const ThreadsApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
@@ -42,7 +43,6 @@ class ThreadsApp extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      home: const MainNavigationScreen(),
     );
   }
 }

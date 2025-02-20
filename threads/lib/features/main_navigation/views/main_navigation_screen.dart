@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
 import 'package:threads/features/activity/views/activity_screen.dart';
@@ -9,7 +11,12 @@ import 'package:threads/features/profile/views/profile_screen.dart';
 import 'package:threads/features/search/views/search_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
+  final String tab;
+
+  const MainNavigationScreen({
+    super.key,
+    required this.tab,
+  });
 
   @override
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
@@ -17,6 +24,27 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   MainNavigationTab _selectedTab = MainNavigationTab.home;
+
+  @override
+  void initState() {
+    super.initState();
+    _setSelectedTab(widget.tab);
+  }
+
+  void _setSelectedTab(String tab) {
+    if (tab == AppRoutes.home) {
+      _selectedTab = MainNavigationTab.home;
+    }
+    if (tab == AppRoutes.search) {
+      _selectedTab = MainNavigationTab.search;
+    }
+    if (tab == AppRoutes.activity) {
+      _selectedTab = MainNavigationTab.activity;
+    }
+    if (tab == AppRoutes.profile) {
+      _selectedTab = MainNavigationTab.profile;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +58,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 screen: HomeScreen(viewModel: HomeViewModel()),
               ),
               (tab: MainNavigationTab.search, screen: const SearchScreen()),
-              (tab: MainNavigationTab.likes, screen: const ActivityScreen()),
+              (tab: MainNavigationTab.activity, screen: const ActivityScreen()),
               (tab: MainNavigationTab.profile, screen: const ProfileScreen()),
             ].map(
               (e) => Offstage(
@@ -55,7 +83,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 (tab) => NavigationTab(
                   isSelected: _selectedTab == tab,
                   icon: tab.toIcon(),
-                  onTap: () => _onNavigationTabTap(tab),
+                  onTap: () => _onNavigationTabTap(tab, context),
                 ),
               )
               .toList(),
@@ -64,11 +92,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     );
   }
 
-  void _onNavigationTabTap(MainNavigationTab tab) {
+  void _onNavigationTabTap(MainNavigationTab tab, BuildContext context) {
     if (tab == MainNavigationTab.write) {
       _showWriteScreen();
       return;
     }
+    context.go(tab.toPath());
     _selectedTab = tab;
     setState(() {});
   }
