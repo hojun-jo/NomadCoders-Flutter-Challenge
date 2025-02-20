@@ -14,10 +14,11 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Stack(
       children: [
         CircleAvatar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          backgroundColor: theme.scaffoldBackgroundColor,
           foregroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
         ),
         if (decoration != null)

@@ -15,13 +15,14 @@ class UserNameCheckIconRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           userName,
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: theme.primaryColor,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),

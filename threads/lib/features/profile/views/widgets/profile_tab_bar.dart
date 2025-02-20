@@ -9,16 +9,17 @@ class ProfileTabBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
+    final theme = Theme.of(context);
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: theme.scaffoldBackgroundColor,
       child: TabBar(
         controller: controller,
         splashFactory: NoSplash.splashFactory,
-        indicatorColor: Theme.of(context).primaryColor,
+        indicatorColor: theme.primaryColor,
         indicatorSize: TabBarIndicatorSize.tab,
-        labelColor: Theme.of(context).primaryColor,
+        labelColor: theme.primaryColor,
         labelStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: theme.primaryColor,
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),

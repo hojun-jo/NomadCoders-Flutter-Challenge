@@ -15,6 +15,7 @@ class SettingsScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -28,7 +29,7 @@ class SettingsScaffold extends StatelessWidget {
               Text(
                 "Back",
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: theme.primaryColor,
                   fontSize: 18,
                 ),
               ),
@@ -39,7 +40,7 @@ class SettingsScaffold extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: theme.primaryColor,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

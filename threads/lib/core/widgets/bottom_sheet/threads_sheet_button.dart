@@ -14,6 +14,7 @@ class ThreadsSheetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -27,7 +28,7 @@ class ThreadsSheetButton extends StatelessWidget {
           text,
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            color: isDestructive ? Colors.red : Theme.of(context).primaryColor,
+            color: isDestructive ? Colors.red : theme.primaryColor,
           ),
         ),
       ),

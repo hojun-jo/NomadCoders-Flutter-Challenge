@@ -14,6 +14,7 @@ class _FollowButtonState extends State<FollowButton> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return GestureDetector(
       onTap: _onFollowTap,
       child: Container(
@@ -28,7 +29,7 @@ class _FollowButtonState extends State<FollowButton> {
         child: Text(
           _isFollowing ? "Following" : "Follow",
           style: TextStyle(
-            color: _isFollowing ? Colors.grey : Theme.of(context).primaryColor,
+            color: _isFollowing ? Colors.grey : theme.primaryColor,
             fontSize: 14,
             fontWeight: FontWeight.w700,
           ),

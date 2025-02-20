@@ -13,8 +13,9 @@ class ThreadsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: theme.scaffoldBackgroundColor,
       width: MediaQuery.of(context).size.width,
       padding: isVerticalPadding
           ? const EdgeInsets.only(bottom: 60)

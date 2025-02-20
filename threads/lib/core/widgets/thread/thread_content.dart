@@ -26,6 +26,7 @@ class ThreadContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -59,7 +60,7 @@ class ThreadContent extends StatelessWidget {
               Text(
                 description,
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: theme.primaryColor,
                 ),
               ),
               Gaps.v10,

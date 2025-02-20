@@ -9,13 +9,14 @@ class ReportSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return ThreadsSheet(
       isVerticalPadding: true,
       children: [
         Text(
           "Report",
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: theme.primaryColor,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -25,7 +26,7 @@ class ReportSheet extends StatelessWidget {
           title: Text(
             "Why are you reporting this thread?",
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: theme.primaryColor,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -54,12 +55,12 @@ class ReportSheet extends StatelessWidget {
                 title: Text(
                   dummyReportTitles[index],
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: theme.primaryColor,
                   ),
                 ),
                 trailing: Icon(
                   Icons.chevron_right,
-                  color: Theme.of(context).primaryColor,
+                  color: theme.primaryColor,
                 ),
               );
             },

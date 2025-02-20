@@ -18,13 +18,14 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SettingsScaffold(
       title: "Privacy",
       onBackTap: () => _onBackTap(context),
       child: Column(
         children: [
           SwitchListTile.adaptive(
-            activeColor: Theme.of(context).primaryColor,
+            activeColor: theme.primaryColor,
             title: Row(
               children: [
                 const Icon(FontAwesomeIcons.lock),
@@ -32,7 +33,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                 Text(
                   "Private profile",
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: theme.primaryColor,
                     fontSize: 17,
                   ),
                 ),
@@ -74,7 +75,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             title: Text(
               "Ohter privacy settings",
               style: TextStyle(
-                color: Theme.of(context).primaryColor,
+                color: theme.primaryColor,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),

@@ -21,6 +21,7 @@ class ProfileInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
@@ -35,7 +36,7 @@ class ProfileInformation extends StatelessWidget {
                   Text(
                     name,
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: theme.primaryColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
@@ -45,7 +46,7 @@ class ProfileInformation extends StatelessWidget {
                       Text(
                         userName,
                         style: TextStyle(
-                          color: Theme.of(context).primaryColor,
+                          color: theme.primaryColor,
                           fontSize: 15,
                         ),
                       ),
@@ -72,7 +73,7 @@ class ProfileInformation extends StatelessWidget {
                   Text(
                     bio,
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: theme.primaryColor,
                       fontSize: 15,
                     ),
                   ),

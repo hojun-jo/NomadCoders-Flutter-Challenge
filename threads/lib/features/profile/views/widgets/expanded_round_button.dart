@@ -12,6 +12,7 @@ class ExpandedRoundButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
@@ -25,7 +26,7 @@ class ExpandedRoundButton extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                color: Theme.of(context).primaryColor,
+                color: theme.primaryColor,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),

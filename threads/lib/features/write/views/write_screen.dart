@@ -18,6 +18,7 @@ class _WriteScreenState extends State<WriteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 80,
@@ -26,7 +27,7 @@ class _WriteScreenState extends State<WriteScreen> {
           child: Text(
             "Cancel",
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: theme.primaryColor,
               fontSize: 16,
             ),
           ),
@@ -34,7 +35,7 @@ class _WriteScreenState extends State<WriteScreen> {
         title: Text(
           "New thread",
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: theme.primaryColor,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),

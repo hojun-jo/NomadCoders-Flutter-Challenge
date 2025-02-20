@@ -23,6 +23,7 @@ class WriteContentColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +31,7 @@ class WriteContentColumn extends StatelessWidget {
           Text(
             userName,
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: theme.primaryColor,
               fontSize: 16,
             ),
           ),

@@ -32,6 +32,7 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         ListTile(
@@ -68,7 +69,7 @@ class ListItem extends StatelessWidget {
                 child: Text(
                   description!,
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: theme.primaryColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

@@ -16,10 +16,11 @@ class ThreadRepliesRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       children: [
         _decideAvatarCount(
-          context,
+          theme,
           replies,
         ),
         Gaps.h10,
@@ -33,11 +34,11 @@ class ThreadRepliesRow extends StatelessWidget {
     );
   }
 
-  Widget _decideAvatarCount(BuildContext context, int replies) {
+  Widget _decideAvatarCount(ThemeData theme, int replies) {
     switch (replies) {
       case 0:
         return CircleAvatar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          backgroundColor: theme.scaffoldBackgroundColor,
         );
       case 1:
         return const Avatar(
@@ -47,7 +48,7 @@ class ThreadRepliesRow extends StatelessWidget {
         return Stack(
           children: [
             CircleAvatar(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: theme.scaffoldBackgroundColor,
             ),
             const ThreadRepliesAvatar(
               left: 4,
@@ -67,7 +68,7 @@ class ThreadRepliesRow extends StatelessWidget {
         return Stack(
           children: [
             CircleAvatar(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: theme.scaffoldBackgroundColor,
             ),
             const ThreadRepliesAvatar(
               left: 2,
