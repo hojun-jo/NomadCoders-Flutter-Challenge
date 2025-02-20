@@ -1,5 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:threads/features/settings/view_models/settings_view_model.dart';
+
 import 'package:threads/router.dart';
 
 class ThreadsApp extends StatelessWidget {
@@ -7,12 +10,14 @@ class ThreadsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final settingsViewModel = context.watch<SettingsViewModel>();
     return MaterialApp.router(
       routerConfig: router,
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       title: 'Threads',
+      themeMode: settingsViewModel.themeMode,
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,

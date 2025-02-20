@@ -5,6 +5,7 @@ import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/core/constants/thread_divider.dart';
 import 'package:threads/features/settings/views/widgets/settings_scaffold.dart';
 import 'package:threads/features/settings/views/widgets/settings_tile.dart';
+import 'package:threads/features/settings/views/widgets/theme_mode_switch.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -23,6 +24,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       onBackTap: () => _onBackTap(context),
       child: Column(
         children: [
+          const ThemeModeSwitch(),
           SettingsTile(
             icon: FontAwesomeIcons.userPlus,
             text: "Follow and invite friends",
