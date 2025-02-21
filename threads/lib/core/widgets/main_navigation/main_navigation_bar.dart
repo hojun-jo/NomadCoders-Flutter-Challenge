@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:threads/features/main_navigation/models/main_navigation_tab.dart';
-import 'package:threads/features/main_navigation/views/widgets/navigation_tab.dart';
+import 'package:threads/core/widgets/main_navigation/navigation_tab.dart';
 import 'package:threads/features/write/views/write_screen.dart';
 
-class MainNavigationScreen extends StatefulWidget {
+class MainNavigationBar extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
 
-  const MainNavigationScreen({
+  const MainNavigationBar({
     super.key,
     required this.navigationShell,
   });
 
   @override
-  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+  State<MainNavigationBar> createState() => _MainNavigationBarState();
 }
 
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  MainNavigationTab _selectedTab = MainNavigationTab.home;
+class _MainNavigationBarState extends State<MainNavigationBar> {
+  int _selectedTab = 0;
 
   @override
   void initState() {
@@ -26,18 +26,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   }
 
   void _setSelectedTab(int index) {
-    if (index == 0) {
-      _selectedTab = MainNavigationTab.home;
-    }
-    if (index == 1) {
-      _selectedTab = MainNavigationTab.search;
-    }
-    if (index == 2) {
-      _selectedTab = MainNavigationTab.activity;
-    }
-    if (index == 3) {
-      _selectedTab = MainNavigationTab.profile;
-    }
+    _selectedTab = index;
+    setState(() {});
   }
 
   @override
@@ -55,28 +45,33 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: MainNavigationTab.values
-              .map(
-                (tab) => NavigationTab(
-                  isSelected: _selectedTab == tab,
-                  icon: tab.toIcon(),
-                  onTap: () => _onNavigationTabTap(tab),
-                ),
-              )
-              .toList(),
+          children: [
+            ...[
+              (index: 0, icon: FontAwesomeIcons.house),
+              (index: 1, icon: FontAwesomeIcons.magnifyingGlass),
+              (index: -1, icon: FontAwesomeIcons.penToSquare),
+              (index: 2, icon: FontAwesomeIcons.heart),
+              (index: 3, icon: FontAwesomeIcons.user),
+            ].map(
+              (tab) => NavigationTab(
+                isSelected: _selectedTab == tab.index,
+                icon: tab.icon,
+                onTap: () => _onNavigationTabTap(tab.index),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  void _onNavigationTabTap(MainNavigationTab tab) {
-    if (tab == MainNavigationTab.write) {
+  void _onNavigationTabTap(int index) {
+    if (index == -1) {
       _showWriteScreen();
       return;
     }
-    _selectedTab = tab;
-    setState(() {});
-    widget.navigationShell.goBranch(tab.toIndex());
+    _setSelectedTab(index);
+    widget.navigationShell.goBranch(index);
   }
 
   void _showWriteScreen() {

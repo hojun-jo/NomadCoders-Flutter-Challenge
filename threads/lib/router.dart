@@ -4,7 +4,7 @@ import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/features/activity/views/activity_screen.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
-import 'package:threads/features/main_navigation/views/main_navigation_screen.dart';
+import 'package:threads/core/widgets/main_navigation/main_navigation_bar.dart';
 import 'package:threads/features/profile/views/profile_screen.dart';
 import 'package:threads/features/search/views/search_screen.dart';
 import 'package:threads/features/settings/views/privacy_screen.dart';
@@ -21,7 +21,7 @@ final router = GoRouter(
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        return MainNavigationScreen(navigationShell: navigationShell);
+        return MainNavigationBar(navigationShell: navigationShell);
       },
       branches: [
         StatefulShellBranch(

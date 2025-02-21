@@ -59,7 +59,6 @@ class _ProfileScreenState extends State<ProfileScreen>
           ),
         ),
         SliverPersistentHeader(
-          pinned: true,
           floating: true,
           delegate: ProfileTabBar(controller: _tabController),
         ),
