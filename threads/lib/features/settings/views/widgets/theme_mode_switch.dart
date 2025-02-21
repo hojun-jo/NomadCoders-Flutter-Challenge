@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/core/constants/gaps.dart';
-import 'package:threads/core/providers/settings_provider.dart';
+import 'package:threads/core/providers/app_settings_provider.dart';
 
 class ThemeModeSwitch extends ConsumerWidget {
   const ThemeModeSwitch({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // return const Placeholder();
     final theme = Theme.of(context);
-    final isDarkMode = ref.read(settingsProvider).isDarkMode;
+    final isDarkMode = ref.read(appSettingsProvider).value?.isDarkMode ?? false;
     return SwitchListTile.adaptive(
       activeColor: theme.primaryColor,
       title: Row(
@@ -31,7 +30,7 @@ class ThemeModeSwitch extends ConsumerWidget {
       ),
       value: isDarkMode,
       onChanged: (value) {
-        final provider = ref.read(settingsProvider.notifier);
+        final provider = ref.read(appSettingsProvider.notifier);
         provider.toggleThemeMode();
       },
     );
