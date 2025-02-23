@@ -26,88 +26,92 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
     final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const LocaleText(),
-              const AuthThreadsIcon(),
-              Column(
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: Column(
+        child: ref.watch(signInProvider).isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const LocaleText(),
+                    const AuthThreadsIcon(),
+                    Column(
                       children: [
-                        AuthFormField(
-                          hintText: "Mobile number or email",
-                          validator: (value) => ref
-                              .read(signInProvider.notifier)
-                              .validateEmail(value),
-                          onSaved: (value) {
-                            if (value != null) {
-                              _formData["email"] = value;
-                            }
-                          },
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: [
+                              AuthFormField(
+                                hintText: "Mobile number or email",
+                                validator: (value) => ref
+                                    .read(signInProvider.notifier)
+                                    .validateEmail(value),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    _formData["email"] = value;
+                                  }
+                                },
+                              ),
+                              Gaps.v10,
+                              AuthFormField(
+                                obscureText: true,
+                                hintText: "Password",
+                                validator: (value) => ref
+                                    .read(signInProvider.notifier)
+                                    .validatePassword(value),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    _formData["password"] = value;
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                         Gaps.v10,
-                        AuthFormField(
-                          obscureText: true,
-                          hintText: "Password",
-                          validator: (value) => ref
-                              .read(signInProvider.notifier)
-                              .validatePassword(value),
-                          onSaved: (value) {
-                            if (value != null) {
-                              _formData["password"] = value;
-                            }
-                          },
+                        RoundButton(
+                          text: "Log in",
+                          onTap: _signIn,
+                          color: Colors.blue,
+                          textColor: theme.scaffoldBackgroundColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          borderRadius: 5,
+                          height: 50,
                         ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                              color: theme.primaryColor,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        Gaps.v60,
                       ],
                     ),
-                  ),
-                  Gaps.v10,
-                  RoundButton(
-                    text: "Log in",
-                    onTap: _signIn,
-                    color: Colors.blue,
-                    textColor: theme.scaffoldBackgroundColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    borderRadius: 5,
-                    height: 50,
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Forgot password?",
-                      style: TextStyle(
-                        color: theme.primaryColor,
-                        fontSize: 16,
-                      ),
+                    Column(
+                      children: [
+                        RoundButton(
+                          onTap: _pushSignUpScreen,
+                          text: "Create new account",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.transparent,
+                          borderColor: Colors.grey,
+                          borderRadius: 5,
+                        ),
+                        Gaps.v14,
+                        const AuthMetaIcon(),
+                      ],
                     ),
-                  ),
-                  Gaps.v60,
-                ],
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  RoundButton(
-                    onTap: _pushSignUpScreen,
-                    text: "Create new account",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.transparent,
-                    borderColor: Colors.grey,
-                    borderRadius: 5,
-                  ),
-                  Gaps.v14,
-                  const AuthMetaIcon(),
-                ],
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -115,7 +119,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   void _signIn() {
     if (_formKey.currentState == null) return;
     if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
       ref.read(signInProvider.notifier).signIn(
             _formData["email"]!,
             _formData["password"]!,

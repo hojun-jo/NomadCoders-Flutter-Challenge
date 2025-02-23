@@ -21,7 +21,7 @@ class ThreadsApp extends ConsumerWidget {
             child: CircularProgressIndicator(),
           ),
           data: (model) => MaterialApp.router(
-            routerConfig: router,
+            routerConfig: ref.watch(routerProvider),
             useInheritedMediaQuery: true,
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,

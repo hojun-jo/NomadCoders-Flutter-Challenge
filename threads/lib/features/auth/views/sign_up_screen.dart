@@ -24,77 +24,83 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const AuthThreadsIcon(),
-              Column(
-                children: [
-                  Form(
-                    key: _formKey,
-                    child: Column(
+        child: ref.watch(signUpProvider).isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const AuthThreadsIcon(),
+                    Column(
                       children: [
-                        AuthFormField(
-                          hintText: "Mobile number or email",
-                          validator: (value) => ref
-                              .read(signUpProvider.notifier)
-                              .validateEmail(value),
-                          onSaved: (value) {
-                            if (value != null) {
-                              _formData["email"] = value;
-                            }
-                          },
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: [
+                              AuthFormField(
+                                hintText: "Mobile number or email",
+                                validator: (value) => ref
+                                    .read(signUpProvider.notifier)
+                                    .validateEmail(value),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    _formData["email"] = value;
+                                  }
+                                },
+                              ),
+                              Gaps.v10,
+                              AuthFormField(
+                                obscureText: true,
+                                hintText: "Password",
+                                validator: (value) => ref
+                                    .read(signUpProvider.notifier)
+                                    .validatePassword(value),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    _formData["password"] = value;
+                                  }
+                                },
+                              ),
+                              Gaps.v10,
+                              AuthFormField(
+                                obscureText: true,
+                                hintText: "Repeat password",
+                                validator: (value) => ref
+                                    .read(signUpProvider.notifier)
+                                    .validateRepeatPassword(
+                                      value,
+                                      _formData["password"],
+                                    ),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    _formData["password2"] = value;
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                         Gaps.v10,
-                        AuthFormField(
-                          obscureText: true,
-                          hintText: "Password",
-                          validator: (value) => ref
-                              .read(signUpProvider.notifier)
-                              .validatePassword(value),
-                          onSaved: (value) {
-                            if (value != null) {
-                              _formData["password"] = value;
-                            }
-                          },
+                        RoundButton(
+                          text: "Create Account",
+                          onTap: _signUp,
+                          color: Colors.blue,
+                          textColor: theme.scaffoldBackgroundColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          borderRadius: 5,
+                          height: 50,
                         ),
-                        Gaps.v10,
-                        AuthFormField(
-                          obscureText: true,
-                          hintText: "Repeat password",
-                          validator: (value) => ref
-                              .read(signUpProvider.notifier)
-                              .validateRepeatPassword(
-                                  value, _formData["password"]),
-                          onSaved: (value) {
-                            if (value != null) {
-                              _formData["password2"] = value;
-                            }
-                          },
-                        ),
+                        Gaps.v60,
                       ],
                     ),
-                  ),
-                  Gaps.v10,
-                  RoundButton(
-                    text: "Create Account",
-                    onTap: _signUp,
-                    color: Colors.blue,
-                    textColor: theme.scaffoldBackgroundColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    borderRadius: 5,
-                    height: 50,
-                  ),
-                  Gaps.v60,
-                ],
+                    const AuthMetaIcon(),
+                  ],
+                ),
               ),
-              const AuthMetaIcon(),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -102,7 +108,6 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   void _signUp() {
     if (_formKey.currentState == null) return;
     if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
       ref.read(signUpProvider.notifier).signUp(
             _formData["email"]!,
             _formData["password"]!,

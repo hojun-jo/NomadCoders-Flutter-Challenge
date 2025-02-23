@@ -4,14 +4,14 @@ class AuthFormField extends StatelessWidget {
   final bool obscureText;
   final String hintText;
   final String? Function(String?) validator;
-  final Function(String?) onSaved;
+  final Function(String?) onChanged;
 
   const AuthFormField({
     super.key,
     this.obscureText = false,
     required this.hintText,
     required this.validator,
-    required this.onSaved,
+    required this.onChanged,
   });
 
   @override
@@ -35,7 +35,7 @@ class AuthFormField extends StatelessWidget {
         ),
       ),
       validator: validator,
-      onSaved: onSaved,
+      onChanged: onChanged,
     );
   }
 }
