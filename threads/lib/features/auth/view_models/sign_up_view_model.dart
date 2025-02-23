@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/core/utils/validator.dart';
 
-class SignInViewModel extends AsyncNotifier {
+class SignUpViewModel extends AsyncNotifier {
   @override
   FutureOr build() {
     // TODO: implement build
     throw UnimplementedError();
   }
 
-  void signIn(
+  void signUp(
     String email,
     String password,
     BuildContext context,
@@ -24,14 +24,16 @@ class SignInViewModel extends AsyncNotifier {
     return null;
   }
 
-  String? validatePassword(String? password) {
-    if (password == null || !Validator.validatePassword(password)) {
+  String? validatePassword(String? password, String? repeatPassword) {
+    if (password == null ||
+        !Validator.validatePassword(password) ||
+        password != repeatPassword) {
       return "8 Characters or longer.";
     }
     return null;
   }
 }
 
-final signInProvider = AsyncNotifierProvider<SignInViewModel, void>(
-  () => SignInViewModel(),
+final signUpProvider = AsyncNotifierProvider<SignUpViewModel, void>(
+  () => SignUpViewModel(),
 );

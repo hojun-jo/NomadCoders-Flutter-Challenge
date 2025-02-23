@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/features/activity/views/activity_screen.dart';
 import 'package:threads/features/auth/views/sign_in_screen.dart';
+import 'package:threads/features/auth/views/sign_up_screen.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/features/home/views/home_screen.dart';
 import 'package:threads/core/widgets/main_navigation/main_navigation_bar.dart';
@@ -24,6 +25,10 @@ final router = GoRouter(
     GoRoute(
       path: AppRoutes.signIn,
       builder: (context, state) => const SignInScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.signUp,
+      builder: (context, state) => const SignUpScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
