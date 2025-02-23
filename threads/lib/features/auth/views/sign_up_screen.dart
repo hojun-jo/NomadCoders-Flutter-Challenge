@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/round_button.dart';
-import 'package:threads/features/auth/view_models/sign_in_view_model.dart';
+import 'package:threads/features/auth/view_models/sign_up_view_model.dart';
 import 'package:threads/features/auth/views/widgets/auth_form_field.dart';
 import 'package:threads/features/auth/views/widgets/auth_meta_icon.dart';
 import 'package:threads/features/auth/views/widgets/auth_threads_icon.dart';
@@ -39,7 +39,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         AuthFormField(
                           hintText: "Mobile number or email",
                           validator: (value) => ref
-                              .read(signInProvider.notifier)
+                              .read(signUpProvider.notifier)
                               .validateEmail(value),
                           onSaved: (value) {
                             if (value != null) {
@@ -52,7 +52,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           obscureText: true,
                           hintText: "Password",
                           validator: (value) => ref
-                              .read(signInProvider.notifier)
+                              .read(signUpProvider.notifier)
                               .validatePassword(value),
                           onSaved: (value) {
                             if (value != null) {
@@ -65,8 +65,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           obscureText: true,
                           hintText: "Repeat password",
                           validator: (value) => ref
-                              .read(signInProvider.notifier)
-                              .validatePassword(value),
+                              .read(signUpProvider.notifier)
+                              .validateRepeatPassword(
+                                  value, _formData["password"]),
                           onSaved: (value) {
                             if (value != null) {
                               _formData["password2"] = value;
@@ -102,7 +103,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     if (_formKey.currentState == null) return;
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      ref.read(signInProvider.notifier).signIn(
+      ref.read(signUpProvider.notifier).signUp(
             _formData["email"]!,
             _formData["password"]!,
             context,

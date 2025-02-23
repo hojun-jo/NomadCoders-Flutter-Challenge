@@ -24,11 +24,18 @@ class SignUpViewModel extends AsyncNotifier {
     return null;
   }
 
-  String? validatePassword(String? password, String? repeatPassword) {
-    if (password == null ||
-        !Validator.validatePassword(password) ||
-        password != repeatPassword) {
+  String? validatePassword(String? password) {
+    if (password == null || !Validator.validatePassword(password)) {
       return "8 Characters or longer.";
+    }
+    return null;
+  }
+
+  String? validateRepeatPassword(String? repeatPassword, String? password) {
+    if (password == null ||
+        repeatPassword == null ||
+        password != repeatPassword) {
+      return "Password is not match.";
     }
     return null;
   }
