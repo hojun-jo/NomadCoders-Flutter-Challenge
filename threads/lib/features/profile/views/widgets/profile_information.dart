@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/core/widgets/profile/avatar.dart';
-import 'package:threads/features/profile/views/widgets/expanded_round_button.dart';
+import 'package:threads/core/widgets/round_button.dart';
 
 class ProfileInformation extends StatelessWidget {
   final String name;
@@ -104,14 +104,22 @@ class ProfileInformation extends StatelessWidget {
           Gaps.v20,
           Row(
             children: [
-              ExpandedRoundButton(
-                text: "Edit profile",
-                onTap: () {},
+              Expanded(
+                child: RoundButton(
+                  text: "Edit profile",
+                  onTap: () {},
+                  color: Colors.transparent,
+                  borderRadius: 10,
+                ),
               ),
               Gaps.h10,
-              ExpandedRoundButton(
-                text: "Share profile",
-                onTap: () {},
+              Expanded(
+                child: RoundButton(
+                  text: "Share profile",
+                  onTap: () {},
+                  color: Colors.transparent,
+                  borderRadius: 10,
+                ),
               ),
             ],
           )

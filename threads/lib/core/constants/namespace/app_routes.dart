@@ -1,4 +1,9 @@
 class AppRoutes {
+  // auth
+  static const signIn = "/signin";
+  static const createAccount = "/signup";
+
+  // main navigation
   static const home = "/";
   static const search = "/search";
   static const activity = "/activity";
