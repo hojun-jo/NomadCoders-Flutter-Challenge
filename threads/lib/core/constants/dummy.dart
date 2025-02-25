@@ -29,6 +29,7 @@ final List<ThreadModel> dummyThreads = [
       userId: dummyUsers[i].id,
       description: faker.lorem.sentence(),
       images: _generateImages(),
+      hasImage: true,
       postTime: faker.date.dateTimeBetween(
         DateTime(2025, 2, 1),
         DateTime.now(),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
 class ThreadModel {
@@ -5,6 +6,7 @@ class ThreadModel {
   final String userId;
   final String description;
   final List<String> images;
+  final bool hasImage;
   final DateTime postTime;
   final int replies;
   final int likes;
@@ -14,6 +16,7 @@ class ThreadModel {
     required this.userId,
     required this.description,
     required this.images,
+    required this.hasImage,
     required this.postTime,
     required this.replies,
     required this.likes,
@@ -24,6 +27,7 @@ class ThreadModel {
         userId = "1234",
         description = "",
         images = [],
+        hasImage = false,
         postTime = DateTime.now(),
         replies = 0,
         likes = 0;
@@ -33,7 +37,8 @@ class ThreadModel {
         userId = json["userId"],
         description = json["description"],
         images = [],
-        postTime = json["postTime"],
+        hasImage = json["hasImage"],
+        postTime = (json["postTime"] as Timestamp).toDate(),
         replies = json["replies"],
         likes = json["likes"];
 
@@ -42,6 +47,7 @@ class ThreadModel {
       "id": id,
       "userId": userId,
       "description": description,
+      "hasImage": hasImage,
       "postTime": postTime,
       "replies": replies,
       "likes": likes,
@@ -53,6 +59,7 @@ class ThreadModel {
     String? userId,
     String? description,
     List<String>? images,
+    bool? hasImage,
     DateTime? postTime,
     int? replies,
     int? likes,
@@ -62,6 +69,7 @@ class ThreadModel {
       userId: userId ?? this.userId,
       description: description ?? this.description,
       images: images ?? this.images,
+      hasImage: hasImage ?? this.hasImage,
       postTime: postTime ?? this.postTime,
       replies: replies ?? this.replies,
       likes: likes ?? this.likes,

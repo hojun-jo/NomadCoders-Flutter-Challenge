@@ -1,48 +1,48 @@
-import 'package:flutter/material.dart';
-import 'package:threads/core/constants/dummy.dart';
-import 'package:threads/core/models/profile/user_model.dart';
-import 'package:threads/core/utils/date_formatter.dart';
+import 'dart:async';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/core/models/thread/thread_model.dart';
+import 'package:threads/core/repos/thread_repository.dart';
+import 'package:threads/core/utils/date_formatter.dart';
 
-class HomeViewModel {
-  final List<ThreadModel> items = dummyThreads;
-  final List<UserModel> users = dummyUsers;
+class HomeViewModel extends AsyncNotifier<List<ThreadModel>> {
+  late final ThreadRepository _repo;
 
-  int get itemCount => items.length;
+  @override
+  FutureOr<List<ThreadModel>> build() async {
+    _repo = ref.read(threadRepo);
 
-  String getUserName(int index) {
-    return users[index].name;
+    return await fetchThreads();
   }
 
-  String? getUserAvatarUrl(int index) {
-    return users[index].avatarUrl;
+  Future<void> refreshThreads() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final threadModels = await _repo.fetchThreads();
+
+      threadModels.sort((a, b) {
+        return b.postTime.difference(a.postTime).inSeconds;
+      });
+
+      return threadModels;
+    });
   }
 
-  IconData? getAvatarDecoration(int index) {
-    return users[index].avatarDecoration?.toIcon();
+  Future<List<ThreadModel>> fetchThreads() async {
+    final threadModels = await _repo.fetchThreads();
+
+    threadModels.sort((a, b) {
+      return b.postTime.difference(a.postTime).inSeconds;
+    });
+
+    return threadModels;
   }
 
-  bool getUserIsVerified(int index) {
-    return users[index].isVerified;
-  }
-
-  String getDescription(int index) {
-    return items[index].description;
-  }
-
-  List<String>? getImages(int index) {
-    return items[index].images;
-  }
-
-  String getPostTime(int index) {
-    return DateFormatter.difference(items[index].postTime);
-  }
-
-  int getReplies(int index) {
-    return items[index].replies;
-  }
-
-  int getLikes(int index) {
-    return items[index].likes;
+  String formmatPostTime(DateTime time) {
+    return DateFormatter.difference(time);
   }
 }
+
+final homeProvider = AsyncNotifierProvider<HomeViewModel, List<ThreadModel>>(
+  () => HomeViewModel(),
+);

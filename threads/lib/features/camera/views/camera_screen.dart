@@ -223,7 +223,9 @@ class _CameraScreenState extends State<CameraScreen>
 
       if (_isDisposed) return;
 
-      Navigator.pop(context, imagePaths);
+      await Future.delayed(const Duration(milliseconds: 500), () {
+        Navigator.pop(context, imagePaths);
+      });
     } catch (e) {
       print(e);
     }

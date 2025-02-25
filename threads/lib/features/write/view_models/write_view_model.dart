@@ -3,10 +3,10 @@ import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:threads/core/models/thread/thread_model.dart';
-import 'package:threads/features/write/repos/write_repository.dart';
+import 'package:threads/core/repos/thread_repository.dart';
 
 class WriteViewModel extends AsyncNotifier<ThreadModel> {
-  late final WriteRepository _repo;
+  late final ThreadRepository _repo;
 
   bool _isPostable = false;
 
@@ -14,7 +14,7 @@ class WriteViewModel extends AsyncNotifier<ThreadModel> {
 
   @override
   FutureOr<ThreadModel> build() {
-    _repo = ref.read(writeRepo);
+    _repo = ref.read(threadRepo);
     return ThreadModel.empty();
   }
 
@@ -30,14 +30,19 @@ class WriteViewModel extends AsyncNotifier<ThreadModel> {
 
   void deleteImage(int index) {
     state.value!.images.removeAt(index);
-    _updateState();
+
+    if (state.value!.images.isEmpty) {
+      _updateHasImage(false);
+    } else {
+      _updateState();
+    }
   }
 
   void addImages(List<String>? imagePaths) {
     if (imagePaths == null) return;
 
     state.value!.images.addAll(imagePaths);
-    _updateState();
+    _updateHasImage(true);
   }
 
   Future<void> uploadThread() async {
@@ -56,6 +61,10 @@ class WriteViewModel extends AsyncNotifier<ThreadModel> {
 
       return ThreadModel.empty();
     });
+  }
+
+  void _updateHasImage(bool value) {
+    state = AsyncValue.data(state.value!.copyWith(hasImage: value));
   }
 
   void _updateState() {
