@@ -1,6 +1,7 @@
 import 'package:threads/core/models/profile/avatar_decoration.dart';
 
-class User {
+class UserModel {
+  final String id;
   final String? avatarUrl;
   final AvatarDecoration? avatarDecoration;
   final String name;
@@ -8,7 +9,8 @@ class User {
   final String bio;
   final int followers;
 
-  User({
+  UserModel({
+    required this.id,
     this.avatarUrl,
     this.avatarDecoration,
     required this.name,

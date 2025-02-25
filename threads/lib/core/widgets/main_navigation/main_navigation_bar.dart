@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:threads/core/widgets/main_navigation/navigation_tab.dart';
 import 'package:threads/features/write/views/write_screen.dart';
 
-class MainNavigationBar extends StatefulWidget {
+class MainNavigationBar extends ConsumerStatefulWidget {
   final StatefulNavigationShell navigationShell;
 
   const MainNavigationBar({
@@ -13,10 +14,10 @@ class MainNavigationBar extends StatefulWidget {
   });
 
   @override
-  State<MainNavigationBar> createState() => _MainNavigationBarState();
+  ConsumerState<MainNavigationBar> createState() => _MainNavigationBarState();
 }
 
-class _MainNavigationBarState extends State<MainNavigationBar> {
+class _MainNavigationBarState extends ConsumerState<MainNavigationBar> {
   int _selectedTab = 0;
 
   @override

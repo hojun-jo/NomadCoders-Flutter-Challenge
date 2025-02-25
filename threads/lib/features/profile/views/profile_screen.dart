@@ -68,15 +68,16 @@ class _ProfileScreenState extends State<ProfileScreen>
         children: ProfileTab.values.map((tab) {
           // TODO: 데이터 바인딩
           final items = dummyThreads;
+          final users = dummyUsers;
           return CustomScrollView(
             slivers: [
               SliverList.separated(
                 separatorBuilder: (context, index) => threadSeparator,
                 itemCount: items.length,
                 itemBuilder: (context, index) => ThreadItem(
-                  avatarUrl: items[index].user.avatarUrl,
-                  userName: items[index].user.name,
-                  userIsVerified: items[index].user.isVerified,
+                  avatarUrl: users[index].avatarUrl,
+                  userName: users[index].name,
+                  userIsVerified: users[index].isVerified,
                   images: items[index].images,
                   description: items[index].description,
                   postTime: DateFormatter.difference(items[index].postTime),

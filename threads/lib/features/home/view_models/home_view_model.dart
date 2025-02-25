@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:threads/core/constants/dummy.dart';
+import 'package:threads/core/models/profile/user_model.dart';
 import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/core/models/thread/thread_model.dart';
 
 class HomeViewModel {
   final List<ThreadModel> items = dummyThreads;
+  final List<UserModel> users = dummyUsers;
 
   int get itemCount => items.length;
 
   String getUserName(int index) {
-    return items[index].user.name;
+    return users[index].name;
   }
 
   String? getUserAvatarUrl(int index) {
-    return items[index].user.avatarUrl;
+    return users[index].avatarUrl;
   }
 
   IconData? getAvatarDecoration(int index) {
-    return items[index].user.avatarDecoration?.toIcon();
+    return users[index].avatarDecoration?.toIcon();
   }
 
   bool getUserIsVerified(int index) {
-    return items[index].user.isVerified;
+    return users[index].isVerified;
   }
 
   String getDescription(int index) {

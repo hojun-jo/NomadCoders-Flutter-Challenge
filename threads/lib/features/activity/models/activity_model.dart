@@ -1,8 +1,8 @@
 import 'package:threads/core/models/profile/avatar_decoration.dart';
-import 'package:threads/core/models/profile/user.dart';
+import 'package:threads/core/models/profile/user_model.dart';
 
 class ActivityModel {
-  final User user;
+  final UserModel user;
   final AvatarDecoration avatarDecoration;
   final DateTime notifiedTime;
   final String? description;

@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/gaps.dart';
 import 'package:threads/features/camera/views/camera_screen.dart';
+import 'package:threads/features/write/view_models/write_view_model.dart';
 import 'package:threads/features/write/views/widgets/write_avatar_column.dart';
 import 'package:threads/features/write/views/widgets/write_bottom_row.dart';
 import 'package:threads/features/write/views/widgets/write_content_column.dart';
 
-class WriteScreen extends StatefulWidget {
+class WriteScreen extends ConsumerStatefulWidget {
   const WriteScreen({super.key});
 
   @override
-  State<WriteScreen> createState() => _WriteScreenState();
+  ConsumerState<WriteScreen> createState() => _WriteScreenState();
 }
 
-class _WriteScreenState extends State<WriteScreen> {
-  bool isPostable = false;
-  List<String> images = [];
-
+class _WriteScreenState extends ConsumerState<WriteScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final viewModel = ref.watch(writeProvider);
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 80,
@@ -42,67 +43,67 @@ class _WriteScreenState extends State<WriteScreen> {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 12,
-              ),
-              child: SingleChildScrollView(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const WriteAvatarColumn(),
-                    Gaps.h10,
-                    WriteContentColumn(
-                      userName: "user name",
-                      images: Future.value(images),
-                      deleteImage: _deleteImage,
-                      onTextFieldChanged: _onTextFieldChanged,
-                      onClipTap: () => _onClipTap(context),
+        child: viewModel.isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Column(
+                children: [
+                  const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 12,
                     ),
-                  ],
-                ),
+                    child: SingleChildScrollView(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const WriteAvatarColumn(),
+                          Gaps.h10,
+                          WriteContentColumn(
+                            userName: "user name",
+                            images: Future.value(viewModel.value?.images),
+                            deleteImage: _deleteImage,
+                            onTextFieldChanged: _onTextFieldChanged,
+                            onClipTap: () => _onClipTap(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  WriteBottomRow(
+                    isPostable: ref.read(writeProvider.notifier).isPostable,
+                    onPostTap: () => _uploadThread(),
+                  ),
+                ],
               ),
-            ),
-            const Spacer(),
-            WriteBottomRow(
-              isPostable: isPostable,
-              onPostTap: () {},
-            ),
-          ],
-        ),
       ),
     );
   }
 
   void _deleteImage(int index) {
-    images.removeAt(index);
-    setState(() {});
+    ref.read(writeProvider.notifier).deleteImage(index);
   }
 
   void _onTextFieldChanged(String text) {
-    if (text.isNotEmpty) {
-      isPostable = true;
-    } else {
-      isPostable = false;
-    }
-    setState(() {});
+    ref.read(writeProvider.notifier).updateDescription(text);
   }
 
-  Future<void> _onClipTap(BuildContext context) async {
-    final imagePath = await Navigator.push(
+  Future<void> _onClipTap() async {
+    final imagePaths = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const CameraScreen(),
       ),
     );
 
-    if (imagePath == null) return;
+    ref.read(writeProvider.notifier).addImages(imagePaths);
+  }
 
-    images.addAll(imagePath);
-    setState(() {});
+  Future<void> _uploadThread() async {
+    await ref.read(writeProvider.notifier).uploadThread();
+    context.pop();
   }
 }
