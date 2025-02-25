@@ -1,10 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:threads/core/constants/namespace/app_routes.dart';
-import 'package:threads/core/utils/firebase_error_snack.dart';
 import 'package:threads/core/utils/validator.dart';
 import 'package:threads/features/auth/repos/authentication_repository.dart';
 
@@ -19,18 +15,11 @@ class SignInViewModel extends AsyncNotifier {
   Future<void> signIn(
     String email,
     String password,
-    BuildContext context,
   ) async {
-    try {
-      state = const AsyncValue.loading();
-      state = await AsyncValue.guard(() async {
-        await _authRepo.emailSignIn(email, password);
-      });
-
-      context.go(AppRoutes.home);
-    } catch (e) {
-      FirebaseErrorSnack.show(context, e);
-    }
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      await _authRepo.emailSignIn(email, password);
+    });
   }
 
   String? validateEmail(String? email) {

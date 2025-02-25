@@ -1,6 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/gaps.dart';
+import 'package:threads/core/constants/namespace/app_routes.dart';
+import 'package:threads/core/utils/snack.dart';
 import 'package:threads/core/widgets/round_button.dart';
 import 'package:threads/features/auth/view_models/sign_up_view_model.dart';
 import 'package:threads/features/auth/views/widgets/auth_form_field.dart';
@@ -108,11 +112,18 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   void _signUp() {
     if (_formKey.currentState == null) return;
     if (_formKey.currentState!.validate()) {
-      ref.read(signUpProvider.notifier).signUp(
-            _formData["email"]!,
-            _formData["password"]!,
-            context,
-          );
+      try {
+        ref.read(signUpProvider.notifier).signUp(
+              _formData["email"]!,
+              _formData["password"]!,
+            );
+
+        context.go(AppRoutes.home);
+      } on FirebaseException catch (e) {
+        Snack.show(context, e.message ?? e.toString());
+      } catch (e) {
+        Snack.show(context, e.toString());
+      }
     }
   }
 }
