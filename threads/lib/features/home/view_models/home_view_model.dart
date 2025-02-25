@@ -17,7 +17,7 @@ class HomeViewModel {
   }
 
   IconData? getAvatarDecoration(int index) {
-    return items[index].avatarDecoration?.toIcon();
+    return items[index].user.avatarDecoration?.toIcon();
   }
 
   bool getUserIsVerified(int index) {

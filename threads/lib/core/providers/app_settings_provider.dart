@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:threads/core/models/settings/app_settings_model.dart';
 import 'package:threads/core/repos/app_settings_repository.dart';
 
@@ -34,8 +33,6 @@ class AppSettingsNotifier extends AsyncNotifier<AppSettingsModel> {
 final appSettingsProvider =
     AsyncNotifierProvider<AppSettingsNotifier, AppSettingsModel>(
   () => AppSettingsNotifier(
-    AppSettingsRepository(
-      SharedPreferencesAsync(),
-    ),
+    AppSettingsRepository(),
   ),
 );

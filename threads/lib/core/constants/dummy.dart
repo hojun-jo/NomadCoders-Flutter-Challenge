@@ -12,6 +12,7 @@ final List<User> dummyUsers = [
   for (int i = 0; i < 10; i++)
     User(
       avatarUrl: dummyAvatarUrl,
+      avatarDecoration: AvatarDecoration.add,
       name: faker.internet.userName(),
       isVerified: faker.randomGenerator.boolean(),
       bio: faker.lorem.sentence(),
@@ -23,7 +24,6 @@ final List<ThreadModel> dummyThreads = [
   for (int i = 0; i < 10; i++)
     ThreadModel(
       user: dummyUsers[i],
-      avatarDecoration: AvatarDecoration.add,
       description: faker.lorem.sentence(),
       images: _generateImages(),
       postTime: faker.date.dateTimeBetween(

@@ -20,13 +20,13 @@ class ThreadsApp extends ConsumerWidget {
           loading: () => const Center(
             child: CircularProgressIndicator(),
           ),
-          data: (model) => MaterialApp.router(
+          data: (settings) => MaterialApp.router(
             routerConfig: ref.watch(routerProvider),
             useInheritedMediaQuery: true,
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
             title: 'Threads',
-            themeMode: model.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            themeMode: settings.isDarkMode ? ThemeMode.dark : ThemeMode.light,
             theme: ThemeData(
               useMaterial3: true,
               scaffoldBackgroundColor: Colors.white,

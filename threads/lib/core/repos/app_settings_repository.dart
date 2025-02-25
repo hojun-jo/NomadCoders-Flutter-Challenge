@@ -3,9 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppSettingsRepository {
   static const String _isDarkMode = "isDarkMode";
 
-  final SharedPreferencesAsync _asyncPrefs;
+  final SharedPreferencesAsync _asyncPrefs = SharedPreferencesAsync();
 
-  AppSettingsRepository(this._asyncPrefs);
+  AppSettingsRepository();
 
   Future<void> setDarkMode(bool isDarkMode) async {
     await _asyncPrefs.setBool(_isDarkMode, isDarkMode);
