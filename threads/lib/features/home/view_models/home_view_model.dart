@@ -12,20 +12,14 @@ class HomeViewModel extends AsyncNotifier<List<ThreadModel>> {
   FutureOr<List<ThreadModel>> build() async {
     _repo = ref.read(threadRepo);
 
-    return await fetchThreads();
+    return await _repo.fetchThreads();
   }
 
   Future<void> refreshThreads() async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      return fetchThreads();
+      return await _repo.fetchThreads();
     });
-  }
-
-  Future<List<ThreadModel>> fetchThreads() async {
-    final threadModels = await _repo.fetchThreads();
-
-    return threadModels;
   }
 
   String formmatPostTime(DateTime time) {

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads/core/constants/thread_separator.dart';
+import 'package:threads/core/widgets/center_error_text.dart';
+import 'package:threads/core/widgets/center_progress_indicator.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
 import 'package:threads/core/widgets/thread/thread_item.dart';
 
@@ -18,12 +20,8 @@ class HomeScreen extends ConsumerWidget {
     final viewModel = ref.read(homeProvider.notifier);
 
     return ref.watch(homeProvider).when(
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
-          error: (error, stackTrace) => Center(
-            child: Text(error.toString()),
-          ),
+          loading: () => const CenterProgressIndicator(),
+          error: (error, stackTrace) => CenterErrorText(text: error.toString()),
           data: (data) => RefreshIndicator(
             onRefresh: () => _onRefresh(ref),
             child: CustomScrollView(
