@@ -18,22 +18,12 @@ class HomeViewModel extends AsyncNotifier<List<ThreadModel>> {
   Future<void> refreshThreads() async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final threadModels = await _repo.fetchThreads();
-
-      threadModels.sort((a, b) {
-        return b.postTime.difference(a.postTime).inSeconds;
-      });
-
-      return threadModels;
+      return fetchThreads();
     });
   }
 
   Future<List<ThreadModel>> fetchThreads() async {
     final threadModels = await _repo.fetchThreads();
-
-    threadModels.sort((a, b) {
-      return b.postTime.difference(a.postTime).inSeconds;
-    });
 
     return threadModels;
   }

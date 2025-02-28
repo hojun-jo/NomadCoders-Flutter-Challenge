@@ -20,7 +20,10 @@ class ThreadRepository {
   }
 
   Future<List<ThreadModel>> fetchThreads() async {
-    final snapshot = await _db.collection("thread").get();
+    final snapshot = await _db
+        .collection("thread")
+        .orderBy("postTime", descending: true)
+        .get();
     List<ThreadModel> threads = [];
 
     for (final json in snapshot.docs) {
