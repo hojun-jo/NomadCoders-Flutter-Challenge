@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/features/activity/views/activity_screen.dart';
+import 'package:threads/features/auth/repos/authentication_repository.dart';
 import 'package:threads/features/auth/views/sign_in_screen.dart';
 import 'package:threads/features/auth/views/sign_up_screen.dart';
 import 'package:threads/features/home/view_models/home_view_model.dart';
@@ -21,20 +22,19 @@ final GlobalKey<NavigatorState> _profileNavigatorKey =
 final routerProvider = Provider((ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: AppRoutes.signIn,
-    // TODO: redirect
-    // redirect: (context, state) {
-    //   final isLoggedIn = ref.read(authRepo).isLoggedIn;
+    initialLocation: AppRoutes.home,
+    redirect: (context, state) {
+      final isLoggedIn = ref.watch(authRepo).isLoggedIn;
 
-    //   if (!isLoggedIn) {
-    //     print(state.fullPath); // state가 가지고 있는 것들 다 null나오는 중
-    //     if (state.path != AppRoutes.signIn && state.path != AppRoutes.signUp) {
-    //       return AppRoutes.signIn;
-    //     }
-    //   }
+      if (!isLoggedIn) {
+        if (state.matchedLocation != AppRoutes.signIn &&
+            state.matchedLocation != AppRoutes.signUp) {
+          return AppRoutes.signIn;
+        }
+      }
 
-    //   return null;
-    // },
+      return null;
+    },
     routes: [
       GoRoute(
         path: AppRoutes.signIn,
