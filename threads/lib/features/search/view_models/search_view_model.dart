@@ -6,7 +6,7 @@ import 'package:threads/core/models/thread/thread_model.dart';
 import 'package:threads/core/repos/thread_repository.dart';
 import 'package:threads/core/utils/date_formatter.dart';
 
-class SearchViewModel extends AsyncNotifier<List<ThreadModel>> {
+class SearchViewModel extends StreamNotifier<List<ThreadModel>> {
   late final ThreadRepository _repo;
   late final List<ThreadModel> _cache;
 
@@ -14,12 +14,10 @@ class SearchViewModel extends AsyncNotifier<List<ThreadModel>> {
   bool get isSearching => itemCount < _cache.length && itemCount > 0;
 
   @override
-  FutureOr<List<ThreadModel>> build() async {
+  Stream<List<ThreadModel>> build() {
     _repo = ref.read(threadRepo);
-    final threads = await _repo.fetchThreads();
-    _cache = threads;
 
-    return threads;
+    return _repo.fetchThreads();
   }
 
   Future<void> search(String text) async {
@@ -41,6 +39,6 @@ class SearchViewModel extends AsyncNotifier<List<ThreadModel>> {
 }
 
 final searchProvider =
-    AsyncNotifierProvider<SearchViewModel, List<ThreadModel>>(
+    StreamNotifierProvider<SearchViewModel, List<ThreadModel>>(
   () => SearchViewModel(),
 );

@@ -5,21 +5,18 @@ import 'package:threads/core/models/thread/thread_model.dart';
 import 'package:threads/core/repos/thread_repository.dart';
 import 'package:threads/core/utils/date_formatter.dart';
 
-class HomeViewModel extends AsyncNotifier<List<ThreadModel>> {
+class HomeViewModel extends StreamNotifier<List<ThreadModel>> {
   late final ThreadRepository _repo;
 
   @override
-  FutureOr<List<ThreadModel>> build() async {
+  Stream<List<ThreadModel>> build() {
     _repo = ref.read(threadRepo);
 
-    return await _repo.fetchThreads();
+    return _repo.fetchThreads();
   }
 
-  Future<void> refreshThreads() async {
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async {
-      return await _repo.fetchThreads();
-    });
+  Future<List<String>> fetchThreadImages(String threadId) async {
+    return _repo.fetchThreadImages(threadId);
   }
 
   String formmatPostTime(DateTime time) {
@@ -27,6 +24,6 @@ class HomeViewModel extends AsyncNotifier<List<ThreadModel>> {
   }
 }
 
-final homeProvider = AsyncNotifierProvider<HomeViewModel, List<ThreadModel>>(
+final homeProvider = StreamNotifierProvider<HomeViewModel, List<ThreadModel>>(
   () => HomeViewModel(),
 );

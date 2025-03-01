@@ -1,49 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:threads/core/models/thread/thread_model.dart';
+import 'package:threads/core/widgets/center_error_text.dart';
 import 'package:threads/core/widgets/thread/thread_content.dart';
 import 'package:threads/core/widgets/thread/thread_replies_row.dart';
+import 'package:threads/features/home/view_models/home_view_model.dart';
 
-class ThreadItem extends StatelessWidget {
-  final String userName;
-  final String? avatarUrl;
-  final IconData? avatarDecoration;
-  final bool userIsVerified;
-  final String description;
-  final List<String>? images;
-  final String postTime;
-  final int replies;
-  final int likes;
+class ThreadItem extends ConsumerWidget {
+  final ThreadModel data;
 
   const ThreadItem({
     super.key,
-    required this.userName,
-    this.avatarUrl,
-    this.avatarDecoration,
-    required this.userIsVerified,
-    required this.description,
-    this.images,
-    required this.postTime,
-    required this.replies,
-    required this.likes,
+    required this.data,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final viewModel = ref.read(homeProvider.notifier);
+
     return Container(
       margin: const EdgeInsets.all(10),
       child: Column(
         children: [
-          ThreadContent(
-            userName: userName,
-            avatarUrl: avatarUrl,
-            avatarDecoration: avatarDecoration,
-            userIsVerified: userIsVerified,
-            description: description,
-            images: images,
-            postTime: postTime,
-          ),
+          data.hasImage
+              ? FutureBuilder(
+                  future: viewModel.fetchThreadImages(data.id),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return CenterErrorText(text: snapshot.error.toString());
+                    }
+                    return ThreadContent(
+                      userName: "anonymous",
+                      avatarUrl: null,
+                      avatarDecoration: null,
+                      userIsVerified: false,
+                      description: data.description,
+                      images: snapshot.data,
+                      postTime: viewModel.formmatPostTime(data.postTime),
+                    );
+                  })
+              : ThreadContent(
+                  userName: "anonymous",
+                  avatarUrl: null,
+                  avatarDecoration: null,
+                  userIsVerified: false,
+                  description: data.description,
+                  images: null,
+                  postTime: viewModel.formmatPostTime(data.postTime),
+                ),
           ThreadRepliesRow(
-            replies: replies,
-            likes: likes,
+            replies: data.replies,
+            likes: data.likes,
           ),
         ],
       ),

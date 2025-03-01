@@ -19,30 +19,26 @@ class ThreadRepository {
     await fileRef.putFile(image);
   }
 
-  Future<List<ThreadModel>> fetchThreads() async {
-    final snapshot = await _db
+  Stream<List<ThreadModel>> fetchThreads() {
+    return _db
         .collection("thread")
         .orderBy("postTime", descending: true)
-        .get();
-    List<ThreadModel> threads = [];
+        .snapshots()
+        .map((snapshot) {
+      List<ThreadModel> threads = [];
 
-    for (final json in snapshot.docs) {
-      final thread = json.data();
-      final threadModel = ThreadModel.fromJson(thread);
+      for (final json in snapshot.docs) {
+        final thread = json.data();
+        final threadModel = ThreadModel.fromJson(thread);
 
-      if (thread["hasImage"]) {
-        final images = await _fetchThreadImages(threadModel.id);
-
-        threadModel.images.addAll(images);
+        threads.add(threadModel);
       }
 
-      threads.add(threadModel);
-    }
-
-    return threads;
+      return threads;
+    });
   }
 
-  Future<List<String>> _fetchThreadImages(String threadId) async {
+  Future<List<String>> fetchThreadImages(String threadId) async {
     final storageRef = _storage.ref().child("thread/$threadId");
     final listResult = await storageRef.listAll();
     List<String> imageUrls = [];

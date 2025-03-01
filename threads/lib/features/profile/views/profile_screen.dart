@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:threads/core/constants/dummy.dart';
 import 'package:threads/core/constants/namespace/app_routes.dart';
 import 'package:threads/core/constants/thread_separator.dart';
-import 'package:threads/core/utils/date_formatter.dart';
 import 'package:threads/core/widgets/thread/thread_item.dart';
 import 'package:threads/features/profile/models/profile_tab.dart';
 import 'package:threads/features/profile/views/widgets/profile_information.dart';
@@ -68,21 +67,13 @@ class _ProfileScreenState extends State<ProfileScreen>
         children: ProfileTab.values.map((tab) {
           // TODO: 데이터 바인딩
           final items = dummyThreads;
-          final users = dummyUsers;
           return CustomScrollView(
             slivers: [
               SliverList.separated(
                 separatorBuilder: (context, index) => threadSeparator,
                 itemCount: items.length,
                 itemBuilder: (context, index) => ThreadItem(
-                  avatarUrl: users[index].avatarUrl,
-                  userName: users[index].name,
-                  userIsVerified: users[index].isVerified,
-                  images: items[index].images,
-                  description: items[index].description,
-                  postTime: DateFormatter.difference(items[index].postTime),
-                  replies: items[index].replies,
-                  likes: items[index].likes,
+                  data: items[index],
                 ),
               ),
             ],

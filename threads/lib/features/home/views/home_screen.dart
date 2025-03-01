@@ -17,46 +17,33 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.read(homeProvider.notifier);
+    final threads = ref.watch(homeProvider);
 
-    return ref.watch(homeProvider).when(
-          loading: () => const CenterProgressIndicator(),
-          error: (error, stackTrace) => CenterErrorText(text: error.toString()),
-          data: (data) => RefreshIndicator(
-            onRefresh: () => _onRefresh(ref),
-            child: CustomScrollView(
-              slivers: [
-                const SliverAppBar(
-                  centerTitle: true,
-                  title: Icon(
-                    FontAwesomeIcons.threads,
-                    size: 36,
-                  ),
-                ),
-                SliverList.separated(
-                  itemCount: data.length,
-                  separatorBuilder: (context, index) => threadSeparator,
-                  itemBuilder: (context, index) {
-                    return ThreadItem(
-                      userName: "anonymous",
-                      avatarUrl: null,
-                      avatarDecoration: null,
-                      userIsVerified: false,
-                      description: data[index].description,
-                      images: data[index].images,
-                      postTime: viewModel.formmatPostTime(data[index].postTime),
-                      replies: data[index].replies,
-                      likes: data[index].likes,
-                    );
-                  },
-                ),
-              ],
+    return threads.when(
+      loading: () => const CenterProgressIndicator(),
+      error: (error, stackTrace) => CenterErrorText(text: error.toString()),
+      data: (data) {
+        return CustomScrollView(
+          slivers: [
+            const SliverAppBar(
+              centerTitle: true,
+              title: Icon(
+                FontAwesomeIcons.threads,
+                size: 36,
+              ),
             ),
-          ),
+            SliverList.separated(
+              itemCount: data.length,
+              separatorBuilder: (context, index) => threadSeparator,
+              itemBuilder: (context, index) {
+                return ThreadItem(
+                  data: data[index],
+                );
+              },
+            ),
+          ],
         );
-  }
-
-  Future<void> _onRefresh(WidgetRef ref) async {
-    await ref.read(homeProvider.notifier).refreshThreads();
+      },
+    );
   }
 }

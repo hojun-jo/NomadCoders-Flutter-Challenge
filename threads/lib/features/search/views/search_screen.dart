@@ -68,16 +68,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       itemBuilder: (context, index) {
                         return isSearching
                             ? ThreadItem(
-                                userName: "anonymous",
-                                avatarUrl: null,
-                                avatarDecoration: null,
-                                userIsVerified: false,
-                                description: data[index].description,
-                                images: data[index].images,
-                                postTime: viewModel
-                                    .formmatPostTime(data[index].postTime),
-                                replies: data[index].replies,
-                                likes: data[index].likes,
+                                data: data[index],
                               )
                             : ListItem(
                                 avatarUrl: dummyUsers[index].avatarUrl,
