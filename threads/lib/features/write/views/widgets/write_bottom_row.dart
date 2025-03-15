@@ -29,7 +29,8 @@ class WriteBottomRow extends StatelessWidget {
           child: Text(
             "Post",
             style: TextStyle(
-              color: isPostable ? Colors.blue : Colors.blue.withOpacity(0.5),
+              color:
+                  isPostable ? Colors.blue : Colors.blue.withValues(alpha: 0.5),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),

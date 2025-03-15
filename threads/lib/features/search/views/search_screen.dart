@@ -21,6 +21,7 @@ class SearchScreen extends ConsumerStatefulWidget {
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _controller = TextEditingController();
+  final FocusNode _focusNode = FocusNode(debugLabel: "Search Text Field");
 
   @override
   void initState() {
@@ -51,6 +52,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CupertinoSearchTextField(
               controller: _controller,
+              focusNode: _focusNode,
             ),
           ),
           Gaps.v10,
@@ -60,7 +62,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   error: (error, stackTrace) =>
                       CenterErrorText(text: error.toString()),
                   data: (data) {
-                    final isSearching = viewModel.isSearching;
+                    final isSearching = _focusNode.hasFocus;
                     return ListView.separated(
                       separatorBuilder: (context, index) =>
                           isSearching ? threadSeparator : const ListSeparator(),

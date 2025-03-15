@@ -22,7 +22,6 @@ class ThreadsApp extends ConsumerWidget {
           ),
           data: (settings) => MaterialApp.router(
             routerConfig: ref.watch(routerProvider),
-            useInheritedMediaQuery: true,
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
             title: 'Threads',

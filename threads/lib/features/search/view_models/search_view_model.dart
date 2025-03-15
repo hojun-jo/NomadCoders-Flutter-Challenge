@@ -8,10 +8,9 @@ import 'package:threads/core/utils/date_formatter.dart';
 
 class SearchViewModel extends StreamNotifier<List<ThreadModel>> {
   late final ThreadRepository _repo;
-  late final List<ThreadModel> _cache;
+  final List<ThreadModel> _cache = [];
 
   int get itemCount => state.value?.length ?? 0;
-  bool get isSearching => itemCount < _cache.length && itemCount > 0;
 
   @override
   Stream<List<ThreadModel>> build() {
@@ -22,6 +21,11 @@ class SearchViewModel extends StreamNotifier<List<ThreadModel>> {
 
   Future<void> search(String text) async {
     state = const AsyncValue.loading();
+
+    if (state.hasValue && _cache.isEmpty) {
+      _cache.addAll(state.value!);
+    }
+
     state = await AsyncValue.guard(() async {
       return _cache.where((thread) {
         return thread.description.contains(text);
