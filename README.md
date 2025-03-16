@@ -55,6 +55,6 @@
 
 ---
 
-| [Implicit Animations](/implicit_animations/) | [Explicit Animations](/explicit_animations/) |
-| :-: | :-: |
-| <img src="./gifs/implicit animations.gif" width="200" /> | <img src="./gifs/explicit animations.gif" width="200" /> |
+| [Implicit Animations](/implicit_animations/) | [Explicit Animations](/explicit_animations/) | [Custom Painter](/custom_painter/) |
+| :-: | :-: | :-: |
+| <img src="./gifs/implicit animations.gif" width="200" /> | <img src="./gifs/explicit animations.gif" width="200" /> | <img src="./gifs/custom painter.gif" width="200" /> |
