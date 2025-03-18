@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void dispose() {
     _backCardAnimationController.dispose();
+    _cardAnimationController.dispose();
     super.dispose();
   }
 
