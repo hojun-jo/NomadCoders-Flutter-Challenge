@@ -22,6 +22,7 @@ class TimerCircle extends CustomPainter {
         Paint()
           ..color = AppColors.lightRed
           ..strokeWidth = 20
+          ..strokeCap = StrokeCap.round
           ..style = PaintingStyle.stroke;
 
     canvas.drawArc(rect, startAngle, sweepAngle, false, paint);
