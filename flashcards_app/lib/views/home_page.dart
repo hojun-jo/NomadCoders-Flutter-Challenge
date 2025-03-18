@@ -28,10 +28,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ).animate(_backCardAnimationController);
   late final AnimationController _cardAnimationController = AnimationController(
     vsync: this,
-    duration: Duration(milliseconds: 900),
+    duration: Duration(milliseconds: 300),
   );
 
-  late final Animation<Offset> _cardAnimation = Tween<Offset>(
+  late Animation<Offset> _cardAnimation = Tween<Offset>(
     begin: Offset.zero,
     end: Offset.zero,
   ).animate(_cardAnimationController);
@@ -166,30 +166,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     if (_viewModel.isComplete) return;
     if (_viewModel.cardState == CardState.center) return;
 
-    // TODO: cardState != center 애니메이션 마저 진행하고 다음으로 넘어감.
-    if (_viewModel.cardState == CardState.left) {
-      // _cardAnimation = Tween<Offset>(
-      //   begin: Offset.zero,
-      //   end: Offset((-deviceWidth / 2) - _dragDx, 0),
-      // ).animate(_cardAnimationController);
-    }
-    if (_viewModel.cardState == CardState.right) {}
+    double dx = 0;
 
-    // _cardAnimationController.forward().then((_) {
-    //   _viewModel.getNextCard();
-    //   _resetCardPosition();
-    // });
-    _viewModel.getNextCard();
-    _resetCardPosition();
+    if (_viewModel.cardState == CardState.left) {
+      dx = -2;
+    }
+    if (_viewModel.cardState == CardState.right) {
+      dx = 2;
+    }
+
+    _cardAnimation = Tween<Offset>(
+      begin: Offset.zero,
+      end: Offset(dx, 0),
+    ).animate(_cardAnimationController);
+    _cardAnimationController.forward().then((_) {
+      _viewModel.getNextCard();
+      _resetCardPosition();
+    });
   }
 
   void _resetCardPosition() {
+    _backCardAnimationController.reset();
+    _cardAnimationController.reset();
+
     _rotateAngle = 0;
     _dragDx = 0;
     _displayFront = true;
-
-    _backCardAnimationController.reset();
-    _cardAnimationController.reset();
   }
 
   Widget _transitionBuilder(Widget widget, Animation<double> animation) {
