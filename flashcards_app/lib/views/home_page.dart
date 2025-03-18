@@ -148,6 +148,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     final dx = details.delta.dx;
     _rotateAngle += (dx / deviceWidth / 2);
     _dragDx += dx;
+    setState(() {});
 
     if (_dragDx < -5) {
       _viewModel.setCardState(CardState.left);
@@ -180,6 +181,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       begin: Offset.zero,
       end: Offset(dx, 0),
     ).animate(_cardAnimationController);
+    setState(() {});
     _cardAnimationController.forward().then((_) {
       _viewModel.getNextCard();
       _resetCardPosition();
@@ -193,6 +195,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _rotateAngle = 0;
     _dragDx = 0;
     _displayFront = true;
+
+    setState(() {});
   }
 
   Widget _transitionBuilder(Widget widget, Animation<double> animation) {
