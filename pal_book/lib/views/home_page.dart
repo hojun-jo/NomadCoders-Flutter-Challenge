@@ -18,6 +18,8 @@ class _HomePageState extends State<HomePage> {
   final PageController _backPageController = PageController();
   final PageController _frontPageController = PageController();
 
+  String _currentPal = "1";
+
   @override
   void initState() {
     super.initState();
@@ -57,20 +59,23 @@ class _HomePageState extends State<HomePage> {
 
         return Stack(
           children: [
+            AnimatedSwitcher(
+              duration: Duration(milliseconds: 500),
+              child: BackgroundImage(
+                key: ValueKey(_currentPal),
+                path: "assets/images/pal_bg/pal_bg_$_currentPal.jpeg",
+              ),
+            ),
             PageView.builder(
               controller: _backPageController,
               itemCount: data.length,
               itemBuilder: (context, index) {
                 final pal = data[index];
 
+                _changeBackgroundImage(_backPageController.offset, size.width);
+
                 return Stack(
                   children: [
-                    AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      child: BackgroundImage(
-                        path: "assets/images/pal_bg/pal_bg_${pal.id}.jpeg",
-                      ),
-                    ),
                     Center(
                       child: SizedBox(
                         width: 280,
@@ -140,5 +145,9 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  void _changeBackgroundImage(double offset, double width) {
+    _currentPal = "${(offset / width).round() + 1}";
   }
 }
