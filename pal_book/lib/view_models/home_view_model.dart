@@ -12,4 +12,12 @@ class HomeViewModel {
 
     return pals;
   }
+
+  String getBackgroundImagePath(String palId) {
+    return "assets/images/pal_bg/pal_bg_$palId.jpeg";
+  }
+
+  String getPalImagePath(String palId) {
+    return "assets/images/pal/pal_$palId.png";
+  }
 }

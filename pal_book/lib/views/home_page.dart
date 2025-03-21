@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
     _viewModel = widget.viewModel;
 
     _backPageController.addListener(() {
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               duration: Duration(milliseconds: 500),
               child: BackgroundImage(
                 key: ValueKey(_currentPal),
-                path: "assets/images/pal_bg/pal_bg_$_currentPal.jpeg",
+                path: _viewModel.getBackgroundImagePath(_currentPal),
               ),
             ),
             PageView.builder(
@@ -132,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Image.asset(
-                            "assets/images/pal/pal_${pal.id}.png",
+                            _viewModel.getPalImagePath(pal.id),
                           ),
                         ),
                       ),
