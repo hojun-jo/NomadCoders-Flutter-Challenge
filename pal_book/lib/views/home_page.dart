@@ -14,14 +14,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> {
   late final HomeViewModel _viewModel;
-  late final AnimationController _animationController = AnimationController(
-    vsync: this,
-    duration: Duration(milliseconds: 500),
-  );
-  late final size = MediaQuery.sizeOf(context);
+  late final Size size = MediaQuery.sizeOf(context);
 
   final PageController _backPageController = PageController();
   final PageController _frontPageController = PageController();
@@ -47,7 +42,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   void dispose() {
-    _animationController.dispose();
     _backPageController.dispose();
     _frontPageController.dispose();
     super.dispose();
@@ -74,13 +68,7 @@ class _HomePageState extends State<HomePage>
             } else {
               _isShowDetail = false;
             }
-          },
-          onVerticalDragEnd: (details) {
-            if (_isShowDetail) {
-              _animationController.forward();
-            } else {
-              _animationController.reverse();
-            }
+            setState(() {});
           },
           child: Stack(
             children: [
@@ -144,7 +132,7 @@ class _HomePageState extends State<HomePage>
                       );
                     },
                   )
-                  .animate(controller: _animationController)
+                  .animate(target: _isShowDetail ? 1 : 0)
                   .slideY(begin: 0, end: -1),
               IgnorePointer(
                     child: PageView.builder(
@@ -175,10 +163,10 @@ class _HomePageState extends State<HomePage>
                       },
                     ),
                   )
-                  .animate(controller: _animationController)
+                  .animate(target: _isShowDetail ? 1 : 0)
                   .slideY(begin: 0, end: -1),
               DetailPage()
-                  .animate(controller: _animationController)
+                  .animate(target: _isShowDetail ? 1 : 0)
                   .slideY(begin: 1, end: 0),
             ],
           ),
