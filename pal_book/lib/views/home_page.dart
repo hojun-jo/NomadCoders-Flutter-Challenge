@@ -29,6 +29,10 @@ class _HomePageState extends State<HomePage> {
 
     _viewModel = widget.viewModel;
 
+    _configPageController();
+  }
+
+  void _configPageController() {
     _backPageController.addListener(() {
       _changeBackgroundImage(_backPageController.offset);
       _frontPageController.animateTo(
@@ -37,6 +41,13 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.linear,
       );
     });
+  }
+
+  void _changeBackgroundImage(double offset) {
+    final size = MediaQuery.sizeOf(context);
+    _currentPal = "${(offset / size.width).round() + 1}";
+
+    setState(() {});
   }
 
   @override
@@ -63,14 +74,7 @@ class _HomePageState extends State<HomePage> {
         final data = snapshot.data!;
 
         return GestureDetector(
-          onVerticalDragUpdate: (details) {
-            if (details.delta.dy < 0) {
-              _isShowDetail = true;
-            } else {
-              _isShowDetail = false;
-            }
-            setState(() {});
-          },
+          onVerticalDragUpdate: _decideShowingDetail,
           child: Stack(
             children: [
               AnimatedSwitcher(
@@ -171,10 +175,7 @@ class _HomePageState extends State<HomePage> {
                 imagePath: _viewModel.getPalImagePath(
                   data[int.parse(_currentPal) - 1].id,
                 ),
-                goHomePage: () {
-                  _isShowDetail = false;
-                  setState(() {});
-                },
+                goHomePage: _closeDetail,
               ).animate(target: _isShowDetail ? 1 : 0).slideY(begin: 1, end: 0),
             ],
           ),
@@ -183,9 +184,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _changeBackgroundImage(double offset) {
-    final size = MediaQuery.sizeOf(context);
-    _currentPal = "${(offset / size.width).round() + 1}";
+  void _decideShowingDetail(DragUpdateDetails details) {
+    if (details.delta.dy < 0) {
+      _isShowDetail = true;
+    } else {
+      _isShowDetail = false;
+    }
+
+    setState(() {});
+  }
+
+  void _closeDetail() {
+    _isShowDetail = false;
+
     setState(() {});
   }
 }
