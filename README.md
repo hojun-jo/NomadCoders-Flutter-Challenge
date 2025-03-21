@@ -58,3 +58,7 @@
 | [Implicit Animations](/implicit_animations/) | [Explicit Animations](/explicit_animations/) | [Custom Painter](/custom_painter/) |
 | :-: | :-: | :-: |
 | <img src="./gifs/implicit animations.gif" width="200" /> | <img src="./gifs/explicit animations.gif" width="200" /> | <img src="./gifs/custom painter.gif" width="200" /> |
+
+| [Flashcard](/flashcards_app/) |
+| :-: |
+| <img src="./gifs/flashcard.gif" width="200" />
