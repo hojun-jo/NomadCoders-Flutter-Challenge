@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pal_book/models/pal_model.dart';
 import 'package:pal_book/views/widgets/elements_box.dart';
+import 'package:pal_book/views/widgets/tint_container.dart';
 
 class DetailPage extends StatefulWidget {
   final PalModel pal;
@@ -39,6 +40,8 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+
     return SafeArea(
       child: SingleChildScrollView(
         controller: _controller,
@@ -48,18 +51,25 @@ class _DetailPageState extends State<DetailPage> {
             Icon(Icons.arrow_drop_up, color: Colors.white),
             Image.asset(widget.imagePath),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 spacing: 10,
                 children: [
-                  Text(
-                    widget.pal.name,
-                    style: TextStyle(color: Colors.white, fontSize: 36),
+                  TintContainer(
+                    width: size.width,
+                    child: Text(
+                      widget.pal.name,
+                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    ),
                   ),
-                  ElementsBox(elements: widget.pal.elements),
-                  Text(
-                    widget.pal.description,
-                    style: TextStyle(color: Colors.white),
+                  TintContainer(
+                    child: ElementsBox(elements: widget.pal.elements),
+                  ),
+                  TintContainer(
+                    child: Text(
+                      widget.pal.description,
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),

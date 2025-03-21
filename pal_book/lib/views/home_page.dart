@@ -4,6 +4,7 @@ import 'package:pal_book/view_models/home_view_model.dart';
 import 'package:pal_book/views/detail_page.dart';
 import 'package:pal_book/views/widgets/background_image.dart';
 import 'package:pal_book/views/widgets/elements_box.dart';
+import 'package:pal_book/views/widgets/tint_container.dart';
 
 class HomePage extends StatefulWidget {
   final HomeViewModel viewModel;
@@ -97,6 +98,7 @@ class _HomePageState extends State<HomePage> {
                               width: 280,
                               height: 360,
                               child: Card(
+                                color: Colors.white,
                                 child: Padding(
                                   padding: const EdgeInsets.all(20),
                                   child: Column(
@@ -122,9 +124,11 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                  pal.summary,
-                                  style: TextStyle(color: Colors.white),
+                                TintContainer(
+                                  child: Text(
+                                    pal.summary,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                                 Icon(
                                   Icons.arrow_drop_down,
