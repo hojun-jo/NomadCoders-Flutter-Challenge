@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final HomeViewModel _viewModel;
-  late final Size size = MediaQuery.sizeOf(context);
 
   final PageController _backPageController = PageController();
   final PageController _frontPageController = PageController();
@@ -31,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     _viewModel = widget.viewModel;
 
     _backPageController.addListener(() {
-      _changeBackgroundImage(_backPageController.offset, size.width);
+      _changeBackgroundImage(_backPageController.offset);
       _frontPageController.animateTo(
         _backPageController.offset,
         duration: Duration(milliseconds: 100),
@@ -49,6 +48,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+
     return FutureBuilder(
       future: _viewModel.fetchPals(),
       builder: (context, snapshot) {
@@ -165,9 +166,16 @@ class _HomePageState extends State<HomePage> {
                   )
                   .animate(target: _isShowDetail ? 1 : 0)
                   .slideY(begin: 0, end: -1),
-              DetailPage()
-                  .animate(target: _isShowDetail ? 1 : 0)
-                  .slideY(begin: 1, end: 0),
+              DetailPage(
+                pal: data[int.parse(_currentPal) - 1],
+                imagePath: _viewModel.getPalImagePath(
+                  data[int.parse(_currentPal) - 1].id,
+                ),
+                goHomePage: () {
+                  _isShowDetail = false;
+                  setState(() {});
+                },
+              ).animate(target: _isShowDetail ? 1 : 0).slideY(begin: 1, end: 0),
             ],
           ),
         );
@@ -175,7 +183,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _changeBackgroundImage(double offset, double width) {
-    _currentPal = "${(offset / width).round() + 1}";
+  void _changeBackgroundImage(double offset) {
+    final size = MediaQuery.sizeOf(context);
+    _currentPal = "${(offset / size.width).round() + 1}";
+    setState(() {});
   }
 }
