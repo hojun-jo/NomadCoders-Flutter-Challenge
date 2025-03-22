@@ -62,6 +62,7 @@ flutter:
     - assets/images/
     - assets/images/pal/
     - assets/images/pal_bg/
+    - assets/images/work_suitability/
     - assets/json/
 
   # An image asset can refer to one or more resolution-specific "variants", see

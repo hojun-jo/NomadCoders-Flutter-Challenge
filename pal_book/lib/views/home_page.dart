@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:pal_book/view_models/detail_view_model.dart';
 import 'package:pal_book/view_models/home_view_model.dart';
 import 'package:pal_book/views/detail_page.dart';
 import 'package:pal_book/views/widgets/background_image.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final HomeViewModel _viewModel;
+  late final HomeViewModel _viewModel = widget.viewModel;
 
   final PageController _backPageController = PageController();
   final PageController _frontPageController = PageController();
@@ -27,9 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
-    _viewModel = widget.viewModel;
-
     _configPageController();
   }
 
@@ -180,6 +178,7 @@ class _HomePageState extends State<HomePage> {
                   data[int.parse(_currentPal) - 1].id,
                 ),
                 goHomePage: _closeDetail,
+                viewModel: DetailViewModel(),
               ).animate(target: _isShowDetail ? 1 : 0).slideY(begin: 1, end: 0),
             ],
           ),

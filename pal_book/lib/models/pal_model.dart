@@ -6,6 +6,7 @@ class PalModel {
   final PalElements elements;
   final String summary;
   final String description;
+  final Map<String, int> workSuitability;
 
   PalModel({
     required this.id,
@@ -13,6 +14,7 @@ class PalModel {
     required this.elements,
     required this.summary,
     required this.description,
+    required this.workSuitability,
   });
 
   factory PalModel.fromJson(Map<String, dynamic> json) => PalModel(
@@ -21,5 +23,8 @@ class PalModel {
     elements: PalElements.fromString(json["elements"]),
     summary: json["summary"],
     description: json["description"],
+    workSuitability: (json["workSuitability"] as Map<String, dynamic>).map(
+      (key, value) => MapEntry(key, int.parse(value.toString())),
+    ),
   );
 }
