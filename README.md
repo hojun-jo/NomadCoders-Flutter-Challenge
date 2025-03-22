@@ -28,6 +28,7 @@
   - [cloud_firestore](https://pub.dev/packages/cloud_firestore) : Firebase의 Firestore를 사용할 수 있게 해주는 패키지. noSQL DB 지원.
   - [firebase_storage](https://pub.dev/packages/firebase_storage) : Firebase의 Storage를 사용할 수 있게 해주는 패키지. 
   - [uuid](https://pub.dev/packages/uuid) : UUID를 만들어주는 패키지.
+  - [flutter_animate](https://pub.dev/packages/flutter_animate) : 애니메이션을 간편하게 사용할 수 있게 해주는 패키지.
 
 ## Results
 
@@ -59,6 +60,6 @@
 | :-: | :-: | :-: |
 | <img src="./gifs/implicit animations.gif" width="200" /> | <img src="./gifs/explicit animations.gif" width="200" /> | <img src="./gifs/custom painter.gif" width="200" /> |
 
-| [Flashcard](/flashcards_app/) |
-| :-: |
-| <img src="./gifs/flashcard.gif" width="200" />
+| [Flashcard](/flashcards_app/) | [Pal Book](/pal_book/) |
+| :-: | :-: |
+| <img src="./gifs/flashcard.gif" width="200" /> | <img src="./gifs/pal book.gif" width="200" /> |
